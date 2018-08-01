@@ -26,7 +26,7 @@ class ViewController: UIViewController, FrameExtractorDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        camera = Camera(frame: self.CameraView.bounds, sizeOfCenterPoint: 10)
+        camera = Camera(frame: self.CameraView.bounds, sizeOfCenterPoint: 30)
         camera.delegate = self
         NotificationCenter.default.addObserver(
             self,
@@ -34,7 +34,9 @@ class ViewController: UIViewController, FrameExtractorDelegate {
             name: .UIDeviceOrientationDidChange,
             object: nil
         )
-        self.CameraView.layer.addSublayer(camera.videoPreviewLayer!)
+        if let cameraLayer = camera.videoPreviewLayer {
+            self.CameraView.layer.addSublayer(cameraLayer)
+        }
         camera.videoPreviewLayer?.frame = self.CameraView.bounds
     }
     
@@ -43,11 +45,11 @@ class ViewController: UIViewController, FrameExtractorDelegate {
         
     }
     
-    override func viewDidLayoutSubviews() {
-        self.camera.videoPreviewLayer?.frame =  self.CameraView.bounds
-//        self.camera.videoPreviewLayer?.frame =  self.view.bounds
-
-    }
+//    override func viewDidLayoutSubviews() {
+//        self.camera.videoPreviewLayer?.frame =  self.CameraView.bounds
+////        self.camera.videoPreviewLayer?.frame =  self.view.bounds
+//
+//    }
     @objc func deviceDidRotate() {
         self.angle = 0.0
         switch UIDevice.current.orientation {
