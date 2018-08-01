@@ -1,0 +1,16 @@
+PODS:
+  - PopupWindow (0.1.0)
+
+DEPENDENCIES:
+  - PopupWindow
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - PopupWindow
+
+SPEC CHECKSUMS:
+  PopupWindow: 2f3a33001295435a3ab568e42a970d51539ed6e9
+
+PODFILE CHECKSUM: 8045851a1295bf8a917da197a33a75d330ef509e
+
+COCOAPODS: 1.5.3
