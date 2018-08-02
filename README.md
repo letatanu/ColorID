@@ -9,4 +9,4 @@ ColorID.xcworkspace
 It is free to use.
 
 # Acknowledgments
-* Thanks **Boris Ohayon** for writing the great article [iOS — Camera Frames Extraction](https://medium.com/ios-os-x-development/ios-camera-frames-extraction-d2c0f80ed05a) helping me build camera extractor components. 
+* Thanks **Boris Ohayon** for writing the great article [iOS — Camera Frames Extraction](https://medium.com/ios-os-x-development/ios-camera-frames-extraction-d2c0f80ed05a) which helps me build camera extractor components. 
