@@ -1,7 +1,7 @@
 # Introduction
 ColorID is developed with Swift 4 in XCode 9.4.1. The purpose of the app is to identify the color in photo given by iOS devices' camera or imported from the photo library. 
 # Running
-It is implemented with Pod. In order to run it, you need to open it by clicking on:
+It is implemented with Pod. In order to run it, you need to open:
 ```
 ColorID.xcworkspace
 ```
