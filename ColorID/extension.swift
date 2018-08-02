@@ -11,6 +11,7 @@ import UIKit
 
 extension UIImage {
     func imageByApplyingClippingCenterCircleBezierPath(radius: CGFloat, lineWidth: CGFloat) -> UIImage {
+        
         // Mask image using path
         let path = UIBezierPath(
             arcCenter: CGPoint(x: size.width*0.5, y: size.height*0.5),
@@ -19,6 +20,7 @@ extension UIImage {
             endAngle:CGFloat(Double.pi * 2),
             clockwise: true)
         path.lineWidth = lineWidth
+        
         let maskedImage = imageByApplyingMaskingCenterCircleBezierPath(path)
 
         // Crop image to frame of path

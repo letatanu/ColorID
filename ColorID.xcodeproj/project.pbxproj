@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1A879729970EED7426438D9B /* libPods-ColorID.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C706C5C84EBF3DB0919C4CAA /* libPods-ColorID.a */; };
 		5B6CF1E820E322D90016D8C3 /* CameraLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6CF1E720E322D90016D8C3 /* CameraLayer.swift */; };
+		5B880BE12112A4E2004B135B /* Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B880BE02112A4E2004B135B /* Classifier.swift */; };
 		5BB4223C20DC876300CB09D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB4223B20DC876300CB09D3 /* AppDelegate.swift */; };
 		5BB4223E20DC876300CB09D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB4223D20DC876300CB09D3 /* ViewController.swift */; };
 		5BB4224120DC876300CB09D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BB4223F20DC876300CB09D3 /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		450E0E8416642281EA80619F /* Pods-ColorID.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorID.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ColorID/Pods-ColorID.debug.xcconfig"; sourceTree = "<group>"; };
 		5B6CF1E720E322D90016D8C3 /* CameraLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraLayer.swift; sourceTree = "<group>"; };
+		5B880BE02112A4E2004B135B /* Classifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classifier.swift; sourceTree = "<group>"; };
 		5BB4223820DC876300CB09D3 /* ColorID.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorID.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BB4223B20DC876300CB09D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BB4223D20DC876300CB09D3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			children = (
 				5BB4223B20DC876300CB09D3 /* AppDelegate.swift */,
 				5BB4223D20DC876300CB09D3 /* ViewController.swift */,
+				5B880BE02112A4E2004B135B /* Classifier.swift */,
 				5BB4223F20DC876300CB09D3 /* Main.storyboard */,
 				5BB4224220DC876400CB09D3 /* Assets.xcassets */,
 				5BB4224420DC876400CB09D3 /* LaunchScreen.storyboard */,
@@ -309,6 +312,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B880BE12112A4E2004B135B /* Classifier.swift in Sources */,
 				5B6CF1E820E322D90016D8C3 /* CameraLayer.swift in Sources */,
 				5BB4223E20DC876300CB09D3 /* ViewController.swift in Sources */,
 				5BB4223C20DC876300CB09D3 /* AppDelegate.swift in Sources */,
