@@ -10,29 +10,18 @@ import Foundation
 import UIKit
 import AVFoundation
 
-class Pixel: NSObject {
-    private var R: Int = 0
-    private var G: Int = 0
-    private var B: Int = 0
-    private var alpha: Int = 0
+extension UIColor {
+    var redValue: CGFloat{ return CIColor(color: self).red }
+    var greenValue: CGFloat{ return CIColor(color: self).green }
+    var blueValue: CGFloat{ return CIColor(color: self).blue }
+    var alphaValue: CGFloat{ return CIColor(color: self).alpha }
     
-    init(_ R: Int, _ G: Int, _ B: Int, _ alpha: Int = 0) {
-        self.R = R
-        self.G = G
-        self.B = B
-        self.alpha = alpha
-    }
-    
-    public func getValue() -> [Int] {
-        return [self.R, self.G, self.B, self.alpha]
-    }
-    
-    func distance(_ p: Pixel) -> Double {
+    func distance(_ p: UIColor) -> Double {
         var d = 0.0
         
-        let rS: Double = Double((self.R - p.getValue()[0]) * (self.R - p.getValue()[0]))
-        let gS: Double = Double((self.G - p.getValue()[1]) * (self.G - p.getValue()[1]))
-        let bS: Double = Double((self.B - p.getValue()[2]) * (self.B - p.getValue()[2]))
+        let rS: Double = Double((self.redValue - p.redValue) * (self.redValue - p.redValue))
+        let gS: Double = Double((self.greenValue - p.greenValue) * (self.greenValue - p.greenValue))
+        let bS: Double = Double((self.blueValue - p.blueValue) * (self.blueValue - p.blueValue))
         d = sqrt(rS + gS + bS)
         
         return d
