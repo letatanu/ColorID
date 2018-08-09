@@ -26,7 +26,7 @@ class ViewController: UIViewController, FrameExtractorDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        camera = Camera(frame: self.CameraView.bounds, sizeOfCenterPoint: 30)
+        camera = Camera(frame: self.CameraView.bounds, sizeOfCenterPoint: 10)
         camera.delegate = self
         NotificationCenter.default.addObserver(
             self,
@@ -41,7 +41,7 @@ class ViewController: UIViewController, FrameExtractorDelegate {
     }
     
     func captured(image: UIImage) {
-        self.demoViewImage.backgroundColor = UIColor.init(patternImage: image)
+        self.demoViewImage.backgroundColor = image.averageColor
         
     }
     

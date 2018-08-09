@@ -129,7 +129,11 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
         let croppedImg = img.crop(to: (self.videoPreviewLayer?.frame.size)!)
         let radius = self.sizeOfCenterPoint
         let lineWidth = self.centerPointRec.lineWidth
-        return croppedImg.imageByApplyingClippingCenterCircleBezierPath(radius: radius, lineWidth: lineWidth)
+        let finalImg = croppedImg.imageByApplyingClippingCenterCircleBezierPath(radius: radius, lineWidth: lineWidth)
+//        DispatchQueue.main.async { [unowned self] in
+//            let pixelClusters = finalImg.clusters()
+//        }
+        return finalImg
     }
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
