@@ -12,16 +12,26 @@ import AVFoundation
 
 extension UIColor {
     static public func + (left: UIColor, right: UIColor) -> UIColor {
-        return UIColor(red: left.redValue + right.redValue, green: left.greenValue + right.greenValue , blue: left.blueValue + right.blueValue, alpha: left.alphaValue + right.alphaValue )
+        return UIColor(red: left.redValue + right.redValue, green: left.greenValue + right.greenValue , blue: left.blueValue + right.blueValue, alpha: CGFloat(1) )
     }
-    
+    public func rgb() -> (red:CGFloat, green:CGFloat, blue:CGFloat)? {
+        var fRed : CGFloat = 0
+        var fGreen : CGFloat = 0
+        var fBlue : CGFloat = 0
+        var fAlpha: CGFloat = 0
+        if self.getRed(&fRed, green: &fGreen, blue: &fBlue, alpha: &fAlpha) {
+            return (red:fRed, green:fGreen, blue:fBlue)
+        } else {
+            // Could not extract RGBA components:
+            return nil
+        }
+    }
     static public func / (left: UIColor, right: CGFloat) -> UIColor {
-        return UIColor(red: left.redValue/right, green: left.greenValue/right , blue: left.blueValue/right, alpha: left.alphaValue/right)
+        return UIColor(red: left.redValue/right, green: left.greenValue/right , blue: left.blueValue/right, alpha: 1)
     }
-    var redValue: CGFloat { return CIColor(color: self).red }
-    var greenValue: CGFloat { return CIColor(color: self).green }
-    var blueValue: CGFloat { return CIColor(color: self).blue }
-    var alphaValue: CGFloat{ return CIColor(color: self).alpha }
+    var redValue: CGFloat { return (self.rgb()?.red)! }
+    var greenValue: CGFloat { return (self.rgb()?.green)! }
+    var blueValue: CGFloat { return (self.rgb()?.blue)! }
     
     func isEqual(_ p: UIColor) -> Bool {
         if self.blueValue == p.blueValue && self.redValue == p.redValue && self.greenValue == p.greenValue {
@@ -32,7 +42,6 @@ extension UIColor {
     
     func distance(_ p: UIColor) -> Double {
         var d = 0.0
-        
         let rS: Double = Double((self.redValue - p.redValue) * (self.redValue - p.redValue))
         let gS: Double = Double((self.greenValue - p.greenValue) * (self.greenValue - p.greenValue))
         let bS: Double = Double((self.blueValue - p.blueValue) * (self.blueValue - p.blueValue))
@@ -67,6 +76,7 @@ extension Array where Element: UIColor {
 }
 
 extension UIImage {
+    
     var averageColor: UIColor? {
         guard let inputImage = CIImage(image: self) else { return nil }
         let extentVector = CIVector(x: inputImage.extent.origin.x, y: inputImage.extent.origin.y, z: inputImage.extent.size.width, w: inputImage.extent.size.height)
@@ -89,53 +99,70 @@ extension UIImage {
         context?.draw(self.cgImage!, in: CGRect(x: 0, y: 0, width: 1, height: 1))
         var color: UIColor? = nil
         
-//        if pixel[3] > 0 {
-//            let alpha:CGFloat = CGFloat(pixel[3]) / 255.0
-//            let multiplier:CGFloat = alpha / 255.0
-//
-//            color = UIColor(red: CGFloat(pixel[0]) * multiplier, green: CGFloat(pixel[1]) * multiplier, blue: CGFloat(pixel[2]) * multiplier, alpha: alpha)
-//        } else {
+        //        if pixel[3] > 0 {
+        //            let alpha:CGFloat = CGFloat(pixel[3]) / 255.0
+        //            let multiplier:CGFloat = alpha / 255.0
+        //
+        //            color = UIColor(red: CGFloat(pixel[0]) * multiplier, green: CGFloat(pixel[1]) * multiplier, blue: CGFloat(pixel[2]) * multiplier, alpha: alpha)
+        //        } else {
         
-            color = UIColor(red: CGFloat(pixel[0]) / 255.0, green: CGFloat(pixel[1]) / 255.0, blue: CGFloat(pixel[2]) / 255.0, alpha: CGFloat(pixel[3]) / 255.0)
-//        }
+        color = UIColor(red: CGFloat(pixel[0]) / 255.0, green: CGFloat(pixel[1]) / 255.0, blue: CGFloat(pixel[2]) / 255.0, alpha: CGFloat(pixel[3]) / 255.0)
+        //        }
         
         pixel.deallocate()
-    
-        return color!
-}
-    func clusters(_ numberOfCluster: Int = 3) -> Array<[UIColor]> {
-        var result = [UIColor]()
         
-        guard let img = self.cgImage else { return [result]}
+        return color!
+    }
+    func isEqual( to: UIImage) -> Bool {
+        
+        guard let data1 = UIImagePNGRepresentation(self) else { return false }
+        guard let data2 = UIImagePNGRepresentation(to) else { return false }
+        return data1==data2
+    }
+    func mostDominantColor(inNumberOfCluster numberOfCluster: Int = 3) -> UIColor? {
+        var result = [UIColor]()
+        guard let img = self.cgImage else { return nil }
         let width = img.width
         let height = img.height
+        let imageRect = CGRect(x: 0, y: 0, width: width, height: height)
+        
+        let bitmapBytesForRow = Int(width * 4)
+        let bitmapByteCount = bitmapBytesForRow * Int(height)
+        
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         
-        var rawData = [UInt8](repeating: 0, count: width * height * 4)
-        let bytesPerPixel = 4
-        let bytesPerRow = bytesPerPixel * (width-1)
-        let bytesPerComponent = 8
+        let bitmapMemory = malloc(bitmapByteCount)
+        let bitmapInformation = CGImageAlphaInfo.premultipliedFirst.rawValue
         
-        let bitmapInfo = CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Big.rawValue
-        let context = CGContext(data: &rawData, width: width, height: height, bitsPerComponent: bytesPerComponent, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: bitmapInfo)
+        let colorContext = CGContext(data: bitmapMemory, width: width, height: height, bitsPerComponent: 8, bytesPerRow: bitmapBytesForRow, space: colorSpace, bitmapInfo: bitmapInformation)
         
-        context?.draw(img, in: CGRect(x: 0, y: 0, width: CGFloat(width), height: CGFloat(height)))
-    
+        colorContext!.clear(imageRect)
+        colorContext?.draw(img, in: imageRect)
+        
+        guard let data = colorContext?.data else {return nil}
+        let dataType = data.assumingMemoryBound(to: UInt8.self)
+        let numberOfComponents = 4
+        
+        let d = min(width, height)
+        let r = Int(d/2)
+        
         for x in 0..<width {
             for y in 0..<height {
-                let byteIndex = (bytesPerRow * x) + y * bytesPerPixel
-                
-                let red   = CGFloat(rawData[byteIndex]    ) / 255.0
-                let green = CGFloat(rawData[byteIndex + 1]) / 255.0
-                let blue  = CGFloat(rawData[byteIndex + 2]) / 255.0
-                let alpha = CGFloat(rawData[byteIndex + 3]) / 255.0
-                
-                let color = UIColor(red: red, green: green, blue: blue, alpha: alpha)
-                result.append(color)
+                //just get the pixels in the circle
+                if  (x-r)*(x-r) + (y-r)*(y-r) <= r*r {
+                    let pixelIndex = ((width * y) + x) * numberOfComponents
+                    let red = CGFloat(dataType[pixelIndex]) / CGFloat(255.0)
+                    let green = CGFloat(dataType[pixelIndex + 1]) / CGFloat(255.0)
+                    let blue = CGFloat(dataType[pixelIndex + 2]) / CGFloat(255.0)
+                    let alpha = CGFloat(1)
+                    
+                    let color = UIColor(red: red, green: green, blue: blue, alpha: alpha)
+                    result.append(color)
+                }
             }
         }
         let clusters = Classifier.init(numberOfCluster, result)
-        
-        return clusters.getClusters
+//        print(clusters.getClusters)
+        return clusters.mostDominantColor
     }
 }

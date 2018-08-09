@@ -1,16 +1,20 @@
 PODS:
+  - ColorThiefSwift (0.3.0)
   - PopupWindow (0.1.0)
 
 DEPENDENCIES:
+  - ColorThiefSwift (>= 0.3.0)
   - PopupWindow
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - ColorThiefSwift
     - PopupWindow
 
 SPEC CHECKSUMS:
+  ColorThiefSwift: bca6dee535214015763310b7dd316290840c87e3
   PopupWindow: 2f3a33001295435a3ab568e42a970d51539ed6e9
 
-PODFILE CHECKSUM: 8045851a1295bf8a917da197a33a75d330ef509e
+PODFILE CHECKSUM: aa0db9a9fe8ace80fbb7ad279465163c084c933c
 
 COCOAPODS: 1.5.3

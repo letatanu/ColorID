@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import ColorThiefSwift
 class ViewController: UIViewController, FrameExtractorDelegate {
     @IBOutlet weak var demoViewImage: UIImageView!
     @IBOutlet weak var CameraView: UIView!
@@ -41,7 +41,10 @@ class ViewController: UIViewController, FrameExtractorDelegate {
     }
     
     func captured(image: UIImage) {
-        self.demoViewImage.backgroundColor = image.averageColor
+        guard let dominantColor = ColorThief.getColor(from: image) else {
+            return
+        }
+        self.ColorView.backgroundColor = dominantColor.makeUIColor()
         
     }
     

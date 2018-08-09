@@ -12,6 +12,7 @@ import AVFoundation
 
 protocol FrameExtractorDelegate: class {
     func captured(image: UIImage)
+    //    func dominantColor(color: UIColor)
 }
 
 
@@ -19,7 +20,7 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     var videoPreviewLayer: AVCaptureVideoPreviewLayer? //render the camera view finder
     weak var delegate: FrameExtractorDelegate?
     private let sessionQueue = DispatchQueue(label: "session queue")
-//    private var videoPreviewFrame = CGRect()
+    //    private var videoPreviewFrame = CGRect()
     private let position = AVCaptureDevice.Position.back
     private let quality = AVCaptureSession.Preset.high
     private var centerPointRec = CAShapeLayer()
@@ -27,6 +28,8 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     private let captureSession = AVCaptureSession()
     private let context = CIContext()
     private var sizeOfCenterPoint = CGFloat(0)
+    private var oldCapturedPhoto = UIImage()
+    private var currentCapturedPhoto = UIImage()
     // MARK: AVSession configuration
     private func checkPermission() {
         switch AVCaptureDevice.authorizationStatus(for: AVMediaType.video) {
@@ -130,17 +133,35 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
         let radius = self.sizeOfCenterPoint
         let lineWidth = self.centerPointRec.lineWidth
         let finalImg = croppedImg.imageByApplyingClippingCenterCircleBezierPath(radius: radius, lineWidth: lineWidth)
-//        DispatchQueue.main.async { [unowned self] in
-//            let pixelClusters = finalImg.clusters()
-//        }
         return finalImg
     }
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let uiImage = imageFromSampleBuffer(sampleBuffer: sampleBuffer) else { return }
+        
+        if let oldData = UIImagePNGRepresentation(self.currentCapturedPhoto)
+        {
+            if let current = UIImage.init(data: UIImagePNGRepresentation(uiImage)!) {
+                self.oldCapturedPhoto = UIImage(data: oldData)!
+                self.currentCapturedPhoto = current
+                if !self.currentCapturedPhoto.isEqual(to: self.oldCapturedPhoto) {
+                    DispatchQueue.main.async { [unowned self] in
+                        self.delegate?.captured(image: uiImage)
+                        //                self.delegate?.dominantColor(color: uiImage.mostDominantColor()!)
+                    }
+                }
+            }
+        }
+        else {
+            if let current = UIImage.init(data: UIImagePNGRepresentation(uiImage)!) {
+                self.oldCapturedPhoto = current
+                self.currentCapturedPhoto = current
                 DispatchQueue.main.async { [unowned self] in
                     self.delegate?.captured(image: uiImage)
                 }
+            }
+        }
+        
     }
 }
 

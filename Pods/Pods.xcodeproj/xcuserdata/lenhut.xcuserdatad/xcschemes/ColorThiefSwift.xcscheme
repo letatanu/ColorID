@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1DBBF91F4E62E30C9B9571B678FAED5A"
-               BlueprintName = "PopupWindow"
+               BlueprintIdentifier = "DBC10C011B73579F412ACE9D0F1EA271"
+               BlueprintName = "ColorThiefSwift"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "libPopupWindow.a">
+               BuildableName = "libColorThiefSwift.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

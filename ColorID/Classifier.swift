@@ -37,6 +37,9 @@ class Classifier: NSObject {
         }
         self.currentClusters = Vectors(repeating: Vector(), count: self.k)
         self.oldClusters = Vectors(repeating: Vector(), count: self.k)
+        if self.k >= 1 {
+            self.oldClusters[0] = self.values
+        }
         //Initializing centroids
         for i in 0 ..< self.k {
             self.centroids.append(_values[i])
@@ -47,8 +50,8 @@ class Classifier: NSObject {
     // Check if k-mean clustering could stop
     private func couldStop(_ interator: Int) -> Bool {
         if interator > self.maxInterator {
-            self.finalClusters = self.currentClusters
-            return true
+            self.finalClusters = self.oldClusters
+            return false
         }
         for i in 0 ..< self.k {
             let oldCluster = self.oldClusters[i]
@@ -56,19 +59,19 @@ class Classifier: NSObject {
             let oldL = oldCluster.count
             let curL = currentCluster.count
             if oldL != curL {
-                return false
+                return true
             }
             else {
                 for j in 0 ..< oldL {
                     let oldPixel = oldCluster[j]
                     if !currentCluster.contains(oldPixel) {
-                        return false
+                        return true
                     }
                 }
             }
         }
-        self.finalClusters = self.currentClusters
-        return true
+        self.finalClusters = self.oldClusters
+        return false
     }
     //Adding an pixel to data
     func addPixel(_ p: UIColor) {
@@ -105,7 +108,7 @@ class Classifier: NSObject {
                         distance = newDistance
                         inCluster = j
                     }
-                self.currentClusters[inCluster].append(pixel)
+                    self.currentClusters[inCluster].append(pixel)
                 }
             }
             self.updateCentroids()
@@ -120,4 +123,16 @@ class Classifier: NSObject {
         }
     }
     
+    public var mostDominantColor: UIColor? {
+        guard let r = self.finalClusters.first?.average else { return nil }
+        return r
+        
+    }
+    
+    public var secondDominantColor: UIColor! {
+        get {
+            guard let r: UIColor = self.finalClusters[1].average else { return nil }
+            return r
+        }
+    }
 }
