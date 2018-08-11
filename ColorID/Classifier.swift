@@ -96,7 +96,7 @@ class Classifier: NSObject {
             self.currentClusters = Vectors(repeating: Vector(), count: self.k)
             //run over each pixel in values
             for i in 0 ..< self.numberOfPixels {
-                var distance = 0.0
+                var distance = 9999.0
                 let pixel = self.values[i]
                 var inCluster = 0
                 //run over each centroid

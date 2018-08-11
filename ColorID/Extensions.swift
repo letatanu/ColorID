@@ -45,7 +45,7 @@ extension UIColor {
         let rS: Double = Double((self.redValue - p.redValue) * (self.redValue - p.redValue))
         let gS: Double = Double((self.greenValue - p.greenValue) * (self.greenValue - p.greenValue))
         let bS: Double = Double((self.blueValue - p.blueValue) * (self.blueValue - p.blueValue))
-        d = sqrt(rS + gS + bS)
+        d = rS + gS + bS
         
         return d
     }
@@ -76,7 +76,73 @@ extension Array where Element: UIColor {
 }
 
 extension UIImage {
+    private func makeBytesFromCompatibleImage(_ image: CGImage) -> [UInt8]? {
+        guard let dataProvider = image.dataProvider else {
+            return nil
+        }
+        guard let data = dataProvider.data else {
+            return nil
+        }
+        let length = CFDataGetLength(data)
+        var rawData = [UInt8](repeating: 0, count: length)
+        CFDataGetBytes(data, CFRange(location: 0, length: length), &rawData)
+        return rawData
+    }
     
+    private func makeBytesFromIncompatibleImage(_ image: CGImage) -> [UInt8]? {
+        let width = image.width
+        let height = image.height
+        var rawData = [UInt8](repeating: 0, count: width * height * 4)
+        guard let context = CGContext(
+            data: &rawData,
+            width: width,
+            height: height,
+            bitsPerComponent: 8,
+            bytesPerRow: 4 * width,
+            space: CGColorSpaceCreateDeviceRGB(),
+            bitmapInfo: CGImageAlphaInfo.noneSkipLast.rawValue | CGBitmapInfo.byteOrder32Little.rawValue) else {
+                return nil
+        }
+        context.draw(image, in: CGRect(x: 0, y: 0, width: width, height: height))
+        return rawData
+    }
+    private func isCompatibleImage(_ cgImage: CGImage) -> Bool {
+        guard let colorSpace = cgImage.colorSpace else {
+            return false
+        }
+        if colorSpace.model != .rgb {
+            return false
+        }
+        let bitmapInfo = cgImage.bitmapInfo
+        let alpha = bitmapInfo.rawValue & CGBitmapInfo.alphaInfoMask.rawValue
+        let alphaRequirement = (alpha == CGImageAlphaInfo.noneSkipLast.rawValue || alpha == CGImageAlphaInfo.last.rawValue)
+        let byteOrder = bitmapInfo.rawValue & CGBitmapInfo.byteOrderMask.rawValue
+        let byteOrderRequirement = (byteOrder == CGBitmapInfo.byteOrder32Little.rawValue)
+        if !(alphaRequirement && byteOrderRequirement) {
+            return false
+        }
+        if cgImage.bitsPerComponent != 8 {
+            return false
+        }
+        if cgImage.bitsPerPixel != 32 {
+            return false
+        }
+        if cgImage.bytesPerRow != cgImage.width * 4 {
+            return false
+        }
+        return true
+    }
+    
+    func makeBytes() -> [UInt8]? {
+        guard let cgImage = self.cgImage else {
+            return nil
+        }
+        if isCompatibleImage(cgImage) {
+            return makeBytesFromCompatibleImage(cgImage)
+        } else {
+            return makeBytesFromIncompatibleImage(cgImage)
+        }
+    }
     var averageColor: UIColor? {
         guard let inputImage = CIImage(image: self) else { return nil }
         let extentVector = CIVector(x: inputImage.extent.origin.x, y: inputImage.extent.origin.y, z: inputImage.extent.size.width, w: inputImage.extent.size.height)
@@ -124,24 +190,7 @@ extension UIImage {
         guard let img = self.cgImage else { return nil }
         let width = img.width
         let height = img.height
-        let imageRect = CGRect(x: 0, y: 0, width: width, height: height)
-        
-        let bitmapBytesForRow = Int(width * 4)
-        let bitmapByteCount = bitmapBytesForRow * Int(height)
-        
-        let colorSpace = CGColorSpaceCreateDeviceRGB()
-        
-        let bitmapMemory = malloc(bitmapByteCount)
-        let bitmapInformation = CGImageAlphaInfo.premultipliedFirst.rawValue
-        
-        let colorContext = CGContext(data: bitmapMemory, width: width, height: height, bitsPerComponent: 8, bytesPerRow: bitmapBytesForRow, space: colorSpace, bitmapInfo: bitmapInformation)
-        
-        colorContext!.clear(imageRect)
-        colorContext?.draw(img, in: imageRect)
-        
-        guard let data = colorContext?.data else {return nil}
-        let dataType = data.assumingMemoryBound(to: UInt8.self)
-        let numberOfComponents = 4
+        guard let byteData = self.makeBytes() else { return nil}
         
         let d = min(width, height)
         let r = Int(d/2)
@@ -150,10 +199,10 @@ extension UIImage {
             for y in 0..<height {
                 //just get the pixels in the circle
                 if  (x-r)*(x-r) + (y-r)*(y-r) <= r*r {
-                    let pixelIndex = ((width * y) + x) * numberOfComponents
-                    let red = CGFloat(dataType[pixelIndex]) / CGFloat(255.0)
-                    let green = CGFloat(dataType[pixelIndex + 1]) / CGFloat(255.0)
-                    let blue = CGFloat(dataType[pixelIndex + 2]) / CGFloat(255.0)
+                    let pixelIndex = ((width * y) + x) * 4
+                    let red = CGFloat(byteData[pixelIndex + 3]) / CGFloat(255.0)
+                    let green = CGFloat(byteData[pixelIndex + 2]) / CGFloat(255.0)
+                    let blue = CGFloat(byteData[pixelIndex + 1]) / CGFloat(255.0)
                     let alpha = CGFloat(1)
                     
                     let color = UIColor(red: red, green: green, blue: blue, alpha: alpha)
@@ -162,7 +211,7 @@ extension UIImage {
             }
         }
         let clusters = Classifier.init(numberOfCluster, result)
-//        print(clusters.getClusters)
+        print(clusters.getClusters)
         return clusters.mostDominantColor
     }
 }

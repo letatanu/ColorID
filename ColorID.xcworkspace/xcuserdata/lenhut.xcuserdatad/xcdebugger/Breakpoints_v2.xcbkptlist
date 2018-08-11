@@ -9,22 +9,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ColorID/Classifier.swift"
-            timestampString = "555481276.523882"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "clustering()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "ColorID/CameraLayer.swift"
             timestampString = "555481276.5239609"
             startingColumnNumber = "9223372036854775807"
@@ -42,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ColorID/Extensions.swift"
-            timestampString = "555481276.5240149"
+            timestampString = "555649238.005579"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "isEqual(to:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ColorID/Extensions.swift"
-            timestampString = "555481276.524073"
+            timestampString = "555649238.005909"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
             landmarkName = "mostDominantColor(inNumberOfCluster:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +58,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ColorID/Extensions.swift"
-            timestampString = "555481276.524121"
+            timestampString = "555649238.006135"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
+            landmarkName = "mostDominantColor(inNumberOfCluster:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ColorID/Extensions.swift"
+            timestampString = "555649238.006355"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "distance(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -89,13 +89,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ColorID/Classifier.swift"
-            timestampString = "555481276.524166"
+            filePath = "ColorID/Extensions.swift"
+            timestampString = "555649238.0065711"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "clustering()"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "makeBytes()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -105,13 +105,29 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ColorID/Classifier.swift"
-            timestampString = "555481276.52421"
+            filePath = "ColorID/Extensions.swift"
+            timestampString = "555649238.006781"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "clustering()"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "makeBytesFromIncompatibleImage(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ColorID/Extensions.swift"
+            timestampString = "555649238.006984"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
+            landmarkName = "mostDominantColor(inNumberOfCluster:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
