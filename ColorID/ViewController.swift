@@ -41,7 +41,7 @@ class ViewController: UIViewController, FrameExtractorDelegate {
     }
     
     func captured(image: UIImage) {
-        self.ColorView.backgroundColor = image.mostDominantColor()
+        self.ColorView.backgroundColor = image.mostDominantColor(inNumberOfCluster: 5)
         
     }
     

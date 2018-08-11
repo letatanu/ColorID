@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A879729970EED7426438D9B /* libPods-ColorID.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C706C5C84EBF3DB0919C4CAA /* libPods-ColorID.a */; };
+		5B4A415F211ED3FC00150F19 /* ColorDict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4A415E211ED3FC00150F19 /* ColorDict.swift */; };
 		5B6CF1E820E322D90016D8C3 /* CameraLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6CF1E720E322D90016D8C3 /* CameraLayer.swift */; };
 		5B880BE12112A4E2004B135B /* Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B880BE02112A4E2004B135B /* Classifier.swift */; };
 		5B880BE32112ACDB004B135B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B880BE22112ACDB004B135B /* Extensions.swift */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		450E0E8416642281EA80619F /* Pods-ColorID.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorID.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ColorID/Pods-ColorID.debug.xcconfig"; sourceTree = "<group>"; };
+		5B4A415E211ED3FC00150F19 /* ColorDict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDict.swift; sourceTree = "<group>"; };
 		5B6CF1E720E322D90016D8C3 /* CameraLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraLayer.swift; sourceTree = "<group>"; };
 		5B880BE02112A4E2004B135B /* Classifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classifier.swift; sourceTree = "<group>"; };
 		5B880BE22112ACDB004B135B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				5BB4224720DC876400CB09D3 /* Info.plist */,
 				5B6CF1E720E322D90016D8C3 /* CameraLayer.swift */,
 				5BBF637F20F5FD1C008C460C /* extension.swift */,
+				5B4A415E211ED3FC00150F19 /* ColorDict.swift */,
 			);
 			path = ColorID;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				5B880BE12112A4E2004B135B /* Classifier.swift in Sources */,
 				5B6CF1E820E322D90016D8C3 /* CameraLayer.swift in Sources */,
 				5BB4223E20DC876300CB09D3 /* ViewController.swift in Sources */,
+				5B4A415F211ED3FC00150F19 /* ColorDict.swift in Sources */,
 				5BB4223C20DC876300CB09D3 /* AppDelegate.swift in Sources */,
 				5B880BE32112ACDB004B135B /* Extensions.swift in Sources */,
 				5BBF638020F5FD1C008C460C /* extension.swift in Sources */,

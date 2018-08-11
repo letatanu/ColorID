@@ -28,8 +28,8 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     private let captureSession = AVCaptureSession()
     private let context = CIContext()
     private var sizeOfCenterPoint = CGFloat(0)
-    private var oldCapturedPhoto = UIImage()
-    private var currentCapturedPhoto = UIImage()
+    private var oldCapturedPhoto: UIImage? = nil
+    private var currentCapturedPhoto: UIImage? = nil
     // MARK: AVSession configuration
     private func checkPermission() {
         switch AVCaptureDevice.authorizationStatus(for: AVMediaType.video) {
@@ -139,12 +139,12 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let uiImage = imageFromSampleBuffer(sampleBuffer: sampleBuffer) else { return }
         
-        if let oldData = UIImagePNGRepresentation(self.currentCapturedPhoto)
+        if let oldData: UIImage = self.currentCapturedPhoto
         {
-            if let current = UIImage.init(data: UIImagePNGRepresentation(uiImage)!) {
-                self.oldCapturedPhoto = UIImage(data: oldData)!
+            if let current: UIImage = uiImage {
+                self.oldCapturedPhoto = oldData
                 self.currentCapturedPhoto = current
-                if !self.currentCapturedPhoto.isEqual(to: self.oldCapturedPhoto) {
+                if !(oldData.equal(current)) {
                     DispatchQueue.main.async { [unowned self] in
                         self.delegate?.captured(image: uiImage)
                         //                self.delegate?.dominantColor(color: uiImage.mostDominantColor()!)
@@ -153,7 +153,7 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
             }
         }
         else {
-            if let current = UIImage.init(data: UIImagePNGRepresentation(uiImage)!) {
+            if let current: UIImage = uiImage {
                 self.oldCapturedPhoto = current
                 self.currentCapturedPhoto = current
                 DispatchQueue.main.async { [unowned self] in

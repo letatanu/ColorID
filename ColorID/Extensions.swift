@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import AVFoundation
-
+import Darwin
 extension UIColor {
     static public func + (left: UIColor, right: UIColor) -> UIColor {
         return UIColor(red: left.redValue + right.redValue, green: left.greenValue + right.greenValue , blue: left.blueValue + right.blueValue, alpha: CGFloat(1) )
@@ -42,9 +42,9 @@ extension UIColor {
     
     func distance(_ p: UIColor) -> Double {
         var d = 0.0
-        let rS: Double = Double((self.redValue - p.redValue) * (self.redValue - p.redValue))
-        let gS: Double = Double((self.greenValue - p.greenValue) * (self.greenValue - p.greenValue))
-        let bS: Double = Double((self.blueValue - p.blueValue) * (self.blueValue - p.blueValue))
+        let rS: Double = Double(abs(self.redValue - p.redValue))
+        let gS: Double = Double(abs(self.greenValue - p.greenValue))
+        let bS: Double = Double(abs(self.blueValue - p.blueValue))
         d = rS + gS + bS
         
         return d
@@ -76,6 +76,7 @@ extension Array where Element: UIColor {
 }
 
 extension UIImage {
+    
     private func makeBytesFromCompatibleImage(_ image: CGImage) -> [UInt8]? {
         guard let dataProvider = image.dataProvider else {
             return nil
@@ -157,34 +158,14 @@ extension UIImage {
         return UIColor(red: CGFloat(bitmap[0]) / 255, green: CGFloat(bitmap[1]) / 255, blue: CGFloat(bitmap[2]) / 255, alpha: 1)
     }
     
-    func extractColor() -> UIColor {
-        let pixel = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: 4)
-        let colorSpace:CGColorSpace = CGColorSpaceCreateDeviceRGB()
-        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
-        let context = CGContext(data: pixel, width: 1, height: 1, bitsPerComponent: 8, bytesPerRow: 4, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)
-        context?.draw(self.cgImage!, in: CGRect(x: 0, y: 0, width: 1, height: 1))
-        var color: UIColor? = nil
-        
-        //        if pixel[3] > 0 {
-        //            let alpha:CGFloat = CGFloat(pixel[3]) / 255.0
-        //            let multiplier:CGFloat = alpha / 255.0
-        //
-        //            color = UIColor(red: CGFloat(pixel[0]) * multiplier, green: CGFloat(pixel[1]) * multiplier, blue: CGFloat(pixel[2]) * multiplier, alpha: alpha)
-        //        } else {
-        
-        color = UIColor(red: CGFloat(pixel[0]) / 255.0, green: CGFloat(pixel[1]) / 255.0, blue: CGFloat(pixel[2]) / 255.0, alpha: CGFloat(pixel[3]) / 255.0)
-        //        }
-        
-        pixel.deallocate()
-        
-        return color!
-    }
+    
     func isEqual( to: UIImage) -> Bool {
         
         guard let data1 = UIImagePNGRepresentation(self) else { return false }
         guard let data2 = UIImagePNGRepresentation(to) else { return false }
         return data1==data2
     }
+    
     func mostDominantColor(inNumberOfCluster numberOfCluster: Int = 3) -> UIColor? {
         var result = [UIColor]()
         guard let img = self.cgImage else { return nil }
@@ -213,5 +194,19 @@ extension UIImage {
         let clusters = Classifier.init(numberOfCluster, result)
         print(clusters.getClusters)
         return clusters.mostDominantColor
+    }
+    
+    func equal(_ p: UIImage) -> Bool {
+        guard let leftByteData = self.makeBytes() else { return false}
+        guard let rightByteData = p.makeBytes() else {return false}
+        let lLen = leftByteData.count
+        let rLen = rightByteData.count
+        if lLen != rLen { return false}
+        for i in 0 ..< lLen {
+            if (i+1)%4 != 0 {
+                if leftByteData[i] != rightByteData[i] {return false}
+            }
+        }
+        return true
     }
 }
