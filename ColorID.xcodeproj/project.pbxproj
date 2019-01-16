@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		1A879729970EED7426438D9B /* libPods-ColorID.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C706C5C84EBF3DB0919C4CAA /* libPods-ColorID.a */; };
+		5B363B4A2123FFDB003A64DF /* ColorInfoDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B363B492123FFDB003A64DF /* ColorInfoDisplay.swift */; };
 		5B4A415F211ED3FC00150F19 /* ColorDict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4A415E211ED3FC00150F19 /* ColorDict.swift */; };
+		5B4A4161211EDA7A00150F19 /* ColorDict in Resources */ = {isa = PBXBuildFile; fileRef = 5B4A4160211EDA7A00150F19 /* ColorDict */; };
+		5B4B0E8321EE7C7E0038E15E /* StreamerFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B0E8221EE7C7E0038E15E /* StreamerFile.swift */; };
 		5B6CF1E820E322D90016D8C3 /* CameraLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6CF1E720E322D90016D8C3 /* CameraLayer.swift */; };
-		5B880BE12112A4E2004B135B /* Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B880BE02112A4E2004B135B /* Classifier.swift */; };
 		5B880BE32112ACDB004B135B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B880BE22112ACDB004B135B /* Extensions.swift */; };
 		5BB4223C20DC876300CB09D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB4223B20DC876300CB09D3 /* AppDelegate.swift */; };
 		5BB4223E20DC876300CB09D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB4223D20DC876300CB09D3 /* ViewController.swift */; };
@@ -20,6 +22,7 @@
 		5BB4225120DC876400CB09D3 /* ColorIDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB4225020DC876400CB09D3 /* ColorIDTests.swift */; };
 		5BB4225C20DC876400CB09D3 /* ColorIDUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB4225B20DC876400CB09D3 /* ColorIDUITests.swift */; };
 		5BBF638020F5FD1C008C460C /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBF637F20F5FD1C008C460C /* extension.swift */; };
+		5BE62C2A21D31FC8000743AE /* Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE62C2921D31FC8000743AE /* Classifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,9 +44,11 @@
 
 /* Begin PBXFileReference section */
 		450E0E8416642281EA80619F /* Pods-ColorID.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorID.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ColorID/Pods-ColorID.debug.xcconfig"; sourceTree = "<group>"; };
+		5B363B492123FFDB003A64DF /* ColorInfoDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorInfoDisplay.swift; sourceTree = "<group>"; };
 		5B4A415E211ED3FC00150F19 /* ColorDict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDict.swift; sourceTree = "<group>"; };
+		5B4A4160211EDA7A00150F19 /* ColorDict */ = {isa = PBXFileReference; lastKnownFileType = text; path = ColorDict; sourceTree = "<group>"; };
+		5B4B0E8221EE7C7E0038E15E /* StreamerFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamerFile.swift; sourceTree = "<group>"; };
 		5B6CF1E720E322D90016D8C3 /* CameraLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraLayer.swift; sourceTree = "<group>"; };
-		5B880BE02112A4E2004B135B /* Classifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classifier.swift; sourceTree = "<group>"; };
 		5B880BE22112ACDB004B135B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5BB4223820DC876300CB09D3 /* ColorID.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorID.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BB4223B20DC876300CB09D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +65,7 @@
 		5BB4225D20DC876400CB09D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BB4226B20DCD01100CB09D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		5BBF637F20F5FD1C008C460C /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
+		5BE62C2921D31FC8000743AE /* Classifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Classifier.swift; sourceTree = "<group>"; };
 		965525DF21ABEFB34FDC4A48 /* Pods-ColorID.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorID.release.xcconfig"; path = "Pods/Target Support Files/Pods-ColorID/Pods-ColorID.release.xcconfig"; sourceTree = "<group>"; };
 		C706C5C84EBF3DB0919C4CAA /* libPods-ColorID.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ColorID.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -115,9 +121,9 @@
 		5BB4223A20DC876300CB09D3 /* ColorID */ = {
 			isa = PBXGroup;
 			children = (
+				5BE62C2921D31FC8000743AE /* Classifier.swift */,
 				5BB4223B20DC876300CB09D3 /* AppDelegate.swift */,
 				5BB4223D20DC876300CB09D3 /* ViewController.swift */,
-				5B880BE02112A4E2004B135B /* Classifier.swift */,
 				5B880BE22112ACDB004B135B /* Extensions.swift */,
 				5BB4223F20DC876300CB09D3 /* Main.storyboard */,
 				5BB4224220DC876400CB09D3 /* Assets.xcassets */,
@@ -126,6 +132,9 @@
 				5B6CF1E720E322D90016D8C3 /* CameraLayer.swift */,
 				5BBF637F20F5FD1C008C460C /* extension.swift */,
 				5B4A415E211ED3FC00150F19 /* ColorDict.swift */,
+				5B4A4160211EDA7A00150F19 /* ColorDict */,
+				5B363B492123FFDB003A64DF /* ColorInfoDisplay.swift */,
+				5B4B0E8221EE7C7E0038E15E /* StreamerFile.swift */,
 			);
 			path = ColorID;
 			sourceTree = "<group>";
@@ -270,6 +279,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B4A4161211EDA7A00150F19 /* ColorDict in Resources */,
 				5BB4224620DC876400CB09D3 /* LaunchScreen.storyboard in Resources */,
 				5BB4224320DC876400CB09D3 /* Assets.xcassets in Resources */,
 				5BB4224120DC876300CB09D3 /* Main.storyboard in Resources */,
@@ -318,8 +328,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B880BE12112A4E2004B135B /* Classifier.swift in Sources */,
+				5BE62C2A21D31FC8000743AE /* Classifier.swift in Sources */,
+				5B4B0E8321EE7C7E0038E15E /* StreamerFile.swift in Sources */,
 				5B6CF1E820E322D90016D8C3 /* CameraLayer.swift in Sources */,
+				5B363B4A2123FFDB003A64DF /* ColorInfoDisplay.swift in Sources */,
 				5BB4223E20DC876300CB09D3 /* ViewController.swift in Sources */,
 				5B4A415F211ED3FC00150F19 /* ColorDict.swift in Sources */,
 				5BB4223C20DC876300CB09D3 /* AppDelegate.swift in Sources */,
@@ -502,6 +514,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V8TND6N9Y7;
 				INFOPLIST_FILE = ColorID/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -521,6 +534,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V8TND6N9Y7;
 				INFOPLIST_FILE = ColorID/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

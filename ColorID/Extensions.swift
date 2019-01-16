@@ -11,6 +11,49 @@ import UIKit
 import AVFoundation
 import Darwin
 extension UIColor {
+    convenience init(hex: String) {
+        let scanner = Scanner(string: hex)
+        scanner.scanLocation = 0
+        
+        var rgbValue: UInt64 = 0
+        
+        scanner.scanHexInt64(&rgbValue)
+        
+        let r = (rgbValue & 0xff0000) >> 16
+        let g = (rgbValue & 0xff00) >> 8
+        let b = rgbValue & 0xff
+        
+        self.init(
+            red: CGFloat(r) / 0xff,
+            green: CGFloat(g) / 0xff,
+            blue: CGFloat(b) / 0xff, alpha: 1
+        )
+    }
+    
+    func rgbToHSL(r:CGFloat,g:CGFloat,b:CGFloat) -> (h:CGFloat, s:CGFloat, b:CGFloat) {
+        let minV:CGFloat = CGFloat(min(r, g, b))
+        let maxV:CGFloat = CGFloat(max(r, g, b))
+        let delta:CGFloat = maxV - minV
+        var hue:CGFloat = 0
+        if delta != 0 {
+            if r == maxV {
+                hue = (g - b) / delta
+            }
+            else if g == maxV {
+                hue = 2 + (b - r) / delta
+            }
+            else {
+                hue = 4 + (r - g) / delta
+            }
+            hue *= 60
+            if hue < 0 {
+                hue += 360
+            }
+        }
+        let saturation = maxV == 0 ? 0 : (delta / maxV)
+        let brightness = maxV
+        return (h:hue/360, s:saturation, b:brightness)
+    }
     static public func + (left: UIColor, right: UIColor) -> UIColor {
         return UIColor(red: left.redValue + right.redValue, green: left.greenValue + right.greenValue , blue: left.blueValue + right.blueValue, alpha: CGFloat(1) )
     }
@@ -52,8 +95,12 @@ extension UIColor {
     
     // return the name of pixel color
     func name() -> String {
-        let name = ""
+        let name = colorDict.shared().getClosestColorName(for: self)
         return name
+    }
+    func family() -> String {
+        let family = colorDict.shared().getClosestColorFamily()
+        return family
     }
 }
 
@@ -166,7 +213,7 @@ extension UIImage {
         return data1==data2
     }
     
-    func mostDominantColor(inNumberOfCluster numberOfCluster: Int = 3) -> UIColor? {
+    func mostDominantColor(inNumberOfCluster numberOfCluster: Int = 9) -> UIColor? {
         var result = [UIColor]()
         guard let img = self.cgImage else { return nil }
         let width = img.width
@@ -192,7 +239,7 @@ extension UIImage {
             }
         }
         let clusters = Classifier.init(numberOfCluster, result)
-        print(clusters.getClusters)
+//        print(clusters.getClusters)
         return clusters.mostDominantColor
     }
     

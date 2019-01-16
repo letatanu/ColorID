@@ -21,13 +21,13 @@ class Classifier: NSObject {
     private var values: Vector = Vector()
     private var finalClusters: Vectors = Vectors()
     private var centroids: Vector = Vector()
-    private var maxInterator: Int = 400
+    private var maxInterator: Int = 800
     private var oldClusters: Vectors = Vectors()
     private var currentClusters: Vectors = Vectors()
     private var numberOfPixels: Int = 0
     
     //Initialization
-    init(_ K: Int = 1, _ _values: [UIColor] = [], _ maxInterator: Int = 400) {
+    init(_ K: Int = 1, _ _values: [UIColor] = [], _ maxInterator: Int = 700) {
         super.init()
         self.values = []
         self.k = min(K, _values.count)
@@ -124,14 +124,14 @@ class Classifier: NSObject {
     }
     
     public var mostDominantColor: UIColor? {
-        guard let r = self.finalClusters.first?.average else { return nil }
+        guard let r = self.centroids.first else { return nil }
         return r
         
     }
     
     public var secondDominantColor: UIColor! {
         get {
-            guard let r: UIColor = self.finalClusters[1].average else { return nil }
+            guard let r: UIColor = self.centroids[1] else { return nil }
             return r
         }
     }

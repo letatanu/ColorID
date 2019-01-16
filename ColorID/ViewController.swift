@@ -12,7 +12,7 @@ class ViewController: UIViewController, FrameExtractorDelegate {
     @IBOutlet weak var demoViewImage: UIImageView!
     @IBOutlet weak var CameraView: UIView!
     @IBOutlet weak var ColorView: UIView!
-    @IBOutlet weak var ColorNameView: UIView!
+    @IBOutlet weak var ColorNameView: ColorInfoDisplay!
     @IBOutlet weak var LocalizationView: UIView!
     var camera: Camera!
     var angle: Double!
@@ -41,7 +41,9 @@ class ViewController: UIViewController, FrameExtractorDelegate {
     }
     
     func captured(image: UIImage) {
-        self.ColorView.backgroundColor = image.mostDominantColor(inNumberOfCluster: 5)
+        let color = image.mostDominantColor(inNumberOfCluster: 5)
+        self.ColorView.backgroundColor = color
+        self.ColorNameView.showColorInfo(color!)
         
     }
     

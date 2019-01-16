@@ -35,7 +35,7 @@
                                     <constraint firstAttribute="width" constant="89" id="E9T-HD-0wU"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IXb-tw-EsW">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IXb-tw-EsW" customClass="ColorInfoDisplay" customModule="ColorID" customModuleProvider="target">
                                 <rect key="frame" x="89" y="578" width="226" height="89"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Family" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLF-Qn-qpV">
@@ -64,6 +64,10 @@
                                     <constraint firstItem="LLF-Qn-qpV" firstAttribute="leading" secondItem="IXb-tw-EsW" secondAttribute="leading" constant="8" id="dvJ-w2-Isv"/>
                                     <constraint firstItem="Fws-Gp-FtF" firstAttribute="top" secondItem="LLF-Qn-qpV" secondAttribute="bottom" constant="8" id="f3s-LU-MUq"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="family" destination="LLF-Qn-qpV" id="Jje-gp-R6F"/>
+                                    <outlet property="fullName" destination="Fws-Gp-FtF" id="ggg-U5-Dn6"/>
+                                </connections>
                             </view>
                             <view clearsContextBeforeDrawing="NO" contentMode="bottomRight" semanticContentAttribute="forceLeftToRight" translatesAutoresizingMaskIntoConstraints="NO" id="AX2-H0-rpL">
                                 <rect key="frame" x="315" y="578" width="60" height="89"/>
@@ -109,7 +113,7 @@
                     </view>
                     <connections>
                         <outlet property="CameraView" destination="gbZ-cv-g06" id="bqy-u9-DEg"/>
-                        <outlet property="ColorNameView" destination="IXb-tw-EsW" id="Qv4-YL-tO3"/>
+                        <outlet property="ColorNameView" destination="IXb-tw-EsW" id="uOG-7M-KYs"/>
                         <outlet property="ColorView" destination="8wx-8S-fCs" id="Jlq-XO-TRH"/>
                         <outlet property="LocalizationView" destination="AX2-H0-rpL" id="pTy-Wp-aZX"/>
                         <outlet property="demoViewImage" destination="alL-OQ-owO" id="KLe-Je-gBA"/>

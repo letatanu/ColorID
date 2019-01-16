@@ -65,6 +65,16 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
         captureSession.sessionPreset = quality
         videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         guard let captureDevice = selectCaptureDevice(positionCamera: "back") else { return }
+        do {
+            try captureDevice.lockForConfiguration()
+        } catch _ {
+            print("failed locking device")
+        }
+        captureDevice.activeVideoMaxFrameDuration = CMTimeMake(1, 30)
+        captureDevice.activeVideoMinFrameDuration = CMTimeMake(1, 30)
+        
+        captureDevice.unlockForConfiguration()
+
         guard let captureDeviceInput = try? AVCaptureDeviceInput(device: captureDevice) else { return }
         guard captureSession.canAddInput(captureDeviceInput) else { return }
         captureSession.addInput(captureDeviceInput)
@@ -138,28 +148,9 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let uiImage = imageFromSampleBuffer(sampleBuffer: sampleBuffer) else { return }
-        
-        if let oldData: UIImage = self.currentCapturedPhoto
-        {
-            if let current: UIImage = uiImage {
-                self.oldCapturedPhoto = oldData
-                self.currentCapturedPhoto = current
-                if !(oldData.equal(current)) {
-                    DispatchQueue.main.async { [unowned self] in
-                        self.delegate?.captured(image: uiImage)
-                        //                self.delegate?.dominantColor(color: uiImage.mostDominantColor()!)
-                    }
-                }
-            }
-        }
-        else {
-            if let current: UIImage = uiImage {
-                self.oldCapturedPhoto = current
-                self.currentCapturedPhoto = current
-                DispatchQueue.main.async { [unowned self] in
-                    self.delegate?.captured(image: uiImage)
-                }
-            }
+        DispatchQueue.main.async { [unowned self] in
+            self.delegate?.captured(image: uiImage)
+            //                self.delegate?.dominantColor(color: uiImage.mostDominantColor()!)
         }
         
     }
