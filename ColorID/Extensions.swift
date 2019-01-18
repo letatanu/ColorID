@@ -11,70 +11,64 @@ import UIKit
 import AVFoundation
 import Darwin
 extension UIColor {
-    convenience init(hex: String) {
-        let scanner = Scanner(string: hex)
-        scanner.scanLocation = 0
-        
-        var rgbValue: UInt64 = 0
-        
-        scanner.scanHexInt64(&rgbValue)
-        
-        let r = (rgbValue & 0xff0000) >> 16
-        let g = (rgbValue & 0xff00) >> 8
-        let b = rgbValue & 0xff
-        
-        self.init(
-            red: CGFloat(r) / 0xff,
-            green: CGFloat(g) / 0xff,
-            blue: CGFloat(b) / 0xff, alpha: 1
-        )
+    convenience init(hexString:String) {
+        let scanner = Scanner(string: hexString as String)
+        if (hexString.hasPrefix("#")) {
+            scanner.scanLocation = 1
+        }
+        var color:UInt32 = 0
+        scanner.scanHexInt32(&color)
+        let mask = 0x000000FF
+        let r = Int(color >> 16) & mask
+        let g = Int(color >> 8) & mask
+        let b = Int(color) & mask
+        let red   = CGFloat(r) / 255.0
+        let green = CGFloat(g) / 255.0
+        let blue  = CGFloat(b) / 255.0
+        self.init(red:red, green:green, blue:blue, alpha:1)
     }
     
-    func rgbToHSL(r:CGFloat,g:CGFloat,b:CGFloat) -> (h:CGFloat, s:CGFloat, b:CGFloat) {
-        let minV:CGFloat = CGFloat(min(r, g, b))
-        let maxV:CGFloat = CGFloat(max(r, g, b))
+    var hsl:(hue:CGFloat, sarturation:CGFloat, brightness:CGFloat) {
+        let minV:CGFloat = CGFloat(min(self.redValue, self.greenValue, self.blueValue))
+        let maxV:CGFloat = CGFloat(max(self.redValue, self.greenValue, self.blueValue))
         let delta:CGFloat = maxV - minV
         var hue:CGFloat = 0
         if delta != 0 {
-            if r == maxV {
-                hue = (g - b) / delta
+            if self.redValue == maxV {
+                hue = (self.greenValue - self.blueValue) / delta
             }
-            else if g == maxV {
-                hue = 2 + (b - r) / delta
+            else if self.greenValue == maxV {
+                hue = 2 + (self.blueValue - self.redValue) / delta
             }
             else {
-                hue = 4 + (r - g) / delta
+                hue = 4 + (self.redValue - self.greenValue) / delta
             }
             hue *= 60
             if hue < 0 {
                 hue += 360
             }
         }
-        let saturation = maxV == 0 ? 0 : (delta / maxV)
-        let brightness = maxV
-        return (h:hue/360, s:saturation, b:brightness)
+        let s = maxV == 0 ? 0 : (delta / maxV)
+        let b = maxV
+        return (hue/360, s, b)
     }
     static public func + (left: UIColor, right: UIColor) -> UIColor {
         return UIColor(red: left.redValue + right.redValue, green: left.greenValue + right.greenValue , blue: left.blueValue + right.blueValue, alpha: CGFloat(1) )
     }
-    public func rgb() -> (red:CGFloat, green:CGFloat, blue:CGFloat)? {
-        var fRed : CGFloat = 0
-        var fGreen : CGFloat = 0
-        var fBlue : CGFloat = 0
-        var fAlpha: CGFloat = 0
-        if self.getRed(&fRed, green: &fGreen, blue: &fBlue, alpha: &fAlpha) {
-            return (red:fRed, green:fGreen, blue:fBlue)
-        } else {
-            // Could not extract RGBA components:
-            return nil
-        }
+    var rgba: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+        getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        return (red, green, blue, alpha)
     }
     static public func / (left: UIColor, right: CGFloat) -> UIColor {
         return UIColor(red: left.redValue/right, green: left.greenValue/right , blue: left.blueValue/right, alpha: 1)
     }
-    var redValue: CGFloat { return (self.rgb()?.red)! }
-    var greenValue: CGFloat { return (self.rgb()?.green)! }
-    var blueValue: CGFloat { return (self.rgb()?.blue)! }
+    var redValue: CGFloat { return self.rgba.red }
+    var greenValue: CGFloat { return (self.rgba.green) }
+    var blueValue: CGFloat { return (self.rgba.blue) }
     
     func isEqual(_ p: UIColor) -> Bool {
         if self.blueValue == p.blueValue && self.redValue == p.redValue && self.greenValue == p.greenValue {
@@ -84,23 +78,48 @@ extension UIColor {
     }
     
     func distance(_ p: UIColor) -> Double {
-        var d = 0.0
-        let rS: Double = Double(abs(self.redValue - p.redValue))
-        let gS: Double = Double(abs(self.greenValue - p.greenValue))
-        let bS: Double = Double(abs(self.blueValue - p.blueValue))
-        d = rS + gS + bS
-        
-        return d
+        let df1 = pow((self.redValue - p.redValue),2) + pow((self.greenValue - p.greenValue),2) + pow((self.blueValue - p.blueValue),2)
+        let df2 = pow((self.hsl.hue - p.hsl.hue),2) + pow((self.hsl.sarturation - p.hsl.sarturation),2) + pow((self.hsl.brightness - p.hsl.brightness),2)
+        return Double(df1 + df2*df2)
     }
     
     // return the name of pixel color
     func name() -> String {
-        let name = colorDict.shared().getClosestColorName(for: self)
-        return name
+            var df = -1.0
+            var cl = ""
+            for color in colorDict.shared().data.keys {
+                let cName = colorDict.shared().data[color]
+                let newColor = UIColor.init(hexString: color)
+                let newDistance = self.distance(newColor)
+                if(df < 0 || df > newDistance)
+                {
+                    df = newDistance
+                    cl = cName ?? ""
+                }
+                
+            }
+            return cl
     }
     func family() -> String {
-        let family = colorDict.shared().getClosestColorFamily()
-        return family
+        
+            var distance = 99999.0
+            var name = ""
+            
+        for color in colorDict.shared().ColorFamilies {
+                let value = color[0]
+                let cName = color[1]
+                let newColor = UIColor.init(hexString: value)
+                let newDistance = self.distance(newColor)
+                if newDistance == 0.0 {
+                    return cName
+                }
+                else if distance > newDistance {
+                    distance = newDistance
+                    name = cName
+                }
+            }
+            return name
+        
     }
 }
 
