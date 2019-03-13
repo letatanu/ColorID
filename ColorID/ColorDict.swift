@@ -17,16 +17,19 @@ class colorDict {
     }()
     private var color = UIColor()
     public var ColorFamilies = [
-        ["e6194b", "Red"],
-        ["fabebe", "Pink"],
-        ["f58231", "Orange"],
-        ["ffe119", "Yellow"],
-        ["911eb4", "Purple"],
-        ["3cb44b", "Green"],
+        ["FF0000", "Red"],
+        ["FFC0CB", "Pink"],
+        ["FFA500", "Orange"],
+        ["FFFF00", "Yellow"],
+        ["FF00FF", "Magenta"],
+        ["008000", "Green"],
         ["0000FF", "Blue"],
-        ["aa6e28", "Brown"],
+        ["808080", "Grey"],
         ["FFFFFF", "White"],
-        ["000000", "Black"]
+        ["000000", "Black"],
+        ["00FFFF", "Cyan"],
+        ["800000", "Maroon"],
+        ["800080", "Purple"]
     ]
     private init(dataName: String = "ColorDict"){
         if let filepath = Bundle.main.path(forResource: dataName, ofType: "txt") {

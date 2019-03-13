@@ -8,12 +8,18 @@
 
 import UIKit
 
-class ViewController: UIViewController, FrameExtractorDelegate {
-    @IBOutlet weak var demoViewImage: UIImageView!
+class ViewController: UIViewController, FrameExtractorDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 2
+    }
+    
     @IBOutlet weak var CameraView: UIView!
     @IBOutlet weak var ColorView: UIView!
     @IBOutlet weak var ColorNameView: ColorInfoDisplay!
-    @IBOutlet weak var LocalizationView: UIView!
     var camera: Camera!
     var angle: Double!
     override var shouldAutorotate: Bool {
@@ -74,6 +80,7 @@ class ViewController: UIViewController, FrameExtractorDelegate {
     
     
     
+    @IBOutlet weak var selectedLanguage: UIPickerView!
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

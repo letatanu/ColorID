@@ -101,7 +101,42 @@ extension UIColor {
             return cl
     }
     func family() -> String {
-        
+//        let h = Int(self.hsl.hue*360)
+//        var name = ""
+//        if (h >= 11 && h <= 20) {
+//            name = "red-orange"
+//        } else if (h > 20 && h <= 40) {
+//            name = "orange and brown"
+//        } else if (h > 40 && h <= 50) {
+//            name = "orange-yellow"
+//        } else if (h > 50 && h <= 60) {
+//            name = "yellow"
+//        } else if (h > 60 && h <= 80) {
+//            name = "yellow-green"
+//        } else if (h > 80 && h <= 140 ) {
+//            name = "green"
+//        } else if (h > 140 && h <= 169) {
+//            name = "green-cyan"
+//        } else if (h > 169 && h <= 200) {
+//            name = "cyan"
+//        } else if ( h > 200 && h <= 220) {
+//            name = "cyan-blue "
+//        } else if (h > 220 && h <= 240) {
+//            name = "blue"
+//        } else if (h > 240 && h <= 280) {
+//            name = "cyan-blue"
+//        } else if (h > 280 && h <= 320) {
+//            name = "magenta"
+//        } else if (h > 320 && h <= 330) {
+//            name = "magenta-mink"
+//        } else if (h > 330 && h <= 345) {
+//            name = "pink"
+//        } else if (h > 345 && h <= 355) {
+//            name = "pink-red"
+//        } else {
+//            name = "red"
+//        }
+//        return name
             var distance = 99999.0
             var name = ""
             

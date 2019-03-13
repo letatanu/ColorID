@@ -1,0 +1,62 @@
+FFBF00:Hổ phách
+9966CC:Ametit
+7FFFD4:Xanh berin
+007FFF:Xanh da trời
+F5F5DC:Be
+3D2B1F:Nâu sẫm
+000000:Đen
+0000FF:Xanh lam
+964B00:Nâu
+F0DC82:Da bò
+CC5500:Cam cháy
+C41E3A:Hồng y
+960018:Đỏ yên chi
+ACE1AF:Men ngọc
+DE3163:Anh đào
+007BA7:Xanh hoàng hôn (chàm)
+7FFF00:Xanh nõn chuối
+0047AB:Xanh cô ban
+B87333:Đồng
+FF7F50:San hô
+FFFDD0:Kem
+DC143C:Đỏ thắm
+00FFFF:Xanh lơ (cánh chả)
+50C878:Lục bảo
+FFD700:Vàng kim loại
+808080:Xám
+00FF00:Xanh lá cây
+DF73FF:Vòi voi
+4B0082:Chàm
+00A86B:Ngọc thạch
+C3B091:Kaki
+E6E6FA:Oải hương
+CCFF00:Vàng chanh
+FF00FF:Hồng sẫm
+800000:Hạt dẻ
+993366:Cẩm quỳ
+c8a2c8:Hoa cà
+000080:Lam sẫm
+CC7722:Thổ hoàng
+808000:Ô liu
+FF7F00:Da cam
+DA70D6:Lan tím
+FFE5B4:Lòng đào
+CCCCFF:Dừa cạn
+FFC0CB:Hồng
+660066:Mận
+003399:Xanh thủy tinh
+CC8899:Hồng đất
+660099:Tía
+FF0000:Đỏ
+FF8C69:Cá hồi
+FF2400:Đỏ tươi
+704214:Nâu đen
+C0C0C0:Bạc
+D2B48C:Nâu tanin
+008080:Mòng két
+30D5C8:Xanh Thổ
+FF4D00:Đỏ son
+BF00BF:Tím
+40826D:Xanh crôm
+FFFFFF:Trắng
+FFFF00:Vàng
