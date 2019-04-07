@@ -13,7 +13,11 @@
 		5B4B0E8321EE7C7E0038E15E /* StreamerFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B0E8221EE7C7E0038E15E /* StreamerFile.swift */; };
 		5B4B0E8521F15E820038E15E /* ColorDict.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5B4B0E8421F15E820038E15E /* ColorDict.txt */; };
 		5B6CF1E820E322D90016D8C3 /* CameraLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6CF1E720E322D90016D8C3 /* CameraLayer.swift */; };
-		5B880BE32112ACDB004B135B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B880BE22112ACDB004B135B /* Extensions.swift */; };
+		5B806A192254F6F50030D1F7 /* ViewController+UIPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B806A182254F6F50030D1F7 /* ViewController+UIPicker.swift */; };
+		5B806A1B2254F7BA0030D1F7 /* Extension_Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B806A1A2254F7BA0030D1F7 /* Extension_Array.swift */; };
+		5B806A1D2254F8000030D1F7 /* Extension_UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B806A1C2254F8000030D1F7 /* Extension_UIImage.swift */; };
+		5B806A232255122A0030D1F7 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B806A222255122A0030D1F7 /* CameraView.swift */; };
+		5B880BE32112ACDB004B135B /* Extension_UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B880BE22112ACDB004B135B /* Extension_UIColor.swift */; };
 		5BB403BC21F96CB70038D9FE /* ColorDict_viet.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5BB403BB21F96CB70038D9FE /* ColorDict_viet.txt */; };
 		5BB4223C20DC876300CB09D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB4223B20DC876300CB09D3 /* AppDelegate.swift */; };
 		5BB4223E20DC876300CB09D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB4223D20DC876300CB09D3 /* ViewController.swift */; };
@@ -22,7 +26,7 @@
 		5BB4224620DC876400CB09D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BB4224420DC876400CB09D3 /* LaunchScreen.storyboard */; };
 		5BB4225120DC876400CB09D3 /* ColorIDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB4225020DC876400CB09D3 /* ColorIDTests.swift */; };
 		5BB4225C20DC876400CB09D3 /* ColorIDUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB4225B20DC876400CB09D3 /* ColorIDUITests.swift */; };
-		5BBF638020F5FD1C008C460C /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBF637F20F5FD1C008C460C /* extension.swift */; };
+		5BBF638020F5FD1C008C460C /* Extension_CGPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBF637F20F5FD1C008C460C /* Extension_CGPath.swift */; };
 		5BE62C2A21D31FC8000743AE /* Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE62C2921D31FC8000743AE /* Classifier.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,7 +54,11 @@
 		5B4B0E8221EE7C7E0038E15E /* StreamerFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamerFile.swift; sourceTree = "<group>"; };
 		5B4B0E8421F15E820038E15E /* ColorDict.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ColorDict.txt; sourceTree = "<group>"; };
 		5B6CF1E720E322D90016D8C3 /* CameraLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraLayer.swift; sourceTree = "<group>"; };
-		5B880BE22112ACDB004B135B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		5B806A182254F6F50030D1F7 /* ViewController+UIPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+UIPicker.swift"; sourceTree = "<group>"; };
+		5B806A1A2254F7BA0030D1F7 /* Extension_Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_Array.swift; sourceTree = "<group>"; };
+		5B806A1C2254F8000030D1F7 /* Extension_UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_UIImage.swift; sourceTree = "<group>"; };
+		5B806A222255122A0030D1F7 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		5B880BE22112ACDB004B135B /* Extension_UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_UIColor.swift; sourceTree = "<group>"; };
 		5BB403BB21F96CB70038D9FE /* ColorDict_viet.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ColorDict_viet.txt; sourceTree = "<group>"; };
 		5BB4223820DC876300CB09D3 /* ColorID.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorID.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BB4223B20DC876300CB09D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,7 +74,7 @@
 		5BB4225B20DC876400CB09D3 /* ColorIDUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorIDUITests.swift; sourceTree = "<group>"; };
 		5BB4225D20DC876400CB09D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BB4226B20DCD01100CB09D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		5BBF637F20F5FD1C008C460C /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
+		5BBF637F20F5FD1C008C460C /* Extension_CGPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_CGPath.swift; sourceTree = "<group>"; };
 		5BE62C2921D31FC8000743AE /* Classifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Classifier.swift; sourceTree = "<group>"; };
 		965525DF21ABEFB34FDC4A48 /* Pods-ColorID.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorID.release.xcconfig"; path = "Pods/Target Support Files/Pods-ColorID/Pods-ColorID.release.xcconfig"; sourceTree = "<group>"; };
 		C706C5C84EBF3DB0919C4CAA /* libPods-ColorID.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ColorID.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,6 +106,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B806A1E2254F8910030D1F7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5B880BE22112ACDB004B135B /* Extension_UIColor.swift */,
+				5B806A1A2254F7BA0030D1F7 /* Extension_Array.swift */,
+				5B806A1C2254F8000030D1F7 /* Extension_UIImage.swift */,
+				5BBF637F20F5FD1C008C460C /* Extension_CGPath.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5B806A1F2254F8B50030D1F7 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				5B806A182254F6F50030D1F7 /* ViewController+UIPicker.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		5B806A202254F8D60030D1F7 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				5BE62C2921D31FC8000743AE /* Classifier.swift */,
+				5B6CF1E720E322D90016D8C3 /* CameraLayer.swift */,
+				5B4A415E211ED3FC00150F19 /* ColorDict.swift */,
+				5B363B492123FFDB003A64DF /* ColorInfoDisplay.swift */,
+				5B4B0E8221EE7C7E0038E15E /* StreamerFile.swift */,
+				5B806A222255122A0030D1F7 /* CameraView.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		5B806A212254F8E70030D1F7 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				5B4B0E8421F15E820038E15E /* ColorDict.txt */,
+				5BB403BB21F96CB70038D9FE /* ColorDict_viet.txt */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		5BB4222F20DC876200CB09D3 = {
 			isa = PBXGroup;
 			children = (
@@ -123,21 +172,16 @@
 		5BB4223A20DC876300CB09D3 /* ColorID */ = {
 			isa = PBXGroup;
 			children = (
-				5B4B0E8421F15E820038E15E /* ColorDict.txt */,
-				5BE62C2921D31FC8000743AE /* Classifier.swift */,
 				5BB4223B20DC876300CB09D3 /* AppDelegate.swift */,
 				5BB4223D20DC876300CB09D3 /* ViewController.swift */,
-				5B880BE22112ACDB004B135B /* Extensions.swift */,
+				5B806A212254F8E70030D1F7 /* Data */,
+				5B806A202254F8D60030D1F7 /* Classes */,
+				5B806A1F2254F8B50030D1F7 /* Delegates */,
+				5B806A1E2254F8910030D1F7 /* Extensions */,
 				5BB4223F20DC876300CB09D3 /* Main.storyboard */,
 				5BB4224220DC876400CB09D3 /* Assets.xcassets */,
 				5BB4224420DC876400CB09D3 /* LaunchScreen.storyboard */,
 				5BB4224720DC876400CB09D3 /* Info.plist */,
-				5B6CF1E720E322D90016D8C3 /* CameraLayer.swift */,
-				5BBF637F20F5FD1C008C460C /* extension.swift */,
-				5B4A415E211ED3FC00150F19 /* ColorDict.swift */,
-				5B363B492123FFDB003A64DF /* ColorInfoDisplay.swift */,
-				5B4B0E8221EE7C7E0038E15E /* StreamerFile.swift */,
-				5BB403BB21F96CB70038D9FE /* ColorDict_viet.txt */,
 			);
 			path = ColorID;
 			sourceTree = "<group>";
@@ -334,13 +378,17 @@
 			files = (
 				5BE62C2A21D31FC8000743AE /* Classifier.swift in Sources */,
 				5B4B0E8321EE7C7E0038E15E /* StreamerFile.swift in Sources */,
+				5B806A232255122A0030D1F7 /* CameraView.swift in Sources */,
+				5B806A192254F6F50030D1F7 /* ViewController+UIPicker.swift in Sources */,
 				5B6CF1E820E322D90016D8C3 /* CameraLayer.swift in Sources */,
+				5B806A1B2254F7BA0030D1F7 /* Extension_Array.swift in Sources */,
 				5B363B4A2123FFDB003A64DF /* ColorInfoDisplay.swift in Sources */,
 				5BB4223E20DC876300CB09D3 /* ViewController.swift in Sources */,
 				5B4A415F211ED3FC00150F19 /* ColorDict.swift in Sources */,
 				5BB4223C20DC876300CB09D3 /* AppDelegate.swift in Sources */,
-				5B880BE32112ACDB004B135B /* Extensions.swift in Sources */,
-				5BBF638020F5FD1C008C460C /* extension.swift in Sources */,
+				5B880BE32112ACDB004B135B /* Extension_UIColor.swift in Sources */,
+				5BBF638020F5FD1C008C460C /* Extension_CGPath.swift in Sources */,
+				5B806A1D2254F8000030D1F7 /* Extension_UIImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

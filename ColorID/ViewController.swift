@@ -8,20 +8,16 @@
 
 import UIKit
 
-class ViewController: UIViewController, FrameExtractorDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
+class ViewController: UIViewController, FrameExtractorDelegate {
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 2
-    }
     
     @IBOutlet weak var CameraView: UIView!
     @IBOutlet weak var ColorView: UIView!
     @IBOutlet weak var ColorNameView: ColorInfoDisplay!
     var camera: Camera!
     var angle: Double!
+    var sizeOfCenterPoint = 10.0
+    var lineWidth = 4
     override var shouldAutorotate: Bool {
         return false
     }
@@ -32,7 +28,7 @@ class ViewController: UIViewController, FrameExtractorDelegate, UIPickerViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        camera = Camera(frame: self.CameraView.bounds, sizeOfCenterPoint: 10)
+        camera = Camera(frame: self.CameraView.bounds, sizeOfCenterPoint: Int(self.sizeOfCenterPoint))
         camera.delegate = self
         NotificationCenter.default.addObserver(
             self,
@@ -84,6 +80,23 @@ class ViewController: UIViewController, FrameExtractorDelegate, UIPickerViewDele
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // handling event when changing center point location
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let loc = touch.location(in: self.CameraView)
+            if loc.x <= self.CameraView.bounds.width && loc.y <= self.CameraView.bounds.height {
+                self.camera.center = loc
+                self.camera.videoPreviewLayer?.sublayers?.last?.removeFromSuperlayer()
+                let centerPointRec = self.camera.recCenter(radius: CGFloat(self.sizeOfCenterPoint), lineWidth: CGFloat(self.lineWidth))
+                self.camera.videoPreviewLayer?.addSublayer(centerPointRec)
+                
+            }
+            else {
+                print("Error")
+            }
+        }
     }
 
 

@@ -4,7 +4,8 @@
 //
 //  Created by Le Nhut on 6/26/18.
 //  Copyright © 2018 Le Nhut. All rights reserved.
-//
+// This is the configuration of camera
+// It will ask for user's permission to use func in camera
 
 import Foundation
 import UIKit
@@ -18,6 +19,7 @@ protocol FrameExtractorDelegate: class {
 
 class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     var videoPreviewLayer: AVCaptureVideoPreviewLayer? //render the camera view finder
+    public var center: CGPoint?
     weak var delegate: FrameExtractorDelegate?
     private let sessionQueue = DispatchQueue(label: "session queue")
     //    private var videoPreviewFrame = CGRect()
@@ -114,6 +116,20 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
         
     }
     func recCenter(radius: CGFloat, lineWidth: CGFloat) -> CAShapeLayer {
+        if let centerPoint = center {
+            let rec = CAShapeLayer()
+            rec.path = UIBezierPath(
+                arcCenter: centerPoint,
+                radius: radius - lineWidth*0.5 ,
+                startAngle: CGFloat(0),
+                endAngle: CGFloat(Double.pi * 2),
+                clockwise: true).cgPath
+            rec.fillColor = UIColor.clear.cgColor
+            rec.strokeColor = UIColor.white.cgColor
+            rec.lineWidth = lineWidth
+            rec.opacity = 1
+            return rec
+        }
         let rec = CAShapeLayer()
         rec.path = UIBezierPath(
             arcCenter: CGPoint(x: self.videoPreviewLayer!.bounds.width*0.5, y: self.videoPreviewLayer!.bounds.height*0.5),
@@ -142,10 +158,15 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
         let croppedImg = img.crop(to: (self.videoPreviewLayer?.frame.size)!)
         let radius = self.sizeOfCenterPoint
         let lineWidth = self.centerPointRec.lineWidth
-        let finalImg = croppedImg.imageByApplyingClippingCenterCircleBezierPath(radius: radius, lineWidth: lineWidth)
+        if let centerPoint = self.center {
+            let finalImg = croppedImg.imageByApplyingClippingCenterCircleBezierPath(radius: radius, lineWidth: lineWidth, center: centerPoint)
+            return finalImg
+        }
+        let finalImg = croppedImg.imageByApplyingClippingCenterCircleBezierPath(radius: radius, lineWidth: lineWidth, center: CGPoint(x: croppedImg.size.width*0.5, y: croppedImg.size.height*0.5))
         return finalImg
     }
     
+
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let uiImage = imageFromSampleBuffer(sampleBuffer: sampleBuffer) else { return }
         DispatchQueue.main.async { [unowned self] in

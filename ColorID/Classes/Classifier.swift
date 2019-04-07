@@ -4,7 +4,7 @@
 //
 //  Created by Le Nhut on 8/1/18.
 //  Copyright © 2018 Le Nhut. All rights reserved.
-//
+// This is an emplement for K-mean clustering that will classify a bunch of colors to n groups
 
 import Foundation
 import UIKit
