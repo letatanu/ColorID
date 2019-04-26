@@ -11,7 +11,6 @@ import UIKit
 class ViewController: UIViewController, FrameExtractorDelegate {
     
     
-    @IBOutlet weak var CameraView: UIView!
     @IBOutlet weak var ColorView: UIView!
     @IBOutlet weak var ColorNameView: ColorInfoDisplay!
     var camera: Camera!
@@ -21,15 +20,17 @@ class ViewController: UIViewController, FrameExtractorDelegate {
     override var shouldAutorotate: Bool {
         return false
     }
-    
+    fileprivate var cameraViewFrame:  CGRect  {
+        return CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height - self.ColorNameView.bounds.height)
+    }
     override var prefersStatusBarHidden: Bool {
         return true
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        camera = Camera(frame: self.CameraView.bounds, sizeOfCenterPoint: Int(self.sizeOfCenterPoint))
+        camera = Camera(frame: cameraViewFrame, sizeOfCenterPoint: Int(self.sizeOfCenterPoint))
         camera.delegate = self
+        print(camera.videoPreviewLayer?.bounds)
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(deviceDidRotate),
@@ -37,9 +38,11 @@ class ViewController: UIViewController, FrameExtractorDelegate {
             object: nil
         )
         if let cameraLayer = camera.videoPreviewLayer {
-            self.CameraView.layer.addSublayer(cameraLayer)
+            self.view.layer.addSublayer(cameraLayer)
         }
-        camera.videoPreviewLayer?.frame = self.CameraView.bounds
+        camera.videoPreviewLayer?.frame = cameraViewFrame
+        let pinch = UIGestureRecognizer(target: self, action: #selector(ZoomInOut(sender:)))
+//        self.camera.videoPreviewLayer.addGestureRecognizer(pinch)
     }
     
     func captured(image: UIImage) {
@@ -82,15 +85,24 @@ class ViewController: UIViewController, FrameExtractorDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    @objc func ZoomInOut(sender: UIPinchGestureRecognizer) {
+        guard sender.view != nil else { return }
+        if sender.state == .began || sender.state == .changed {
+            sender.view?.transform = (sender.view?.transform.scaledBy(x: sender.scale, y: sender.scale))!
+            sender.scale = 1.0
+        }
+    }
     // handling event when changing center point location
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
-            let loc = touch.location(in: self.CameraView)
-            if loc.x <= self.CameraView.bounds.width && loc.y <= self.CameraView.bounds.height {
+            let loc = touch.location(in: self.view)
+            if loc.x <= cameraViewFrame.width && loc.y <= self.cameraViewFrame.height {
                 self.camera.center = loc
                 self.camera.videoPreviewLayer?.sublayers?.last?.removeFromSuperlayer()
-                let centerPointRec = self.camera.recCenter(radius: CGFloat(self.sizeOfCenterPoint), lineWidth: CGFloat(self.lineWidth))
-                self.camera.videoPreviewLayer?.addSublayer(centerPointRec)
+                
+                self.camera.centerPointRec = self.camera.recCenter(radius: CGFloat(self.sizeOfCenterPoint), lineWidth: CGFloat(self.lineWidth))
+                self.camera.videoPreviewLayer?.addSublayer(self.camera.centerPointRec)
                 
             }
             else {

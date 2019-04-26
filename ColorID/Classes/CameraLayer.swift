@@ -25,7 +25,7 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     //    private var videoPreviewFrame = CGRect()
     private let position = AVCaptureDevice.Position.back
     private let quality = AVCaptureSession.Preset.high
-    private var centerPointRec = CAShapeLayer()
+    public var centerPointRec = CAShapeLayer()
     private var permissionGranted = false
     private let captureSession = AVCaptureSession()
     private let context = CIContext()
@@ -74,7 +74,6 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
         }
         captureDevice.activeVideoMaxFrameDuration = CMTimeMake(1, 30)
         captureDevice.activeVideoMinFrameDuration = CMTimeMake(1, 30)
-        
         captureDevice.unlockForConfiguration()
 
         guard let captureDeviceInput = try? AVCaptureDeviceInput(device: captureDevice) else { return }
