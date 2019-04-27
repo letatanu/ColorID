@@ -30,7 +30,6 @@ class ViewController: UIViewController, FrameExtractorDelegate {
         super.viewDidLoad()
         camera = Camera(frame: cameraViewFrame, sizeOfCenterPoint: Int(self.sizeOfCenterPoint))
         camera.delegate = self
-        print(camera.videoPreviewLayer?.bounds)
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(deviceDidRotate),
