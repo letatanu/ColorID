@@ -98,8 +98,8 @@ class ViewController: UIViewController, FrameExtractorDelegate {
             let loc = touch.location(in: self.view)
             if loc.x <= cameraViewFrame.width && loc.y <= self.cameraViewFrame.height {
                 self.camera.center = loc
-                self.camera.videoPreviewLayer?.sublayers?.last?.removeFromSuperlayer()
-                
+                self.camera.centerPointRec.removeFromSuperlayer()
+                self.camera.centerPointRec.removeAllAnimations()
                 self.camera.centerPointRec = self.camera.recCenter(radius: CGFloat(self.sizeOfCenterPoint), lineWidth: CGFloat(self.lineWidth))
                 self.camera.videoPreviewLayer?.addSublayer(self.camera.centerPointRec)
                 
