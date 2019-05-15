@@ -80,17 +80,31 @@ extension UIImage {
         }
     }
     var averageColor: UIColor? {
-        guard let inputImage = CIImage(image: self) else { return nil }
-        let extentVector = CIVector(x: inputImage.extent.origin.x, y: inputImage.extent.origin.y, z: inputImage.extent.size.width, w: inputImage.extent.size.height)
+        var result = [UIColor]()
+        guard let img = self.cgImage else { return nil }
+        let width = img.width
+        let height = img.height
+        guard let byteData = self.makeBytes() else { return nil}
         
-        guard let filter = CIFilter(name: "CIAreaAverage", withInputParameters: [kCIInputImageKey: inputImage, kCIInputExtentKey: extentVector]) else { return nil }
-        guard let outputImage = filter.outputImage else { return nil }
+        let d = min(width, height)
+        let r = Int(d/2)
         
-        var bitmap = [UInt8](repeating: 0, count: 4)
-        let context = CIContext(options: [kCIContextWorkingColorSpace: kCFNull])
-        context.render(outputImage, toBitmap: &bitmap, rowBytes: 4, bounds: CGRect(x: 0, y: 0, width: 1, height: 1), format: kCIFormatRGBA8, colorSpace: nil)
-        
-        return UIColor(red: CGFloat(bitmap[0]) / 255, green: CGFloat(bitmap[1]) / 255, blue: CGFloat(bitmap[2]) / 255, alpha: 1)
+        for x in 0..<width {
+            for y in 0..<height {
+                //just get the pixels in the circle
+                if  (x-r)*(x-r) + (y-r)*(y-r) <= r*r {
+                    let pixelIndex = ((width * y) + x) * 4
+                    let red = CGFloat(byteData[pixelIndex + 3]) / CGFloat(255.0)
+                    let green = CGFloat(byteData[pixelIndex + 2]) / CGFloat(255.0)
+                    let blue = CGFloat(byteData[pixelIndex + 1]) / CGFloat(255.0)
+                    let alpha = CGFloat(1)
+                    
+                    let color = UIColor(red: red, green: green, blue: blue, alpha: alpha)
+                    result.append(color)
+                }
+            }
+        }
+        return result.average
     }
     
     
@@ -102,6 +116,7 @@ extension UIImage {
     }
     
     func mostDominantColor(inNumberOfCluster numberOfCluster: Int = 9) -> UIColor? {
+    
         var result = [UIColor]()
         guard let img = self.cgImage else { return nil }
         let width = img.width
