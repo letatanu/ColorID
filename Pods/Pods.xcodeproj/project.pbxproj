@@ -3,315 +3,334 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		077E4F840DC48F9FFC5C9F9689BDC675 /* UIView+Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932024B5E54CF83F41F8BB253B9E1453 /* UIView+Shape.swift */; };
-		1701F13CAE0D2287CDE6BAEEEFDBBA3E /* PopupContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679DBA8A2C0F410299D4C0D47AD2D713 /* PopupContainerView.swift */; };
-		2E6CCBB69010D2736836287E6019DBF0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD46FBC041420035C341CC6342582587 /* UIKit.framework */; };
-		3BD2E611DE030518CBC517D4C7D1CE3C /* PopupViewDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22961B3D4AD56347E8C0A0BE25E0BA3 /* PopupViewDirection.swift */; };
-		4549ADE18C93E493900438070A8155AB /* Pods-ColorID-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F264398273C44461A0E1978C7BB98C0D /* Pods-ColorID-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		522E6BEBA2BC057215B3150A760398FF /* MMCQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EA88C0B31EAE6E63D073335845C200 /* MMCQ.swift */; };
-		5A1A1CBF14249170998119B5E94B600A /* PopupViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5046563223196DFC04B664D33115F143 /* PopupViewType.swift */; };
-		60147703035941274D9AB2B318DB804F /* PopupWindow-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 12D96A6519E69B962ADC5382DCBFE987 /* PopupWindow-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		74981683B2F4F1F85795A679881F1147 /* PopupWindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169AAFB82E0A7E5FB3E82AFA7291196E /* PopupWindowManager.swift */; };
-		7D327D0DE57AA5DD5613B100233821A7 /* ColorThief.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596E7E548024382AF6B96D52D1AB0AEA /* ColorThief.swift */; };
-		8BC582678856F1397E947A9B31C1F9C1 /* CGRect+Inset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CBD83E54A3B793E01540FA1A72A152 /* CGRect+Inset.swift */; };
-		A41CD19EF032BF7BD0ADD0A79721F9C9 /* PopupViewCotainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A817A0B6DDA935F6507F25127CAF169 /* PopupViewCotainable.swift */; };
-		AE50BD7CD375E33516BB1D31520EB289 /* PopupItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC892C2A8AD412EE8F7E40F1249DBA8 /* PopupItem.swift */; };
-		BA26FA4084023043426471CA954AB628 /* Pods-ColorID-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA7D821595C48C72A406880E9FBA75A /* Pods-ColorID-dummy.m */; };
-		C655C263C73FFCA17C6EE0BDF135275C /* PopupContainerWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB3CF8A57EA04B8E3796CE406E71637 /* PopupContainerWindow.swift */; };
-		C8A9963D3060120FF45CA9AAD87B2BFD /* ColorThiefSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C84F7B5353258ACBEBFA3272C97B2096 /* ColorThiefSwift-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		CE1ED0F28D176C09E44658F06E658221 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD46FBC041420035C341CC6342582587 /* UIKit.framework */; };
-		D80029F691E3C0ADB5E8A1236543E5FF /* PopupPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DC153AFE630598E836C8CDE6C48F7A /* PopupPresentable.swift */; };
-		D8B6DEDD1D7903D553461F5B0C84A20D /* ColorThiefSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = ED66CF042A67DACF72BB91FAAE56EEB6 /* ColorThiefSwift-dummy.m */; };
-		FB4A2E23264772AEA0066B4072E4083F /* PopupWindow-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 82459CCB6F401E638213D838E6835259 /* PopupWindow-dummy.m */; };
+		14D35008657CE3B849F9227F279C2D0B /* PopupViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652D5811F0779400A31EA2DD6E5DFEBE /* PopupViewType.swift */; };
+		163C570B7CE5CB772CBF2885C7D6E4D1 /* RHTriggerButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BEB2A86CAA135650F172E797F640A0 /* RHTriggerButtonView.swift */; };
+		2FB4C57AB7FB37F12E33C69DA41F1589 /* RHSideButtons-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B7A881645E2A9C8B2525F793B209DD /* RHSideButtons-dummy.m */; };
+		327F99FD91E81C97E68859B000370114 /* UIView+Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A404877992DA2E7F6B3B889AFD98B6 /* UIView+Shape.swift */; };
+		33542E52E5C5BB5248A90F302B7CC7CC /* PopupPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8153B928274DDD161AAD1FD30EC662 /* PopupPresentable.swift */; };
+		34A09A886D038ECB9B5517204238D3D6 /* PopupContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A0854952AD455ABFC359D934A8D4A0 /* PopupContainerView.swift */; };
+		350FF633C1C7FE894D582D7CEB4D0CC5 /* PopupContainerWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97851A767D5ADB96548E25D119708A1A /* PopupContainerWindow.swift */; };
+		4DA30752B511DD105A0E454B7691CB45 /* RHButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468F9D8AF3968A87DC29D854A9F17CA8 /* RHButtonView.swift */; };
+		51F248F85BBDC779EF857631C4FED075 /* PopupWindow-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 87465F9733E470A57C2BBDD81E4753E7 /* PopupWindow-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		58C80CE3EB0555DC3E0E184097E09D67 /* PopupWindow-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B71E1D5B071BFE1DF37C31BF0218C7F /* PopupWindow-dummy.m */; };
+		6E57779C8E3AE30A2805A58186817805 /* PopupWindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F23CC12D4A39E3BC78112714510C45 /* PopupWindowManager.swift */; };
+		718CF9771A3F05F7E1EBA2A896D06B2B /* Pods-ColorID-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 84433FA52DA4EB03FA4D81AF5394E48F /* Pods-ColorID-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		851188DAB01B75964D1EE347B6E0F83F /* PopupViewDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A6825028D5D3A3386162BFE1323899 /* PopupViewDirection.swift */; };
+		877212BFD63AA32E3A24F01B096FB68A /* RHSideButtonAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC80FDD2A253C8518EC2BC397233804 /* RHSideButtonAnimator.swift */; };
+		8BFABD8836EE48070081DD6907D5FDF7 /* RHSideButtons-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AFBB661ED3F42AACB7C1D49D3BF8071 /* RHSideButtons-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		9A055AEE2AAB20CA806430003846A7A7 /* ColorThiefSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6575908241DE4740CB2F870A3B78BE42 /* ColorThiefSwift-dummy.m */; };
+		B2FF9BA521DACB25CA9DA4CE3DAC8DFB /* MMCQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB9ED6D391D41C377B8B3A85CE2D43F /* MMCQ.swift */; };
+		B396B888426E15B9B6F4AF320063F7F8 /* CGRect+Inset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DCEF3D39E33FA14AA6B1A34CEB2C69 /* CGRect+Inset.swift */; };
+		C7B839C04B6C105EDB57A3F67BE700BD /* PopupViewCotainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B107DCBB5AD7D515473F2F28DC01C09 /* PopupViewCotainable.swift */; };
+		CBB7651B0C93637DCC5D02CA61C8FE87 /* Pods-ColorID-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7991B6D2F5CED4F9AB0DC410EDF1848E /* Pods-ColorID-dummy.m */; };
+		D19A0B74F844B1EED7CCA5EC155B5987 /* RHSideButtonAnimatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AB326085ADBF629D79C88CE1C76729 /* RHSideButtonAnimatorProtocol.swift */; };
+		D211A2FDB2082A9EB4A818DDDA967921 /* ColorThiefSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DE3586B77D2A0928B7829D0B539CA247 /* ColorThiefSwift-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		E221005DEBDED2243320546F3881921F /* ColorThief.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862A7EB66C22499707E0AA5FCF1E379 /* ColorThief.swift */; };
+		EB64910237F965C98B0DAA6325357B58 /* PopupItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5DD7E520B5639F20F90F36842894A6 /* PopupItem.swift */; };
+		FA28D5920DE0D1770ABB9A7FA778170C /* RHSideButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E498170C546EE8E75E0392EB3F12A2 /* RHSideButtons.swift */; };
+		FA64DA1E923D463CE11852FA29F76B62 /* RHButtonViewConfigProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B6181D450DD32C5733DE8BF3DFC2B2 /* RHButtonViewConfigProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3ACF73422FA480351B6E0DE162420BDF /* PBXContainerItemProxy */ = {
+		69DFD35969654F18EB2D86A9DD3E42DA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = DBC10C011B73579F412ACE9D0F1EA271;
+			remoteGlobalIDString = 0D4F2FD7A9BDC05BC1D47DAC26B426DE;
 			remoteInfo = ColorThiefSwift;
 		};
-		F0DE38B5F6067036793A480207093BC9 /* PBXContainerItemProxy */ = {
+		6CE5CDAE4CD233F15FE13DD917D854A8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1DBBF91F4E62E30C9B9571B678FAED5A;
+			remoteGlobalIDString = B5D61A532661CD958D2AE612596B46B2;
+			remoteInfo = RHSideButtons;
+		};
+		F0D6F37069D01CF6A99B1CF2FC0F1225 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5EF040D3212F7F0F8F95A997F8B7EFED;
 			remoteInfo = PopupWindow;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0369F80A71811319629F63BEF1F9E265 /* libColorThiefSwift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libColorThiefSwift.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		0A817A0B6DDA935F6507F25127CAF169 /* PopupViewCotainable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PopupViewCotainable.swift; path = PopupWindow/PopupViewCotainable.swift; sourceTree = "<group>"; };
-		10CBD83E54A3B793E01540FA1A72A152 /* CGRect+Inset.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CGRect+Inset.swift"; path = "PopupWindow/Extensions/CGRect+Inset.swift"; sourceTree = "<group>"; };
-		12D96A6519E69B962ADC5382DCBFE987 /* PopupWindow-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "PopupWindow-umbrella.h"; path = "../../Headers/Public/PopupWindow/PopupWindow-umbrella.h"; sourceTree = "<group>"; };
-		139015F9FA20EF6B94AA65EEAA2C3E44 /* PopupWindow.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PopupWindow.xcconfig; sourceTree = "<group>"; };
-		1584E5EA33336119D7A018FD9FE75BCD /* ColorThiefSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ColorThiefSwift.xcconfig; sourceTree = "<group>"; };
-		169AAFB82E0A7E5FB3E82AFA7291196E /* PopupWindowManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PopupWindowManager.swift; path = PopupWindow/PopupWindowManager.swift; sourceTree = "<group>"; };
-		1AA7D821595C48C72A406880E9FBA75A /* Pods-ColorID-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ColorID-dummy.m"; sourceTree = "<group>"; };
-		2451783F8EECDC1C92F65A3F8EC47019 /* Pods-ColorID-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ColorID-frameworks.sh"; sourceTree = "<group>"; };
-		2AB3CF8A57EA04B8E3796CE406E71637 /* PopupContainerWindow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PopupContainerWindow.swift; path = PopupWindow/PopupContainerWindow.swift; sourceTree = "<group>"; };
-		2B2783CF2AA272EB3E449A26F92E1E57 /* PopupWindow.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; name = PopupWindow.modulemap; path = ../../Headers/Public/PopupWindow/PopupWindow.modulemap; sourceTree = "<group>"; };
-		31DC153AFE630598E836C8CDE6C48F7A /* PopupPresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PopupPresentable.swift; path = PopupWindow/PopupPresentable.swift; sourceTree = "<group>"; };
-		391450C89DC210BE56CB770F2B7DC83C /* PopupWindow-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PopupWindow-prefix.pch"; sourceTree = "<group>"; };
-		44A7D8539B8D687863B80BCD0C670C04 /* Pods-ColorID-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ColorID-resources.sh"; sourceTree = "<group>"; };
-		5046563223196DFC04B664D33115F143 /* PopupViewType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PopupViewType.swift; path = PopupWindow/PopupViewType.swift; sourceTree = "<group>"; };
-		57D5857672CA98E5B5505528101108AD /* libPopupWindow.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPopupWindow.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		596E7E548024382AF6B96D52D1AB0AEA /* ColorThief.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorThief.swift; path = ColorThiefSwift/Classes/ColorThief.swift; sourceTree = "<group>"; };
-		5E8FBA4F961B2855BC091EE97D10B0CE /* Pods-ColorID.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ColorID.debug.xcconfig"; sourceTree = "<group>"; };
-		679DBA8A2C0F410299D4C0D47AD2D713 /* PopupContainerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PopupContainerView.swift; path = PopupWindow/PopupContainerView.swift; sourceTree = "<group>"; };
-		82459CCB6F401E638213D838E6835259 /* PopupWindow-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PopupWindow-dummy.m"; sourceTree = "<group>"; };
-		8DC892C2A8AD412EE8F7E40F1249DBA8 /* PopupItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PopupItem.swift; path = PopupWindow/PopupItem.swift; sourceTree = "<group>"; };
-		932024B5E54CF83F41F8BB253B9E1453 /* UIView+Shape.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Shape.swift"; path = "PopupWindow/Extensions/UIView+Shape.swift"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A647BADC0B85350B94D2792011FBB8D3 /* libPods-ColorID.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ColorID.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B4EC71751E2C3950F7614B9E74449727 /* Pods-ColorID-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ColorID-acknowledgements.plist"; sourceTree = "<group>"; };
-		BBC63F2137674AD6896317BEBC68B118 /* Pods-ColorID-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ColorID-acknowledgements.markdown"; sourceTree = "<group>"; };
-		C22961B3D4AD56347E8C0A0BE25E0BA3 /* PopupViewDirection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PopupViewDirection.swift; path = PopupWindow/PopupViewDirection.swift; sourceTree = "<group>"; };
-		C84F7B5353258ACBEBFA3272C97B2096 /* ColorThiefSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ColorThiefSwift-umbrella.h"; path = "../../Headers/Public/ColorThiefSwift/ColorThiefSwift-umbrella.h"; sourceTree = "<group>"; };
-		D8BDDB6A2430B4D746B033AC1EF3E131 /* Pods-ColorID.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ColorID.modulemap"; sourceTree = "<group>"; };
-		DD46FBC041420035C341CC6342582587 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		E2ED0B99ADF533197B13FD4CA12E2A7B /* Pods-ColorID.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ColorID.release.xcconfig"; sourceTree = "<group>"; };
-		E7EA88C0B31EAE6E63D073335845C200 /* MMCQ.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MMCQ.swift; path = ColorThiefSwift/Classes/MMCQ.swift; sourceTree = "<group>"; };
-		ED66CF042A67DACF72BB91FAAE56EEB6 /* ColorThiefSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ColorThiefSwift-dummy.m"; sourceTree = "<group>"; };
-		F264398273C44461A0E1978C7BB98C0D /* Pods-ColorID-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ColorID-umbrella.h"; sourceTree = "<group>"; };
-		F38462A9C6FCF56A09DCE668D4C41814 /* ColorThiefSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ColorThiefSwift-prefix.pch"; sourceTree = "<group>"; };
-		FB3964E0C764F05BDEE29F080799BFB8 /* ColorThiefSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; name = ColorThiefSwift.modulemap; path = ../../Headers/Public/ColorThiefSwift/ColorThiefSwift.modulemap; sourceTree = "<group>"; };
+		12B6181D450DD32C5733DE8BF3DFC2B2 /* RHButtonViewConfigProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RHButtonViewConfigProtocol.swift; path = RHSideButtons/RHSideButtons/RHButtonViewConfigProtocol.swift; sourceTree = "<group>"; };
+		1AFBB661ED3F42AACB7C1D49D3BF8071 /* RHSideButtons-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RHSideButtons-umbrella.h"; sourceTree = "<group>"; };
+		1B107DCBB5AD7D515473F2F28DC01C09 /* PopupViewCotainable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PopupViewCotainable.swift; path = PopupWindow/PopupViewCotainable.swift; sourceTree = "<group>"; };
+		1B71E1D5B071BFE1DF37C31BF0218C7F /* PopupWindow-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PopupWindow-dummy.m"; sourceTree = "<group>"; };
+		27EADB4F5028A31E4C791DFE953BCC90 /* PopupWindow-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PopupWindow-prefix.pch"; sourceTree = "<group>"; };
+		2BC80FDD2A253C8518EC2BC397233804 /* RHSideButtonAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RHSideButtonAnimator.swift; path = RHSideButtons/RHSideButtons/RHSideButtonAnimator.swift; sourceTree = "<group>"; };
+		2F5DD7E520B5639F20F90F36842894A6 /* PopupItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PopupItem.swift; path = PopupWindow/PopupItem.swift; sourceTree = "<group>"; };
+		3FB9ED6D391D41C377B8B3A85CE2D43F /* MMCQ.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MMCQ.swift; path = ColorThiefSwift/Classes/MMCQ.swift; sourceTree = "<group>"; };
+		468F9D8AF3968A87DC29D854A9F17CA8 /* RHButtonView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RHButtonView.swift; path = RHSideButtons/RHSideButtons/RHButtonView.swift; sourceTree = "<group>"; };
+		47A0854952AD455ABFC359D934A8D4A0 /* PopupContainerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PopupContainerView.swift; path = PopupWindow/PopupContainerView.swift; sourceTree = "<group>"; };
+		4FD5B7DC000595E64485E02D0D146ACB /* ColorThiefSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ColorThiefSwift.modulemap; sourceTree = "<group>"; };
+		62F23CC12D4A39E3BC78112714510C45 /* PopupWindowManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PopupWindowManager.swift; path = PopupWindow/PopupWindowManager.swift; sourceTree = "<group>"; };
+		652D5811F0779400A31EA2DD6E5DFEBE /* PopupViewType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PopupViewType.swift; path = PopupWindow/PopupViewType.swift; sourceTree = "<group>"; };
+		6575908241DE4740CB2F870A3B78BE42 /* ColorThiefSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ColorThiefSwift-dummy.m"; sourceTree = "<group>"; };
+		69A6825028D5D3A3386162BFE1323899 /* PopupViewDirection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PopupViewDirection.swift; path = PopupWindow/PopupViewDirection.swift; sourceTree = "<group>"; };
+		69E498170C546EE8E75E0392EB3F12A2 /* RHSideButtons.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RHSideButtons.swift; path = RHSideButtons/RHSideButtons/RHSideButtons.swift; sourceTree = "<group>"; };
+		7991B6D2F5CED4F9AB0DC410EDF1848E /* Pods-ColorID-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ColorID-dummy.m"; sourceTree = "<group>"; };
+		84433FA52DA4EB03FA4D81AF5394E48F /* Pods-ColorID-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ColorID-umbrella.h"; sourceTree = "<group>"; };
+		85BE5D52FD1ECD157B0B4938C3AA641B /* Pods-ColorID.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ColorID.modulemap"; sourceTree = "<group>"; };
+		87465F9733E470A57C2BBDD81E4753E7 /* PopupWindow-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PopupWindow-umbrella.h"; sourceTree = "<group>"; };
+		8862A7EB66C22499707E0AA5FCF1E379 /* ColorThief.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorThief.swift; path = ColorThiefSwift/Classes/ColorThief.swift; sourceTree = "<group>"; };
+		888491F336087EE300EEBD61A3C56CD9 /* libRHSideButtons.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libRHSideButtons.a; path = libRHSideButtons.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		912AB50393C8CCC06B28B555A2DDA925 /* RHSideButtons.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RHSideButtons.xcconfig; sourceTree = "<group>"; };
+		94A404877992DA2E7F6B3B889AFD98B6 /* UIView+Shape.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Shape.swift"; path = "PopupWindow/Extensions/UIView+Shape.swift"; sourceTree = "<group>"; };
+		97851A767D5ADB96548E25D119708A1A /* PopupContainerWindow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PopupContainerWindow.swift; path = PopupWindow/PopupContainerWindow.swift; sourceTree = "<group>"; };
+		99A8F4CB54B14D7666DBD29579ED9274 /* Pods-ColorID.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ColorID.release.xcconfig"; sourceTree = "<group>"; };
+		9B202DAA2F727637574E189E3F5B40F5 /* ColorThiefSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ColorThiefSwift-prefix.pch"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9F152B161416D96C2231A773CE1AE08B /* libColorThiefSwift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libColorThiefSwift.a; path = libColorThiefSwift.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0AB326085ADBF629D79C88CE1C76729 /* RHSideButtonAnimatorProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RHSideButtonAnimatorProtocol.swift; path = RHSideButtons/RHSideButtons/RHSideButtonAnimatorProtocol.swift; sourceTree = "<group>"; };
+		A16EF7844FA406AE20AED77893BF4EC1 /* libPopupWindow.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libPopupWindow.a; path = libPopupWindow.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B16E2B98749FECD307C719243DF65E7F /* Pods-ColorID.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ColorID.debug.xcconfig"; sourceTree = "<group>"; };
+		B8B7A881645E2A9C8B2525F793B209DD /* RHSideButtons-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RHSideButtons-dummy.m"; sourceTree = "<group>"; };
+		BB63ACFCCF54557D5D7922BEBFC68A2F /* PopupWindow.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PopupWindow.xcconfig; sourceTree = "<group>"; };
+		BC8153B928274DDD161AAD1FD30EC662 /* PopupPresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PopupPresentable.swift; path = PopupWindow/PopupPresentable.swift; sourceTree = "<group>"; };
+		C0069EFCFDA925515EE72C0166329E5A /* libPods-ColorID.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-ColorID.a"; path = "libPods-ColorID.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1AAEADB90D61A8642F0485EDD276569 /* Pods-ColorID-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ColorID-acknowledgements.markdown"; sourceTree = "<group>"; };
+		DD81A42BAFDF02AF2471F3785EE61FAE /* ColorThiefSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ColorThiefSwift.xcconfig; sourceTree = "<group>"; };
+		DE3586B77D2A0928B7829D0B539CA247 /* ColorThiefSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ColorThiefSwift-umbrella.h"; sourceTree = "<group>"; };
+		DF8ACFD22CE9E55C98AF394FEB19A96A /* PopupWindow.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = PopupWindow.modulemap; sourceTree = "<group>"; };
+		E1EE25EFFE2A469BDDB96CEC596DE8EA /* Pods-ColorID-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ColorID-acknowledgements.plist"; sourceTree = "<group>"; };
+		E9400C57497A8F021182A54D8C3A7C5D /* RHSideButtons-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RHSideButtons-prefix.pch"; sourceTree = "<group>"; };
+		F7DCEF3D39E33FA14AA6B1A34CEB2C69 /* CGRect+Inset.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CGRect+Inset.swift"; path = "PopupWindow/Extensions/CGRect+Inset.swift"; sourceTree = "<group>"; };
+		F9BEB2A86CAA135650F172E797F640A0 /* RHTriggerButtonView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RHTriggerButtonView.swift; path = RHSideButtons/RHSideButtons/RHTriggerButtonView.swift; sourceTree = "<group>"; };
+		FABCE8817462F08491160C6C8384FE1B /* RHSideButtons.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RHSideButtons.modulemap; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		585F5A670C91D225A0D8E99B778399C0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE1ED0F28D176C09E44658F06E658221 /* UIKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5C32E880BAA3B4AD1B69EA213F47C803 /* Frameworks */ = {
+		32C780D93E6C50B6AA5E6BA694E974EB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6B09239087F4D29D3E0F8A1B750E3DB2 /* Frameworks */ = {
+		3DDFDE5090D72393566A2FCE3B743FB9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E6CCBB69010D2736836287E6019DBF0 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		96DE53FE694BCDE1D45A6141F2DEFEB0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B63639DDE001B5F6D5DF0985E1BB543E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0CD47FED47C8A2A51D1B236B77F85CAA /* Targets Support Files */ = {
+		104E051E32B3F4C1254325C6AD948B66 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				63B6E5686A0879339D687F7E873C1050 /* Pods-ColorID */,
+				5D3579203A947D72E5E7609867816AED /* ColorThiefSwift */,
+				3750F5C2DB6CDD6132B01D7E524BD15D /* PopupWindow */,
+				E6BE518973ECEE28CB01E5BF16219380 /* RHSideButtons */,
 			);
-			name = "Targets Support Files";
+			name = Pods;
 			sourceTree = "<group>";
 		};
-		38A19E25387ED8881E1364D08A0F9488 /* Support Files */ = {
+		3750F5C2DB6CDD6132B01D7E524BD15D /* PopupWindow */ = {
 			isa = PBXGroup;
 			children = (
-				FB3964E0C764F05BDEE29F080799BFB8 /* ColorThiefSwift.modulemap */,
-				1584E5EA33336119D7A018FD9FE75BCD /* ColorThiefSwift.xcconfig */,
-				ED66CF042A67DACF72BB91FAAE56EEB6 /* ColorThiefSwift-dummy.m */,
-				F38462A9C6FCF56A09DCE668D4C41814 /* ColorThiefSwift-prefix.pch */,
-				C84F7B5353258ACBEBFA3272C97B2096 /* ColorThiefSwift-umbrella.h */,
+				F7DCEF3D39E33FA14AA6B1A34CEB2C69 /* CGRect+Inset.swift */,
+				47A0854952AD455ABFC359D934A8D4A0 /* PopupContainerView.swift */,
+				97851A767D5ADB96548E25D119708A1A /* PopupContainerWindow.swift */,
+				2F5DD7E520B5639F20F90F36842894A6 /* PopupItem.swift */,
+				BC8153B928274DDD161AAD1FD30EC662 /* PopupPresentable.swift */,
+				1B107DCBB5AD7D515473F2F28DC01C09 /* PopupViewCotainable.swift */,
+				69A6825028D5D3A3386162BFE1323899 /* PopupViewDirection.swift */,
+				652D5811F0779400A31EA2DD6E5DFEBE /* PopupViewType.swift */,
+				62F23CC12D4A39E3BC78112714510C45 /* PopupWindowManager.swift */,
+				94A404877992DA2E7F6B3B889AFD98B6 /* UIView+Shape.swift */,
+				75D3696D1FD1CFA6FFCDE9C6F9DAA114 /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/ColorThiefSwift";
+			name = PopupWindow;
+			path = PopupWindow;
 			sourceTree = "<group>";
 		};
-		515BACE92EFED4F097F4D9B2B262D128 /* Products */ = {
+		5D3579203A947D72E5E7609867816AED /* ColorThiefSwift */ = {
 			isa = PBXGroup;
 			children = (
-				0369F80A71811319629F63BEF1F9E265 /* libColorThiefSwift.a */,
-				A647BADC0B85350B94D2792011FBB8D3 /* libPods-ColorID.a */,
-				57D5857672CA98E5B5505528101108AD /* libPopupWindow.a */,
+				8862A7EB66C22499707E0AA5FCF1E379 /* ColorThief.swift */,
+				3FB9ED6D391D41C377B8B3A85CE2D43F /* MMCQ.swift */,
+				96E3D0343589687136880F4ACD1E08B2 /* Support Files */,
 			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		5B839833E284B77A0BA7219BECCA88F3 /* ColorThiefSwift */ = {
-			isa = PBXGroup;
-			children = (
-				596E7E548024382AF6B96D52D1AB0AEA /* ColorThief.swift */,
-				E7EA88C0B31EAE6E63D073335845C200 /* MMCQ.swift */,
-				38A19E25387ED8881E1364D08A0F9488 /* Support Files */,
-			);
+			name = ColorThiefSwift;
 			path = ColorThiefSwift;
 			sourceTree = "<group>";
 		};
-		63B6E5686A0879339D687F7E873C1050 /* Pods-ColorID */ = {
+		688234BC18DE61A0C379ACD722D91AAC /* Pods-ColorID */ = {
 			isa = PBXGroup;
 			children = (
-				D8BDDB6A2430B4D746B033AC1EF3E131 /* Pods-ColorID.modulemap */,
-				BBC63F2137674AD6896317BEBC68B118 /* Pods-ColorID-acknowledgements.markdown */,
-				B4EC71751E2C3950F7614B9E74449727 /* Pods-ColorID-acknowledgements.plist */,
-				1AA7D821595C48C72A406880E9FBA75A /* Pods-ColorID-dummy.m */,
-				2451783F8EECDC1C92F65A3F8EC47019 /* Pods-ColorID-frameworks.sh */,
-				44A7D8539B8D687863B80BCD0C670C04 /* Pods-ColorID-resources.sh */,
-				F264398273C44461A0E1978C7BB98C0D /* Pods-ColorID-umbrella.h */,
-				5E8FBA4F961B2855BC091EE97D10B0CE /* Pods-ColorID.debug.xcconfig */,
-				E2ED0B99ADF533197B13FD4CA12E2A7B /* Pods-ColorID.release.xcconfig */,
+				85BE5D52FD1ECD157B0B4938C3AA641B /* Pods-ColorID.modulemap */,
+				C1AAEADB90D61A8642F0485EDD276569 /* Pods-ColorID-acknowledgements.markdown */,
+				E1EE25EFFE2A469BDDB96CEC596DE8EA /* Pods-ColorID-acknowledgements.plist */,
+				7991B6D2F5CED4F9AB0DC410EDF1848E /* Pods-ColorID-dummy.m */,
+				84433FA52DA4EB03FA4D81AF5394E48F /* Pods-ColorID-umbrella.h */,
+				B16E2B98749FECD307C719243DF65E7F /* Pods-ColorID.debug.xcconfig */,
+				99A8F4CB54B14D7666DBD29579ED9274 /* Pods-ColorID.release.xcconfig */,
 			);
 			name = "Pods-ColorID";
 			path = "Target Support Files/Pods-ColorID";
 			sourceTree = "<group>";
 		};
-		7DB346D0F39D3F0E887471402A8071AB = {
+		75D3696D1FD1CFA6FFCDE9C6F9DAA114 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				D401E7B3C5167C01B08329D45C0FB42D /* Pods */,
-				515BACE92EFED4F097F4D9B2B262D128 /* Products */,
-				0CD47FED47C8A2A51D1B236B77F85CAA /* Targets Support Files */,
-			);
-			sourceTree = "<group>";
-		};
-		B39F69B08760488407A2D433094E4FE5 /* PopupWindow */ = {
-			isa = PBXGroup;
-			children = (
-				10CBD83E54A3B793E01540FA1A72A152 /* CGRect+Inset.swift */,
-				679DBA8A2C0F410299D4C0D47AD2D713 /* PopupContainerView.swift */,
-				2AB3CF8A57EA04B8E3796CE406E71637 /* PopupContainerWindow.swift */,
-				8DC892C2A8AD412EE8F7E40F1249DBA8 /* PopupItem.swift */,
-				31DC153AFE630598E836C8CDE6C48F7A /* PopupPresentable.swift */,
-				0A817A0B6DDA935F6507F25127CAF169 /* PopupViewCotainable.swift */,
-				C22961B3D4AD56347E8C0A0BE25E0BA3 /* PopupViewDirection.swift */,
-				5046563223196DFC04B664D33115F143 /* PopupViewType.swift */,
-				169AAFB82E0A7E5FB3E82AFA7291196E /* PopupWindowManager.swift */,
-				932024B5E54CF83F41F8BB253B9E1453 /* UIView+Shape.swift */,
-				EFA9E4ED1EB47DACA6EB62A3E8C0DF85 /* Support Files */,
-			);
-			path = PopupWindow;
-			sourceTree = "<group>";
-		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				FF5B08143E740C3777FEB0D3A952141C /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D401E7B3C5167C01B08329D45C0FB42D /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				5B839833E284B77A0BA7219BECCA88F3 /* ColorThiefSwift */,
-				B39F69B08760488407A2D433094E4FE5 /* PopupWindow */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		EFA9E4ED1EB47DACA6EB62A3E8C0DF85 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				2B2783CF2AA272EB3E449A26F92E1E57 /* PopupWindow.modulemap */,
-				139015F9FA20EF6B94AA65EEAA2C3E44 /* PopupWindow.xcconfig */,
-				82459CCB6F401E638213D838E6835259 /* PopupWindow-dummy.m */,
-				391450C89DC210BE56CB770F2B7DC83C /* PopupWindow-prefix.pch */,
-				12D96A6519E69B962ADC5382DCBFE987 /* PopupWindow-umbrella.h */,
+				DF8ACFD22CE9E55C98AF394FEB19A96A /* PopupWindow.modulemap */,
+				BB63ACFCCF54557D5D7922BEBFC68A2F /* PopupWindow.xcconfig */,
+				1B71E1D5B071BFE1DF37C31BF0218C7F /* PopupWindow-dummy.m */,
+				27EADB4F5028A31E4C791DFE953BCC90 /* PopupWindow-prefix.pch */,
+				87465F9733E470A57C2BBDD81E4753E7 /* PopupWindow-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/PopupWindow";
 			sourceTree = "<group>";
 		};
-		FF5B08143E740C3777FEB0D3A952141C /* iOS */ = {
+		96E3D0343589687136880F4ACD1E08B2 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				DD46FBC041420035C341CC6342582587 /* UIKit.framework */,
+				4FD5B7DC000595E64485E02D0D146ACB /* ColorThiefSwift.modulemap */,
+				DD81A42BAFDF02AF2471F3785EE61FAE /* ColorThiefSwift.xcconfig */,
+				6575908241DE4740CB2F870A3B78BE42 /* ColorThiefSwift-dummy.m */,
+				9B202DAA2F727637574E189E3F5B40F5 /* ColorThiefSwift-prefix.pch */,
+				DE3586B77D2A0928B7829D0B539CA247 /* ColorThiefSwift-umbrella.h */,
 			);
-			name = iOS;
+			name = "Support Files";
+			path = "../Target Support Files/ColorThiefSwift";
+			sourceTree = "<group>";
+		};
+		AF9888E8012D42582FD97EF6D01AD27D /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				FABCE8817462F08491160C6C8384FE1B /* RHSideButtons.modulemap */,
+				912AB50393C8CCC06B28B555A2DDA925 /* RHSideButtons.xcconfig */,
+				B8B7A881645E2A9C8B2525F793B209DD /* RHSideButtons-dummy.m */,
+				E9400C57497A8F021182A54D8C3A7C5D /* RHSideButtons-prefix.pch */,
+				1AFBB661ED3F42AACB7C1D49D3BF8071 /* RHSideButtons-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/RHSideButtons";
+			sourceTree = "<group>";
+		};
+		C66B5DB9649816EF2875B36B5148F54C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9F152B161416D96C2231A773CE1AE08B /* libColorThiefSwift.a */,
+				C0069EFCFDA925515EE72C0166329E5A /* libPods-ColorID.a */,
+				A16EF7844FA406AE20AED77893BF4EC1 /* libPopupWindow.a */,
+				888491F336087EE300EEBD61A3C56CD9 /* libRHSideButtons.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D89477F20FB1DE18A04690586D7808C4 /* Frameworks */,
+				104E051E32B3F4C1254325C6AD948B66 /* Pods */,
+				C66B5DB9649816EF2875B36B5148F54C /* Products */,
+				F7BB1EEF157FD92A0B27B9C1CEF0622B /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D89477F20FB1DE18A04690586D7808C4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E6BE518973ECEE28CB01E5BF16219380 /* RHSideButtons */ = {
+			isa = PBXGroup;
+			children = (
+				468F9D8AF3968A87DC29D854A9F17CA8 /* RHButtonView.swift */,
+				12B6181D450DD32C5733DE8BF3DFC2B2 /* RHButtonViewConfigProtocol.swift */,
+				2BC80FDD2A253C8518EC2BC397233804 /* RHSideButtonAnimator.swift */,
+				A0AB326085ADBF629D79C88CE1C76729 /* RHSideButtonAnimatorProtocol.swift */,
+				69E498170C546EE8E75E0392EB3F12A2 /* RHSideButtons.swift */,
+				F9BEB2A86CAA135650F172E797F640A0 /* RHTriggerButtonView.swift */,
+				AF9888E8012D42582FD97EF6D01AD27D /* Support Files */,
+			);
+			name = RHSideButtons;
+			path = RHSideButtons;
+			sourceTree = "<group>";
+		};
+		F7BB1EEF157FD92A0B27B9C1CEF0622B /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				688234BC18DE61A0C379ACD722D91AAC /* Pods-ColorID */,
+			);
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		478BBDEAB71F9B9B4775B3950BD75D1D /* Headers */ = {
+		2B235C788CBEBD58CC0F1EBC0AC819EB /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8A9963D3060120FF45CA9AAD87B2BFD /* ColorThiefSwift-umbrella.h in Headers */,
+				8BFABD8836EE48070081DD6907D5FDF7 /* RHSideButtons-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		99A83425683FF66DAFF1FF4F985E56E6 /* Headers */ = {
+		750ECB2B706C6E562381FF0ABBA21421 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60147703035941274D9AB2B318DB804F /* PopupWindow-umbrella.h in Headers */,
+				D211A2FDB2082A9EB4A818DDDA967921 /* ColorThiefSwift-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A84D1F3CED417B9F18CC9543CAFB7018 /* Headers */ = {
+		91112579940181F3BC44DA6A95AA0E98 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4549ADE18C93E493900438070A8155AB /* Pods-ColorID-umbrella.h in Headers */,
+				718CF9771A3F05F7E1EBA2A896D06B2B /* Pods-ColorID-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9BC73F9AEF329FF15EAC179854F213F3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51F248F85BBDC779EF857631C4FED075 /* PopupWindow-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		1DBBF91F4E62E30C9B9571B678FAED5A /* PopupWindow */ = {
+		0D4F2FD7A9BDC05BC1D47DAC26B426DE /* ColorThiefSwift */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2E85F5806F7F829A5EBD828C6122C4DA /* Build configuration list for PBXNativeTarget "PopupWindow" */;
+			buildConfigurationList = 958C47203D98BAED53326B349A4102A9 /* Build configuration list for PBXNativeTarget "ColorThiefSwift" */;
 			buildPhases = (
-				A03B0CA31A1C4B87E70F76BA01FC2BE7 /* Sources */,
-				585F5A670C91D225A0D8E99B778399C0 /* Frameworks */,
-				99A83425683FF66DAFF1FF4F985E56E6 /* Headers */,
-				ED7C8E411C75DC43A7FBE2D657938E6E /* Copy generated compatibility header */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = PopupWindow;
-			productName = PopupWindow;
-			productReference = 57D5857672CA98E5B5505528101108AD /* libPopupWindow.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		B15C0B3E1C29B603BD539A425C63EADE /* Pods-ColorID */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 91DD563B9A090058E9234138D2248FE4 /* Build configuration list for PBXNativeTarget "Pods-ColorID" */;
-			buildPhases = (
-				8FF59B3D8460BC8188EDD7FDA68115D5 /* Sources */,
-				5C32E880BAA3B4AD1B69EA213F47C803 /* Frameworks */,
-				A84D1F3CED417B9F18CC9543CAFB7018 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0064E74D79422F378E42F762F45EFE4E /* PBXTargetDependency */,
-				168F8B534BFD5E61CCB0F6D036D879FC /* PBXTargetDependency */,
-			);
-			name = "Pods-ColorID";
-			productName = "Pods-ColorID";
-			productReference = A647BADC0B85350B94D2792011FBB8D3 /* libPods-ColorID.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		DBC10C011B73579F412ACE9D0F1EA271 /* ColorThiefSwift */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F549C62B1937F958FA67D1070DE16FC2 /* Build configuration list for PBXNativeTarget "ColorThiefSwift" */;
-			buildPhases = (
-				A3143E215418A4778F3E3FD8613386E9 /* Sources */,
-				6B09239087F4D29D3E0F8A1B750E3DB2 /* Frameworks */,
-				478BBDEAB71F9B9B4775B3950BD75D1D /* Headers */,
-				31951B44A4B54CB93C170525B299C188 /* Copy generated compatibility header */,
+				750ECB2B706C6E562381FF0ABBA21421 /* Headers */,
+				768EF9D4A0936922E22AE8A1102EE08F /* Sources */,
+				96DE53FE694BCDE1D45A6141F2DEFEB0 /* Frameworks */,
+				C73638E99189672D2C86F7CC52932F12 /* Copy generated compatibility header */,
 			);
 			buildRules = (
 			);
@@ -319,62 +338,101 @@
 			);
 			name = ColorThiefSwift;
 			productName = ColorThiefSwift;
-			productReference = 0369F80A71811319629F63BEF1F9E265 /* libColorThiefSwift.a */;
+			productReference = 9F152B161416D96C2231A773CE1AE08B /* libColorThiefSwift.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		4E310FFDF54A2B9DA6067F0718A98265 /* Pods-ColorID */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE52FE190F98C8A8710B6C12E032383C /* Build configuration list for PBXNativeTarget "Pods-ColorID" */;
+			buildPhases = (
+				91112579940181F3BC44DA6A95AA0E98 /* Headers */,
+				4BB9268AB76D4D29B897E53409465566 /* Sources */,
+				3DDFDE5090D72393566A2FCE3B743FB9 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				71E220F5C22C499690F2594C308596B6 /* PBXTargetDependency */,
+				2625642808544E5C2416446B8CFAF905 /* PBXTargetDependency */,
+				F4B1FC2A5560F0ECFB00DA78B8F13704 /* PBXTargetDependency */,
+			);
+			name = "Pods-ColorID";
+			productName = "Pods-ColorID";
+			productReference = C0069EFCFDA925515EE72C0166329E5A /* libPods-ColorID.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		5EF040D3212F7F0F8F95A997F8B7EFED /* PopupWindow */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 73BA4D4B5F7F2A262A85BF87DF259932 /* Build configuration list for PBXNativeTarget "PopupWindow" */;
+			buildPhases = (
+				9BC73F9AEF329FF15EAC179854F213F3 /* Headers */,
+				ADBB86AB1F462AD6E4BABC16FB102FF5 /* Sources */,
+				B63639DDE001B5F6D5DF0985E1BB543E /* Frameworks */,
+				19718F97DD0B2AEAC90902BD39564623 /* Copy generated compatibility header */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PopupWindow;
+			productName = PopupWindow;
+			productReference = A16EF7844FA406AE20AED77893BF4EC1 /* libPopupWindow.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		B5D61A532661CD958D2AE612596B46B2 /* RHSideButtons */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0080D40A4DA349D8545D5289110997C5 /* Build configuration list for PBXNativeTarget "RHSideButtons" */;
+			buildPhases = (
+				2B235C788CBEBD58CC0F1EBC0AC819EB /* Headers */,
+				80BB990E08131AFA9525D47FFB3BD8BC /* Sources */,
+				32C780D93E6C50B6AA5E6BA694E974EB /* Frameworks */,
+				701C69D5330FC4DDEFBB011DAA0C2111 /* Copy generated compatibility header */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RHSideButtons;
+			productName = RHSideButtons;
+			productReference = 888491F336087EE300EEBD61A3C56CD9 /* libRHSideButtons.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 1000;
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
 			};
-			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 515BACE92EFED4F097F4D9B2B262D128 /* Products */;
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = C66B5DB9649816EF2875B36B5148F54C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DBC10C011B73579F412ACE9D0F1EA271 /* ColorThiefSwift */,
-				B15C0B3E1C29B603BD539A425C63EADE /* Pods-ColorID */,
-				1DBBF91F4E62E30C9B9571B678FAED5A /* PopupWindow */,
+				0D4F2FD7A9BDC05BC1D47DAC26B426DE /* ColorThiefSwift */,
+				4E310FFDF54A2B9DA6067F0718A98265 /* Pods-ColorID */,
+				5EF040D3212F7F0F8F95A997F8B7EFED /* PopupWindow */,
+				B5D61A532661CD958D2AE612596B46B2 /* RHSideButtons */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		31951B44A4B54CB93C170525B299C188 /* Copy generated compatibility header */ = {
+		19718F97DD0B2AEAC90902BD39564623 /* Copy generated compatibility header */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h",
-				"${PODS_ROOT}/Headers/Public/ColorThiefSwift/ColorThiefSwift.modulemap",
-				"${PODS_ROOT}/Headers/Public/ColorThiefSwift/ColorThiefSwift-umbrella.h",
-			);
-			name = "Copy generated compatibility header";
-			outputPaths = (
-				"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap",
-				"${BUILT_PRODUCTS_DIR}/ColorThiefSwift-umbrella.h",
-				"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "COMPATIBILITY_HEADER_PATH=\"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h\"\nMODULE_MAP_PATH=\"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap\"\n\nditto \"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h\" \"${COMPATIBILITY_HEADER_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/ColorThiefSwift/ColorThiefSwift.modulemap\" \"${MODULE_MAP_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/ColorThiefSwift/ColorThiefSwift-umbrella.h\" \"${BUILT_PRODUCTS_DIR}\"\nprintf \"\\n\\nmodule ${PRODUCT_MODULE_NAME}.Swift {\\n  header \\\"${COMPATIBILITY_HEADER_PATH}\\\"\\n  requires objc\\n}\\n\" >> \"${MODULE_MAP_PATH}\"\n";
-		};
-		ED7C8E411C75DC43A7FBE2D657938E6E /* Copy generated compatibility header */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h",
@@ -382,6 +440,8 @@
 				"${PODS_ROOT}/Headers/Public/PopupWindow/PopupWindow-umbrella.h",
 			);
 			name = "Copy generated compatibility header";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap",
 				"${BUILT_PRODUCTS_DIR}/PopupWindow-umbrella.h",
@@ -391,118 +451,155 @@
 			shellPath = /bin/sh;
 			shellScript = "COMPATIBILITY_HEADER_PATH=\"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h\"\nMODULE_MAP_PATH=\"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap\"\n\nditto \"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h\" \"${COMPATIBILITY_HEADER_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/PopupWindow/PopupWindow.modulemap\" \"${MODULE_MAP_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/PopupWindow/PopupWindow-umbrella.h\" \"${BUILT_PRODUCTS_DIR}\"\nprintf \"\\n\\nmodule ${PRODUCT_MODULE_NAME}.Swift {\\n  header \\\"${COMPATIBILITY_HEADER_PATH}\\\"\\n  requires objc\\n}\\n\" >> \"${MODULE_MAP_PATH}\"\n";
 		};
+		701C69D5330FC4DDEFBB011DAA0C2111 /* Copy generated compatibility header */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h",
+				"${PODS_ROOT}/Headers/Public/RHSideButtons/RHSideButtons.modulemap",
+				"${PODS_ROOT}/Headers/Public/RHSideButtons/RHSideButtons-umbrella.h",
+			);
+			name = "Copy generated compatibility header";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap",
+				"${BUILT_PRODUCTS_DIR}/RHSideButtons-umbrella.h",
+				"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "COMPATIBILITY_HEADER_PATH=\"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h\"\nMODULE_MAP_PATH=\"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap\"\n\nditto \"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h\" \"${COMPATIBILITY_HEADER_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/RHSideButtons/RHSideButtons.modulemap\" \"${MODULE_MAP_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/RHSideButtons/RHSideButtons-umbrella.h\" \"${BUILT_PRODUCTS_DIR}\"\nprintf \"\\n\\nmodule ${PRODUCT_MODULE_NAME}.Swift {\\n  header \\\"${COMPATIBILITY_HEADER_PATH}\\\"\\n  requires objc\\n}\\n\" >> \"${MODULE_MAP_PATH}\"\n";
+		};
+		C73638E99189672D2C86F7CC52932F12 /* Copy generated compatibility header */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h",
+				"${PODS_ROOT}/Headers/Public/ColorThiefSwift/ColorThiefSwift.modulemap",
+				"${PODS_ROOT}/Headers/Public/ColorThiefSwift/ColorThiefSwift-umbrella.h",
+			);
+			name = "Copy generated compatibility header";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap",
+				"${BUILT_PRODUCTS_DIR}/ColorThiefSwift-umbrella.h",
+				"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "COMPATIBILITY_HEADER_PATH=\"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h\"\nMODULE_MAP_PATH=\"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap\"\n\nditto \"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h\" \"${COMPATIBILITY_HEADER_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/ColorThiefSwift/ColorThiefSwift.modulemap\" \"${MODULE_MAP_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/ColorThiefSwift/ColorThiefSwift-umbrella.h\" \"${BUILT_PRODUCTS_DIR}\"\nprintf \"\\n\\nmodule ${PRODUCT_MODULE_NAME}.Swift {\\n  header \\\"${COMPATIBILITY_HEADER_PATH}\\\"\\n  requires objc\\n}\\n\" >> \"${MODULE_MAP_PATH}\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		8FF59B3D8460BC8188EDD7FDA68115D5 /* Sources */ = {
+		4BB9268AB76D4D29B897E53409465566 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA26FA4084023043426471CA954AB628 /* Pods-ColorID-dummy.m in Sources */,
+				CBB7651B0C93637DCC5D02CA61C8FE87 /* Pods-ColorID-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A03B0CA31A1C4B87E70F76BA01FC2BE7 /* Sources */ = {
+		768EF9D4A0936922E22AE8A1102EE08F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BC582678856F1397E947A9B31C1F9C1 /* CGRect+Inset.swift in Sources */,
-				1701F13CAE0D2287CDE6BAEEEFDBBA3E /* PopupContainerView.swift in Sources */,
-				C655C263C73FFCA17C6EE0BDF135275C /* PopupContainerWindow.swift in Sources */,
-				AE50BD7CD375E33516BB1D31520EB289 /* PopupItem.swift in Sources */,
-				D80029F691E3C0ADB5E8A1236543E5FF /* PopupPresentable.swift in Sources */,
-				A41CD19EF032BF7BD0ADD0A79721F9C9 /* PopupViewCotainable.swift in Sources */,
-				3BD2E611DE030518CBC517D4C7D1CE3C /* PopupViewDirection.swift in Sources */,
-				5A1A1CBF14249170998119B5E94B600A /* PopupViewType.swift in Sources */,
-				FB4A2E23264772AEA0066B4072E4083F /* PopupWindow-dummy.m in Sources */,
-				74981683B2F4F1F85795A679881F1147 /* PopupWindowManager.swift in Sources */,
-				077E4F840DC48F9FFC5C9F9689BDC675 /* UIView+Shape.swift in Sources */,
+				E221005DEBDED2243320546F3881921F /* ColorThief.swift in Sources */,
+				9A055AEE2AAB20CA806430003846A7A7 /* ColorThiefSwift-dummy.m in Sources */,
+				B2FF9BA521DACB25CA9DA4CE3DAC8DFB /* MMCQ.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A3143E215418A4778F3E3FD8613386E9 /* Sources */ = {
+		80BB990E08131AFA9525D47FFB3BD8BC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D327D0DE57AA5DD5613B100233821A7 /* ColorThief.swift in Sources */,
-				D8B6DEDD1D7903D553461F5B0C84A20D /* ColorThiefSwift-dummy.m in Sources */,
-				522E6BEBA2BC057215B3150A760398FF /* MMCQ.swift in Sources */,
+				4DA30752B511DD105A0E454B7691CB45 /* RHButtonView.swift in Sources */,
+				FA64DA1E923D463CE11852FA29F76B62 /* RHButtonViewConfigProtocol.swift in Sources */,
+				877212BFD63AA32E3A24F01B096FB68A /* RHSideButtonAnimator.swift in Sources */,
+				D19A0B74F844B1EED7CCA5EC155B5987 /* RHSideButtonAnimatorProtocol.swift in Sources */,
+				2FB4C57AB7FB37F12E33C69DA41F1589 /* RHSideButtons-dummy.m in Sources */,
+				FA28D5920DE0D1770ABB9A7FA778170C /* RHSideButtons.swift in Sources */,
+				163C570B7CE5CB772CBF2885C7D6E4D1 /* RHTriggerButtonView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADBB86AB1F462AD6E4BABC16FB102FF5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B396B888426E15B9B6F4AF320063F7F8 /* CGRect+Inset.swift in Sources */,
+				34A09A886D038ECB9B5517204238D3D6 /* PopupContainerView.swift in Sources */,
+				350FF633C1C7FE894D582D7CEB4D0CC5 /* PopupContainerWindow.swift in Sources */,
+				EB64910237F965C98B0DAA6325357B58 /* PopupItem.swift in Sources */,
+				33542E52E5C5BB5248A90F302B7CC7CC /* PopupPresentable.swift in Sources */,
+				C7B839C04B6C105EDB57A3F67BE700BD /* PopupViewCotainable.swift in Sources */,
+				851188DAB01B75964D1EE347B6E0F83F /* PopupViewDirection.swift in Sources */,
+				14D35008657CE3B849F9227F279C2D0B /* PopupViewType.swift in Sources */,
+				58C80CE3EB0555DC3E0E184097E09D67 /* PopupWindow-dummy.m in Sources */,
+				6E57779C8E3AE30A2805A58186817805 /* PopupWindowManager.swift in Sources */,
+				327F99FD91E81C97E68859B000370114 /* UIView+Shape.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0064E74D79422F378E42F762F45EFE4E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ColorThiefSwift;
-			target = DBC10C011B73579F412ACE9D0F1EA271 /* ColorThiefSwift */;
-			targetProxy = 3ACF73422FA480351B6E0DE162420BDF /* PBXContainerItemProxy */;
-		};
-		168F8B534BFD5E61CCB0F6D036D879FC /* PBXTargetDependency */ = {
+		2625642808544E5C2416446B8CFAF905 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PopupWindow;
-			target = 1DBBF91F4E62E30C9B9571B678FAED5A /* PopupWindow */;
-			targetProxy = F0DE38B5F6067036793A480207093BC9 /* PBXContainerItemProxy */;
+			target = 5EF040D3212F7F0F8F95A997F8B7EFED /* PopupWindow */;
+			targetProxy = F0D6F37069D01CF6A99B1CF2FC0F1225 /* PBXContainerItemProxy */;
+		};
+		71E220F5C22C499690F2594C308596B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ColorThiefSwift;
+			target = 0D4F2FD7A9BDC05BC1D47DAC26B426DE /* ColorThiefSwift */;
+			targetProxy = 69DFD35969654F18EB2D86A9DD3E42DA /* PBXContainerItemProxy */;
+		};
+		F4B1FC2A5560F0ECFB00DA78B8F13704 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RHSideButtons;
+			target = B5D61A532661CD958D2AE612596B46B2 /* RHSideButtons */;
+			targetProxy = 6CE5CDAE4CD233F15FE13DD917D854A8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		10DB2C75B8927D20B085FE31E40D2550 /* Debug */ = {
+		110E774BD9ACB107B3E2147E34192304 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1584E5EA33336119D7A018FD9FE75BCD /* ColorThiefSwift.xcconfig */;
+			baseConfigurationReference = B16E2B98749FECD307C719243DF65E7F /* Pods-ColorID.debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/ColorThiefSwift/ColorThiefSwift-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MODULEMAP_FILE = Headers/Public/ColorThiefSwift/ColorThiefSwift.modulemap;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = ColorThiefSwift;
-				PRODUCT_NAME = ColorThiefSwift;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		2AAB1D9277505D82D34792FF7931AD6B /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 139015F9FA20EF6B94AA65EEAA2C3E44 /* PopupWindow.xcconfig */;
-			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/PopupWindow/PopupWindow-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				MODULEMAP_FILE = Headers/Public/PopupWindow/PopupWindow.modulemap;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ColorID/Pods-ColorID.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = PopupWindow;
-				PRODUCT_NAME = PopupWindow;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = Debug;
 		};
-		5DC0083F57E9AB706B46C5B5D73B38D8 /* Debug */ = {
+		131356BE54884448CA49C07BEDF4BB2A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -534,8 +631,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -556,18 +651,47 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		8A3BBB70C60B6A519FD6BB037939DF69 /* Release */ = {
+		1B8816D16EE69AB8FE41AB627761D775 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1584E5EA33336119D7A018FD9FE75BCD /* ColorThiefSwift.xcconfig */;
+			baseConfigurationReference = 912AB50393C8CCC06B28B555A2DDA925 /* RHSideButtons.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/RHSideButtons/RHSideButtons-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MODULEMAP_FILE = Headers/Public/RHSideButtons/RHSideButtons.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = RHSideButtons;
+				PRODUCT_NAME = RHSideButtons;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2F5BBD5C1D7A529BD8BAC968F29D07FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD81A42BAFDF02AF2471F3785EE61FAE /* ColorThiefSwift.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -585,16 +709,14 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = Debug;
 		};
-		8C258B2B50FDC12043BA671F36A392EB /* Release */ = {
+		AE15E268336D71711EE501AE301689CC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E2ED0B99ADF533197B13FD4CA12E2A7B /* Pods-ColorID.release.xcconfig */;
+			baseConfigurationReference = 99A8F4CB54B14D7666DBD29579ED9274 /* Pods-ColorID.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -602,7 +724,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-ColorID/Pods-ColorID.modulemap";
 				OTHER_LDFLAGS = "";
@@ -611,13 +733,116 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		AEEA80476F98EB645C4DD53EB2BB6D88 /* Release */ = {
+		CD589E8685C9201B258A42ADB1767C3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB63ACFCCF54557D5D7922BEBFC68A2F /* PopupWindow.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/PopupWindow/PopupWindow-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MODULEMAP_FILE = Headers/Public/PopupWindow/PopupWindow.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = PopupWindow;
+				PRODUCT_NAME = PopupWindow;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D94CEF5FC2B55589D085BD8A5756E014 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB63ACFCCF54557D5D7922BEBFC68A2F /* PopupWindow.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/PopupWindow/PopupWindow-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MODULEMAP_FILE = Headers/Public/PopupWindow/PopupWindow.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = PopupWindow;
+				PRODUCT_NAME = PopupWindow;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E051692C61652399E279628F36132CA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 912AB50393C8CCC06B28B555A2DDA925 /* RHSideButtons.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/RHSideButtons/RHSideButtons-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MODULEMAP_FILE = Headers/Public/RHSideButtons/RHSideButtons.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = RHSideButtons;
+				PRODUCT_NAME = RHSideButtons;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E435229F7713594FC5A9296B3FD4E60A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD81A42BAFDF02AF2471F3785EE61FAE /* ColorThiefSwift.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/ColorThiefSwift/ColorThiefSwift-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MODULEMAP_FILE = Headers/Public/ColorThiefSwift/ColorThiefSwift.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = ColorThiefSwift;
+				PRODUCT_NAME = ColorThiefSwift;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F090CD07A80273D5A73C8EA19224ADDB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -649,8 +874,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -669,105 +892,65 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
 		};
-		C2A47000BCAF6F387A1794C88C7296E7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5E8FBA4F961B2855BC091EE97D10B0CE /* Pods-ColorID.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ColorID/Pods-ColorID.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		DDC5C8E0F14DDBCA75C0EAF4CF021176 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 139015F9FA20EF6B94AA65EEAA2C3E44 /* PopupWindow.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/PopupWindow/PopupWindow-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				MODULEMAP_FILE = Headers/Public/PopupWindow/PopupWindow.modulemap;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = PopupWindow;
-				PRODUCT_NAME = PopupWindow;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+		0080D40A4DA349D8545D5289110997C5 /* Build configuration list for PBXNativeTarget "RHSideButtons" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5DC0083F57E9AB706B46C5B5D73B38D8 /* Debug */,
-				AEEA80476F98EB645C4DD53EB2BB6D88 /* Release */,
+				E051692C61652399E279628F36132CA9 /* Debug */,
+				1B8816D16EE69AB8FE41AB627761D775 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2E85F5806F7F829A5EBD828C6122C4DA /* Build configuration list for PBXNativeTarget "PopupWindow" */ = {
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DDC5C8E0F14DDBCA75C0EAF4CF021176 /* Debug */,
-				2AAB1D9277505D82D34792FF7931AD6B /* Release */,
+				131356BE54884448CA49C07BEDF4BB2A /* Debug */,
+				F090CD07A80273D5A73C8EA19224ADDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		91DD563B9A090058E9234138D2248FE4 /* Build configuration list for PBXNativeTarget "Pods-ColorID" */ = {
+		73BA4D4B5F7F2A262A85BF87DF259932 /* Build configuration list for PBXNativeTarget "PopupWindow" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C2A47000BCAF6F387A1794C88C7296E7 /* Debug */,
-				8C258B2B50FDC12043BA671F36A392EB /* Release */,
+				D94CEF5FC2B55589D085BD8A5756E014 /* Debug */,
+				CD589E8685C9201B258A42ADB1767C3B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F549C62B1937F958FA67D1070DE16FC2 /* Build configuration list for PBXNativeTarget "ColorThiefSwift" */ = {
+		958C47203D98BAED53326B349A4102A9 /* Build configuration list for PBXNativeTarget "ColorThiefSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				10DB2C75B8927D20B085FE31E40D2550 /* Debug */,
-				8A3BBB70C60B6A519FD6BB037939DF69 /* Release */,
+				2F5BBD5C1D7A529BD8BAC968F29D07FB /* Debug */,
+				E435229F7713594FC5A9296B3FD4E60A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE52FE190F98C8A8710B6C12E032383C /* Build configuration list for PBXNativeTarget "Pods-ColorID" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				110E774BD9ACB107B3E2147E34192304 /* Debug */,
+				AE15E268336D71711EE501AE301689CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 }

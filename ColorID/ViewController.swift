@@ -7,16 +7,33 @@
 //
 
 import UIKit
-
-class ViewController: UIViewController, FrameExtractorDelegate {
+import RHSideButtons
+class ViewController: UIViewController, FrameExtractorDelegate, RHSideButtonsDelegate, RHSideButtonsDataSource {
+    func sideButtonsNumberOfButtons(_ sideButtons: RHSideButtons) -> Int {
+        return 1
+    }
+    
+    func sideButtons(_ sideButtons: RHSideButtons, buttonAtIndex index: Int) -> RHButtonView {
+        return RHButtonView {
+            $0.bgColor = UIColor.white
+        }
+    }
+    
+    func sideButtons(_ sideButtons: RHSideButtons, didSelectButtonAtIndex index: Int) {
+        print("Selected index {index}")
+    }
+    
+    func sideButtons(_ sideButtons: RHSideButtons, didTriggerButtonChangeStateTo state: RHButtonState) {
+        print("Trigger Button Changed to state")
+    }
     
     
     @IBOutlet weak var ColorView: UIView!
     @IBOutlet weak var ColorNameView: ColorInfoDisplay!
-    var camera: Camera!
-    var angle: Double!
-    var sizeOfCenterPoint = 10.0
-    var lineWidth = 4
+    fileprivate var camera: Camera!
+    fileprivate var angle: Double!
+    fileprivate var sizeOfCenterPoint = 10.0
+    fileprivate var lineWidth = 4
     override var shouldAutorotate: Bool {
         return false
     }
@@ -28,6 +45,20 @@ class ViewController: UIViewController, FrameExtractorDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // set up the top right floating button
+        let triggerButton = RHTriggerButtonView(pressedImage: UIImage(named: "exit_icon")!) {
+            $0.image = UIImage(named: "trigger_img")
+            $0.hasShadow = true
+        }
+        
+        // sideButton
+        let sideButtonView = RHSideButtons(parentView: self.view, triggerButton: triggerButton)
+        sideButtonView.delegate = self
+        sideButtonView.dataSource = self
+
+        ////////////
+        
         camera = Camera(frame: cameraViewFrame, sizeOfCenterPoint: Int(self.sizeOfCenterPoint))
         camera.delegate = self
         NotificationCenter.default.addObserver(
@@ -40,7 +71,7 @@ class ViewController: UIViewController, FrameExtractorDelegate {
             self.view.layer.addSublayer(cameraLayer)
         }
         camera.videoPreviewLayer?.frame = cameraViewFrame
-        let pinch = UIGestureRecognizer(target: self, action: #selector(ZoomInOut(sender:)))
+//        let pinch = UIGestureRecognizer(target: self, action: #selector(ZoomInOut(sender:)))
         //        self.camera.videoPreviewLayer.addGestureRecognizer(pinch)
     }
     fileprivate var count: Int = 0
@@ -98,12 +129,12 @@ class ViewController: UIViewController, FrameExtractorDelegate {
         default:
             break;
         }
-        UIView.animate(withDuration: 0.3, animations: {
-            //            self.ColorNameView.transform = CGAffineTransform(rotationAngle: CGFloat(self.angle))
-            //            self.ColorView.transform = CGAffineTransform(rotationAngle: CGFloat(self.angle))
-            //            self.LocalizationView.transform = CGAffineTransform(rotationAngle: CGFloat(self.angle))
-            //            self.LocalizationView.frame.size = CGSize(width: self.LocalizationView.bounds.height, height: self.LocalizationView.bounds.width)
-        })
+//        UIView.animate(withDuration: 0.3, animations: {
+//            //            self.ColorNameView.transform = CGAffineTransform(rotationAngle: CGFloat(self.angle))
+//            //            self.ColorView.transform = CGAffineTransform(rotationAngle: CGFloat(self.angle))
+//            //            self.LocalizationView.transform = CGAffineTransform(rotationAngle: CGFloat(self.angle))
+//            //            self.LocalizationView.frame.size = CGSize(width: self.LocalizationView.bounds.height, height: self.LocalizationView.bounds.width)
+//        })
     }
     
     
@@ -115,13 +146,13 @@ class ViewController: UIViewController, FrameExtractorDelegate {
     }
     
     
-    @objc func ZoomInOut(sender: UIPinchGestureRecognizer) {
-        guard sender.view != nil else { return }
-        if sender.state == .began || sender.state == .changed {
-            sender.view?.transform = (sender.view?.transform.scaledBy(x: sender.scale, y: sender.scale))!
-            sender.scale = 1.0
-        }
-    }
+//    @objc func ZoomInOut(sender: UIPinchGestureRecognizer) {
+//        guard sender.view != nil else { return }
+//        if sender.state == .began || sender.state == .changed {
+//            sender.view?.transform = (sender.view?.transform.scaledBy(x: sender.scale, y: sender.scale))!
+//            sender.scale = 1.0
+//        }
+//    }
     // handling event when changing center point location
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {

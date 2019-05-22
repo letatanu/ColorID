@@ -28,6 +28,7 @@
 		5BB4225C20DC876400CB09D3 /* ColorIDUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB4225B20DC876400CB09D3 /* ColorIDUITests.swift */; };
 		5BBF638020F5FD1C008C460C /* Extension_CGPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBF637F20F5FD1C008C460C /* Extension_CGPath.swift */; };
 		5BE62C2A21D31FC8000743AE /* Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE62C2921D31FC8000743AE /* Classifier.swift */; };
+		8C75877D229601C800F7B5DD /* libRHSideButtons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C75877C229601C800F7B5DD /* libRHSideButtons.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,8 @@
 		5BB4226B20DCD01100CB09D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		5BBF637F20F5FD1C008C460C /* Extension_CGPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_CGPath.swift; sourceTree = "<group>"; };
 		5BE62C2921D31FC8000743AE /* Classifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Classifier.swift; sourceTree = "<group>"; };
+		8C5CBF992291411000451299 /* libFloaty.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libFloaty.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C75877C229601C800F7B5DD /* libRHSideButtons.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRHSideButtons.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		965525DF21ABEFB34FDC4A48 /* Pods-ColorID.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorID.release.xcconfig"; path = "Pods/Target Support Files/Pods-ColorID/Pods-ColorID.release.xcconfig"; sourceTree = "<group>"; };
 		C706C5C84EBF3DB0919C4CAA /* libPods-ColorID.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ColorID.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -85,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C75877D229601C800F7B5DD /* libRHSideButtons.a in Frameworks */,
 				1A879729970EED7426438D9B /* libPods-ColorID.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -207,6 +211,8 @@
 		766213965ABBA3232F3B5112 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8C75877C229601C800F7B5DD /* libRHSideButtons.a */,
+				8C5CBF992291411000451299 /* libFloaty.a */,
 				C706C5C84EBF3DB0919C4CAA /* libPods-ColorID.a */,
 			);
 			name = Frameworks;

@@ -1,20 +1,24 @@
 PODS:
   - ColorThiefSwift (0.3.0)
   - PopupWindow (0.1.0)
+  - RHSideButtons (1.1.0)
 
 DEPENDENCIES:
   - ColorThiefSwift (>= 0.3.0)
   - PopupWindow
+  - RHSideButtons
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - ColorThiefSwift
     - PopupWindow
+    - RHSideButtons
 
 SPEC CHECKSUMS:
   ColorThiefSwift: bca6dee535214015763310b7dd316290840c87e3
   PopupWindow: 2f3a33001295435a3ab568e42a970d51539ed6e9
+  RHSideButtons: 9de185791d8119bd1160f6dcb88e47b9ad93d192
 
-PODFILE CHECKSUM: aa0db9a9fe8ace80fbb7ad279465163c084c933c
+PODFILE CHECKSUM: d4ede78657903165a794dfed3dba56c5dfb80a9e
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.2
