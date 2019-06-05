@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1A879729970EED7426438D9B /* libPods-ColorID.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C706C5C84EBF3DB0919C4CAA /* libPods-ColorID.a */; };
-		5B363B4A2123FFDB003A64DF /* ColorInfoDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B363B492123FFDB003A64DF /* ColorInfoDisplay.swift */; };
 		5B4A415F211ED3FC00150F19 /* ColorDict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4A415E211ED3FC00150F19 /* ColorDict.swift */; };
 		5B4B0E8321EE7C7E0038E15E /* StreamerFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B0E8221EE7C7E0038E15E /* StreamerFile.swift */; };
 		5B4B0E8521F15E820038E15E /* ColorDict.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5B4B0E8421F15E820038E15E /* ColorDict.txt */; };
@@ -28,7 +27,9 @@
 		5BB4225C20DC876400CB09D3 /* ColorIDUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB4225B20DC876400CB09D3 /* ColorIDUITests.swift */; };
 		5BBF638020F5FD1C008C460C /* Extension_CGPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBF637F20F5FD1C008C460C /* Extension_CGPath.swift */; };
 		5BE62C2A21D31FC8000743AE /* Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE62C2921D31FC8000743AE /* Classifier.swift */; };
-		8C75877D229601C800F7B5DD /* libRHSideButtons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C75877C229601C800F7B5DD /* libRHSideButtons.a */; };
+		8C30C45D229C931700EBD139 /* Extension_UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C30C45C229C931700EBD139 /* Extension_UIButton.swift */; };
+		8C30C45F229C97E600EBD139 /* Extension_ViewController+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C30C45E229C97E600EBD139 /* Extension_ViewController+Events.swift */; };
+		8CF6778722A35330004D65E2 /* bottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF6778622A35330004D65E2 /* bottomView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +51,6 @@
 
 /* Begin PBXFileReference section */
 		450E0E8416642281EA80619F /* Pods-ColorID.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorID.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ColorID/Pods-ColorID.debug.xcconfig"; sourceTree = "<group>"; };
-		5B363B492123FFDB003A64DF /* ColorInfoDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorInfoDisplay.swift; sourceTree = "<group>"; };
 		5B4A415E211ED3FC00150F19 /* ColorDict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDict.swift; sourceTree = "<group>"; };
 		5B4B0E8221EE7C7E0038E15E /* StreamerFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamerFile.swift; sourceTree = "<group>"; };
 		5B4B0E8421F15E820038E15E /* ColorDict.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ColorDict.txt; sourceTree = "<group>"; };
@@ -77,8 +77,11 @@
 		5BB4226B20DCD01100CB09D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		5BBF637F20F5FD1C008C460C /* Extension_CGPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_CGPath.swift; sourceTree = "<group>"; };
 		5BE62C2921D31FC8000743AE /* Classifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Classifier.swift; sourceTree = "<group>"; };
+		8C30C45C229C931700EBD139 /* Extension_UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_UIButton.swift; sourceTree = "<group>"; };
+		8C30C45E229C97E600EBD139 /* Extension_ViewController+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension_ViewController+Events.swift"; sourceTree = "<group>"; };
 		8C5CBF992291411000451299 /* libFloaty.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libFloaty.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C75877C229601C800F7B5DD /* libRHSideButtons.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRHSideButtons.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CF6778622A35330004D65E2 /* bottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bottomView.swift; sourceTree = "<group>"; };
 		965525DF21ABEFB34FDC4A48 /* Pods-ColorID.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorID.release.xcconfig"; path = "Pods/Target Support Files/Pods-ColorID/Pods-ColorID.release.xcconfig"; sourceTree = "<group>"; };
 		C706C5C84EBF3DB0919C4CAA /* libPods-ColorID.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ColorID.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -88,7 +91,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C75877D229601C800F7B5DD /* libRHSideButtons.a in Frameworks */,
 				1A879729970EED7426438D9B /* libPods-ColorID.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -117,6 +119,8 @@
 				5B806A1A2254F7BA0030D1F7 /* Extension_Array.swift */,
 				5B806A1C2254F8000030D1F7 /* Extension_UIImage.swift */,
 				5BBF637F20F5FD1C008C460C /* Extension_CGPath.swift */,
+				8C30C45C229C931700EBD139 /* Extension_UIButton.swift */,
+				8C30C45E229C97E600EBD139 /* Extension_ViewController+Events.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -132,10 +136,10 @@
 		5B806A202254F8D60030D1F7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				8CF6778622A35330004D65E2 /* bottomView.swift */,
 				5BE62C2921D31FC8000743AE /* Classifier.swift */,
 				5B6CF1E720E322D90016D8C3 /* CameraLayer.swift */,
 				5B4A415E211ED3FC00150F19 /* ColorDict.swift */,
-				5B363B492123FFDB003A64DF /* ColorInfoDisplay.swift */,
 				5B4B0E8221EE7C7E0038E15E /* StreamerFile.swift */,
 				5B806A222255122A0030D1F7 /* CameraView.swift */,
 			);
@@ -384,17 +388,19 @@
 			files = (
 				5BE62C2A21D31FC8000743AE /* Classifier.swift in Sources */,
 				5B4B0E8321EE7C7E0038E15E /* StreamerFile.swift in Sources */,
+				8CF6778722A35330004D65E2 /* bottomView.swift in Sources */,
 				5B806A232255122A0030D1F7 /* CameraView.swift in Sources */,
 				5B806A192254F6F50030D1F7 /* ViewController+UIPicker.swift in Sources */,
 				5B6CF1E820E322D90016D8C3 /* CameraLayer.swift in Sources */,
 				5B806A1B2254F7BA0030D1F7 /* Extension_Array.swift in Sources */,
-				5B363B4A2123FFDB003A64DF /* ColorInfoDisplay.swift in Sources */,
+				8C30C45F229C97E600EBD139 /* Extension_ViewController+Events.swift in Sources */,
 				5BB4223E20DC876300CB09D3 /* ViewController.swift in Sources */,
 				5B4A415F211ED3FC00150F19 /* ColorDict.swift in Sources */,
 				5BB4223C20DC876300CB09D3 /* AppDelegate.swift in Sources */,
 				5B880BE32112ACDB004B135B /* Extension_UIColor.swift in Sources */,
 				5BBF638020F5FD1C008C460C /* Extension_CGPath.swift in Sources */,
 				5B806A1D2254F8000030D1F7 /* Extension_UIImage.swift in Sources */,
+				8C30C45D229C931700EBD139 /* Extension_UIButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,7 +585,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = letatanu.ColorID;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -599,7 +605,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = letatanu.ColorID;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

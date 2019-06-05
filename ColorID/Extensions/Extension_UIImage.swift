@@ -110,8 +110,8 @@ extension UIImage {
     
     func isEqual( to: UIImage) -> Bool {
         
-        guard let data1 = UIImagePNGRepresentation(self) else { return false }
-        guard let data2 = UIImagePNGRepresentation(to) else { return false }
+        guard let data1 = self.pngData() else { return false }
+        guard let data2 = to.pngData() else { return false }
         return data1==data2
     }
     

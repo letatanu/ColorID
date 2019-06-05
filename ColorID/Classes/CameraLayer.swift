@@ -72,8 +72,8 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
         } catch _ {
             print("failed locking device")
         }
-        captureDevice.activeVideoMaxFrameDuration = CMTimeMake(1, 30)
-        captureDevice.activeVideoMinFrameDuration = CMTimeMake(1, 30)
+        captureDevice.activeVideoMaxFrameDuration = CMTimeMake(value: 1, timescale: 30)
+        captureDevice.activeVideoMinFrameDuration = CMTimeMake(value: 1, timescale: 30)
         captureDevice.unlockForConfiguration()
 
         guard let captureDeviceInput = try? AVCaptureDeviceInput(device: captureDevice) else { return }
@@ -170,7 +170,6 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
         guard let uiImage = imageFromSampleBuffer(sampleBuffer: sampleBuffer) else { return }
         DispatchQueue.main.async { [unowned self] in
             self.delegate?.captured(image: uiImage)
-            //                self.delegate?.dominantColor(color: uiImage.mostDominantColor()!)
         }
         
     }

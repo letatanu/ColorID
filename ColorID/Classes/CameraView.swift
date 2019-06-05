@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 
 class CameraView: UIView {
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first {
-            let loc = touch.location(in: self)
-            
-        }
-    }
+//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        if let touch = touches.first {
+//            let loc = touch.location(in: self)
+//
+//        }
+//    }
 }

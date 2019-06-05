@@ -21,6 +21,8 @@ class ColorInfoDisplay: UIView {
     func showColorInfo(_ color: UIColor) {
         let name = color.name()
         let family = color.family()
+        self.fullName.adjustsFontSizeToFitWidth = true
+        self.family.adjustsFontSizeToFitWidth = true
         self.fullName.text = name
         self.family.text = family
     }
