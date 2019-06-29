@@ -28,8 +28,35 @@ extension UIColor {
         let blue  = CGFloat(b) / 255.0
         self.init(red:red, green:green, blue:blue, alpha:1)
     }
+    // converting to color system
     
-    var hsl:(hue:CGFloat, sarturation:CGFloat, brightness:CGFloat) {
+    
+    var hsl: (hue: CGFloat, sarturation: CGFloat, lightness: CGFloat) {
+        let minV:CGFloat = CGFloat(min(self.redValue, self.greenValue, self.blueValue))
+        let maxV:CGFloat = CGFloat(max(self.redValue, self.greenValue, self.blueValue))
+        let delta:CGFloat = maxV - minV
+        var hue:CGFloat = 0
+        if delta != 0 {
+            if self.redValue == maxV {
+                hue = (self.greenValue - self.blueValue) / delta
+            }
+            else if self.greenValue == maxV {
+                hue = 2 + (self.blueValue - self.redValue) / delta
+            }
+            else {
+                hue = 4 + (self.redValue - self.greenValue) / delta
+            }
+            hue *= 60
+            if hue < 0 {
+                hue += 360
+            }
+        }
+        let s = maxV == 0 ? 0 : (delta / maxV)
+        let b = (minV + maxV)/2
+        return (hue/360, s, b)
+    }
+    
+    var hsv: (hue: CGFloat, sarturation: CGFloat, value: CGFloat) {
         let minV:CGFloat = CGFloat(min(self.redValue, self.greenValue, self.blueValue))
         let maxV:CGFloat = CGFloat(max(self.redValue, self.greenValue, self.blueValue))
         let delta:CGFloat = maxV - minV
@@ -53,9 +80,19 @@ extension UIColor {
         let b = maxV
         return (hue/360, s, b)
     }
+    
+    var cmyk: (cyan: CGFloat, magneta: CGFloat, yellow: CGFloat, key: CGFloat) {
+        let maxV = CGFloat(max(self.redValue, self.greenValue, self.blueValue))
+        let k = 1 - maxV
+        return ((1-k-self.redValue)/(1-k), (1-self.greenValue-k)/(1-k), (1-self.blueValue-k)/(1-k), k)
+    }
+    
+    
     static public func + (left: UIColor, right: UIColor) -> UIColor {
         return UIColor(red: left.redValue + right.redValue, green: left.greenValue + right.greenValue , blue: left.blueValue + right.blueValue, alpha: CGFloat(1) )
     }
+    
+    
     var rgba: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
         var red: CGFloat = 0
         var green: CGFloat = 0
@@ -80,7 +117,7 @@ extension UIColor {
     
     func distance(_ p: UIColor) -> Double {
         let df1 = pow((self.redValue - p.redValue),2) + pow((self.greenValue - p.greenValue),2) + pow((self.blueValue - p.blueValue),2)
-        let df2 = pow((self.hsl.hue - p.hsl.hue),2) + pow((self.hsl.sarturation - p.hsl.sarturation),2) + pow((self.hsl.brightness - p.hsl.brightness),2)
+        let df2 = pow((self.hsl.hue - p.hsl.hue),2) + pow((self.hsl.sarturation - p.hsl.sarturation),2) + pow((self.hsl.lightness - p.hsl.lightness),2)
         return Double(df1 + df2*df2)
     }
     

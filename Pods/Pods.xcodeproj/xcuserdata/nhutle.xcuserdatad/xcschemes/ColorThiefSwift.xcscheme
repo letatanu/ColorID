@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1020"
+   LastUpgradeVersion = "1100"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0D4F2FD7A9BDC05BC1D47DAC26B426DE"
+               BlueprintIdentifier = "0AC4379E339EE63C43CD14649029C7E8"
                BuildableName = "libColorThiefSwift.a"
                BlueprintName = "ColorThiefSwift"
                ReferencedContainer = "container:Pods.xcodeproj">

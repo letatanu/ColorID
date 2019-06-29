@@ -46,3 +46,7 @@ extension ViewController {
         self.camera.videoPreviewLayer?.addSublayer(self.camera.centerPointRec)
     }
 }
+
+extension ViewController: UIViewControllerTransitioningDelegate {
+    
+}

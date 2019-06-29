@@ -67,13 +67,13 @@ class ViewController: UIViewController, FrameExtractorDelegate {
     fileprivate func layout() {
         bottomView.translatesAutoresizingMaskIntoConstraints = false
         let constraints = [
-            bottomView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
+            bottomView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
             bottomView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
             bottomView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
             bottomView.heightAnchor.constraint(equalToConstant: self.view.bounds.height/7)
         ]
         NSLayoutConstraint.activate(constraints)
-        bottomView.layer.cornerRadius = 0.05*bottomView.bounds.width
+//        bottomView.layer.cornerRadius = 0.05*bottomView.bounds.width
         
     }
     override func viewDidLoad() {

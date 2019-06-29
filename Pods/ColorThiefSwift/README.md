@@ -5,7 +5,7 @@ A Swift port of Sven Woltmann's Java implementation.
 
 ![screen shot](https://github.com/yamoridon/ColorThiefSwift/blob/master/screenshot.png?raw=true "screen shot")
 
-[![CI Status](http://img.shields.io/travis/yamoridon/ColorThiefSwift.svg?style=flat)](https://travis-ci.org/yamoridon/ColorThiefSwift)
+[![Build Status](https://app.bitrise.io/app/36bdb92c783ae764/status.svg?token=XE0zz2NQ9YgDskIP61QTaA&branch=bitrise)](https://app.bitrise.io/app/36bdb92c783ae764)
 [![Version](https://img.shields.io/cocoapods/v/ColorThiefSwift.svg?style=flat)](http://cocoapods.org/pods/ColorThiefSwift)
 [![License](https://img.shields.io/cocoapods/l/ColorThiefSwift.svg?style=flat)](http://cocoapods.org/pods/ColorThiefSwift)
 [![Platform](https://img.shields.io/cocoapods/p/ColorThiefSwift.svg?style=flat)](http://cocoapods.org/pods/ColorThiefSwift)
@@ -16,17 +16,31 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-- Xcode 9
-- Swift 4
+- Xcode 10.2
+- Swift 5
 - iOS 9
 
 ## Installation
+
+### CocoaPods
 
 ColorThiefSwift is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'ColorThiefSwift', '>= 0.3.0'
+pod 'ColorThiefSwift', '>= 0.4.0'
+```
+
+### Carthage
+
+Add this to Cartfile
+
+```
+github "yamoridon/ColorThiefSwift" ~> 0.4.0
+```
+
+```
+$ carthage update
 ```
 
 ## Author

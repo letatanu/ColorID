@@ -18,7 +18,11 @@ class BottomView: UIView {
         tmp.adjustsFontSizeToFitWidth = true
         return tmp
     }()
-    
+    fileprivate let seperateBar: UILabel = {
+        let tmp = UILabel()
+        tmp.backgroundColor = .black
+        return tmp
+    }()
     fileprivate var colorName : UILabel = {
         let tmp = UILabel()
         tmp.font = UIFont.systemFont(ofSize: 17, weight: .light)
@@ -46,26 +50,42 @@ class BottomView: UIView {
         colorDisplay.translatesAutoresizingMaskIntoConstraints = false
         colorFamily.translatesAutoresizingMaskIntoConstraints = false
         colorName.translatesAutoresizingMaskIntoConstraints = false
+        seperateBar.translatesAutoresizingMaskIntoConstraints = false
         let constraints = [
-            colorFamily.heightAnchor.constraint(lessThanOrEqualToConstant: self.bounds.height/CGFloat(2)),
-            colorFamily.topAnchor.constraint(equalTo: topAnchor, constant: CGFloat(10)),
-            colorFamily.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat(10)),
-            colorFamily.trailingAnchor.constraint(equalTo: colorDisplay.leadingAnchor),
-//
-            colorName.topAnchor.constraint(equalTo: colorFamily.bottomAnchor, constant: CGFloat(5)),
-            colorName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat(10)),
-            colorName.heightAnchor.constraint(lessThanOrEqualToConstant: bounds.height/CGFloat(2)),
-
+            // constrainting color display label
             colorDisplay.bottomAnchor.constraint(equalTo: bottomAnchor , constant: CGFloat(-5)),
             colorDisplay.topAnchor.constraint(equalTo: topAnchor, constant: CGFloat(5)),
-            colorDisplay.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat(-5)),
-            colorDisplay.widthAnchor.constraint(equalToConstant: self.bounds.width/4)
+            colorDisplay.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat(5)),
+            colorDisplay.widthAnchor.constraint(equalToConstant: self.bounds.width/4),
+            
+            // put a line between color and labels
+            seperateBar.bottomAnchor.constraint(equalTo: bottomAnchor , constant: CGFloat(-10)),
+            seperateBar.topAnchor.constraint(equalTo: topAnchor, constant: CGFloat(10)),
+            seperateBar.leadingAnchor.constraint(equalTo: colorDisplay.trailingAnchor, constant: CGFloat(8)),
+            seperateBar.widthAnchor.constraint(equalToConstant: CGFloat(1)),
+
+            
+            // constrainting  color family showing label
+            colorFamily.heightAnchor.constraint(lessThanOrEqualToConstant: self.bounds.height/CGFloat(2)),
+            colorFamily.topAnchor.constraint(equalTo: topAnchor, constant: CGFloat(10)),
+            colorFamily.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat(0)),
+            colorFamily.leadingAnchor.constraint(equalTo: seperateBar.trailingAnchor, constant: CGFloat(8)),
+            
+            // constrainting color name showing label
+            colorName.topAnchor.constraint(equalTo: colorFamily.bottomAnchor, constant: CGFloat(5)),
+            colorName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat(0)),
+            colorName.heightAnchor.constraint(lessThanOrEqualToConstant: bounds.height/CGFloat(2)),
+            colorName.leadingAnchor.constraint(equalTo: seperateBar.trailingAnchor, constant: CGFloat(8)),
         ]
         NSLayoutConstraint.activate(constraints)
-        colorDisplay.layer.cornerRadius = 0.05*bounds.width
+        colorDisplay.layer.cornerRadius = 0.4*bounds.height
         colorDisplay.clipsToBounds = true
+        
     }
- 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        roundCorners(corners: [.topLeft, .topRight], radius:0.05*self.bounds.width)
+    }
     override init(frame: CGRect) {
         color = UIColor()
         super.init(frame: frame)
@@ -73,6 +93,7 @@ class BottomView: UIView {
         addSubview(colorName)
         addSubview(colorFamily)
         addSubview(colorDisplay)
+        addSubview(seperateBar)
         layout()
     }
     
