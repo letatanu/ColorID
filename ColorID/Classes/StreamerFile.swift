@@ -10,7 +10,7 @@ import Foundation
 
 
 
-class StreamerFile {
+final class StreamerFile {
     let encoding: String.Encoding
     let chunkSize: Int
     let fileHandle: FileHandle

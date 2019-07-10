@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class BottomView: UIView {
+final class BottomView: UIView {
     fileprivate var colorFamily : UILabel = {
         let tmp = UILabel()
         tmp.font = UIFont.systemFont(ofSize: 34)

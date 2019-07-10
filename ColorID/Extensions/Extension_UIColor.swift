@@ -12,6 +12,15 @@ import AVFoundation
 import Darwin
 
 extension UIColor {
+    fileprivate static var _hexValue = String ()
+    var hexValue : String {
+        get {
+            return UIColor._hexValue
+        }
+        set(newValue){
+            UIColor._hexValue = newValue
+        }
+    }
     convenience init(hexString:String) {
         let scanner = Scanner(string: hexString as String)
         if (hexString.hasPrefix("#")) {
@@ -27,6 +36,7 @@ extension UIColor {
         let green = CGFloat(g) / 255.0
         let blue  = CGFloat(b) / 255.0
         self.init(red:red, green:green, blue:blue, alpha:1)
+        self.hexValue = hexString
     }
     // converting to color system
     

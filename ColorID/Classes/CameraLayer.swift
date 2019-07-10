@@ -17,7 +17,7 @@ protocol FrameExtractorDelegate: class {
 }
 
 
-class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
+final class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     var videoPreviewLayer: AVCaptureVideoPreviewLayer? //render the camera view finder
     public var center: CGPoint?
     weak var delegate: FrameExtractorDelegate?

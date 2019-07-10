@@ -15,7 +15,7 @@ import Darwin
 typealias Vectors = Array<[UIColor]>
 typealias Vector = [UIColor]
 
-class Classifier: NSObject {
+final class Classifier: NSObject {
     static let sharedInstance = Classifier()
     private var k = 0
     private var values: Vector = Vector()

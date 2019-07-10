@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class colorDict {
+final class colorDict {
     public var data = [String:String]()
     private static var ColorDictionary: colorDict = {
         let colorDictionary = colorDict()
