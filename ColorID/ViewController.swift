@@ -24,11 +24,11 @@ class ViewController: UIViewController, FrameExtractorDelegate {
         return slider
     }
 
-    var button: UIButton {
+    var button: UIButton = {
         let button = UIButton(type: .custom)
         button.sizeToFit()
         button.backgroundColor = .init(white: 1, alpha: 0.5)
-        button.frame = CGRect(origin: CGPoint(x: 10, y: 10), size: CGSize(width: self.view.bounds.width/10, height: self.view.bounds.width/10))
+//        button.frame = CGRect(origin: CGPoint(x: 10, y: 10), size: CGSize(width: self.view.bounds.width/10, height: self.view.bounds.width/10))
         button.layer.cornerRadius = 0.3 * button.bounds.size.width
         button.clipsToBounds = true
         // set background for normal state
@@ -40,7 +40,7 @@ class ViewController: UIViewController, FrameExtractorDelegate {
         button.autoresizingMask = []
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         return button
-    }
+    }()
     
     @IBOutlet weak var colorCode: UILabel! {
         didSet {
@@ -66,14 +66,23 @@ class ViewController: UIViewController, FrameExtractorDelegate {
     
     fileprivate func layout() {
         bottomView.translatesAutoresizingMaskIntoConstraints = false
+        button.translatesAutoresizingMaskIntoConstraints = false
         let constraints = [
-            bottomView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
-            bottomView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+
+            button.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            button.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            button.heightAnchor.constraint(equalToConstant: self.view.bounds.width/10),
+            button.widthAnchor.constraint(equalToConstant: self.view.bounds.width/10),
+            
+            
+            bottomView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            bottomView.leadingAnchor.constraint(equalTo: button.trailingAnchor, constant: 10),
             bottomView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            bottomView.heightAnchor.constraint(equalToConstant: self.view.bounds.height/7)
+            bottomView.heightAnchor.constraint(equalToConstant: self.view.bounds.height/7),
+            
         ]
         NSLayoutConstraint.activate(constraints)
-//        bottomView.layer.cornerRadius = 0.05*bottomView.bounds.width
+        bottomView.layer.cornerRadius = 0.05*bottomView.bounds.width
         
     }
     override func viewDidLoad() {
