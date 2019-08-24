@@ -8,10 +8,10 @@
 
 import UIKit
 class ViewController: UIViewController, FrameExtractorDelegate {
-     var sliderSize: UISlider {
+    var sliderSize: UISlider {
         let slider = UISlider()
         slider.transform  = CGAffineTransform(rotationAngle: -CGFloat.pi/2)
-        slider.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 25, height: self.view.bounds.height/3) )
+        slider.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 25, height: NumericalData.getInstance().screenHeight/3) )
         
         slider.minimumTrackTintColor = .green
         slider.maximumTrackTintColor = .red
@@ -23,33 +23,39 @@ class ViewController: UIViewController, FrameExtractorDelegate {
         slider.addTarget(self, action: #selector(changeValue(_:)), for: .valueChanged)
         return slider
     }
-
-    var button: UIButton = {
-        let button = UIButton(type: .custom)
-        button.sizeToFit()
-        button.backgroundColor = .init(white: 1, alpha: 0.5)
-//        button.frame = CGRect(origin: CGPoint(x: 10, y: 10), size: CGSize(width: self.view.bounds.width/10, height: self.view.bounds.width/10))
-        button.layer.cornerRadius = 0.3 * button.bounds.size.width
-        button.clipsToBounds = true
-        // set background for normal state
-        let image = UIImage(named: "hamburger_button")!
-        button.setBackgroundImage(image, for: .normal)
-        //set background for pressed state
-        let img = UIImage(named: "exit_icon")
-        button.setBackgroundImage(img, for: .selected)
-        button.autoresizingMask = []
-        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-        return button
-    }()
     
+    //    var button: UIButton = {
+    //        let button = UIButton(type: .custom)
+    //        button.sizeToFit()
+    //        button.backgroundColor = .init(white: 0, alpha: 0.5)
+    ////        button.frame = CGRect(origin: CGPoint(x: 10, y: 10), size: CGSize(width: self.view.bounds.width/10, height: self.view.bounds.width/10))
+    //        button.layer.cornerRadius = 0.3 * button.bounds.size.width
+    //        button.clipsToBounds = true
+    //        // set background for normal state
+    //        let image = UIImage(named: "hamburger_button")!
+    //        button.setBackgroundImage(image, for: .normal)
+    //        //set background for pressed state
+    //        let img = UIImage(named: "exit_icon")
+    //        button.setBackgroundImage(img, for: .selected)
+    //        button.autoresizingMask = []
+    //        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+    //
+    //        button.layer.shadowOpacity = 1
+    //        button.layer.shadowColor = UIColor.black.cgColor
+    //        button.layer.shadowRadius = 1
+    //        button.layer.shadowOffset = .zero
+    //        return button
+    //    }()
+    //
     @IBOutlet weak var colorCode: UILabel! {
         didSet {
             colorCode.adjustsFontSizeToFitWidth = true
         }
     }
-    fileprivate var bottomView : BottomView!
-//    @IBOutlet weak var ColorView: UIView!
-//    @IBOutlet weak var ColorNameView: ColorInfoDisplay!
+    fileprivate var bottomView: BottomView!
+    fileprivate var topView : TopView!
+    //    @IBOutlet weak var ColorView: UIView!
+    //    @IBOutlet weak var ColorNameView: ColorInfoDisplay!
     var camera: Camera!
     fileprivate var angle: Double!
     var sizeOfCenterPoint = 10.0
@@ -64,25 +70,32 @@ class ViewController: UIViewController, FrameExtractorDelegate {
         return true
     }
     
+    //    override func viewDidLayoutSubviews() {
+    //        super.viewDidLayoutSubviews()
+    //        //        roundCorners(corners: [.topLeft, .topRight], radius:0.05*self.bounds.width)
+    //        topView.colorDisplay.layer.cornerRadius = topView.colorDisplay.bounds.height*0.5
+    //    }
+    //
     fileprivate func layout() {
+        topView.translatesAutoresizingMaskIntoConstraints = false
+        //        button.translatesAutoresizingMaskIntoConstraints = false
         bottomView.translatesAutoresizingMaskIntoConstraints = false
-        button.translatesAutoresizingMaskIntoConstraints = false
         let constraints = [
-
-            button.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            button.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            button.heightAnchor.constraint(equalToConstant: self.view.bounds.width/10),
-            button.widthAnchor.constraint(equalToConstant: self.view.bounds.width/10),
             
+            topView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            topView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            topView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            topView.heightAnchor.constraint(equalToConstant: self.view.bounds.height/7),
             
-            bottomView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            bottomView.leadingAnchor.constraint(equalTo: button.trailingAnchor, constant: 10),
-            bottomView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            bottomView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
+            bottomView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
+            bottomView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
             bottomView.heightAnchor.constraint(equalToConstant: self.view.bounds.height/7),
             
-        ]
+            ]
         NSLayoutConstraint.activate(constraints)
-        bottomView.layer.cornerRadius = 0.05*bottomView.bounds.width
+        topView.layer.cornerRadius = 0.05*topView.bounds.width
+        
         
     }
     override func viewDidLoad() {
@@ -90,18 +103,16 @@ class ViewController: UIViewController, FrameExtractorDelegate {
         
         camera = Camera(frame: cameraViewFrame, sizeOfCenterPoint: Int(self.sizeOfCenterPoint))
         camera.delegate = self
-//        NotificationCenter.default.addObserver(
-//            self,
-//            selector: #selector(deviceDidRotate),
-//            name: UIDevice.orientationDidChangeNotification,
-//            object: nil
-//        )
+        
         if let cameraLayer = camera.videoPreviewLayer {
             let longTapRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
             self.view.addGestureRecognizer(longTapRecognizer)
             self.view.layer.addSublayer(cameraLayer)
         }
-        self.view.addSubview(button)
+        //        self.view.addSubview(button)
+        topView = TopView(frame: CGRect(origin: .zero, size: CGSize(width: self.view.bounds.width - 20, height: self.view.bounds.height/7)))
+        self.view.addSubview(topView)
+        
         bottomView = BottomView(frame: CGRect(origin: .zero, size: CGSize(width: self.view.bounds.width - 20, height: self.view.bounds.height/7)))
         self.view.addSubview(bottomView)
         layout()
@@ -113,26 +124,14 @@ class ViewController: UIViewController, FrameExtractorDelegate {
     fileprivate var isInitialized: Bool = false
     fileprivate var lastImage = UIImage()
     
-//    fileprivate func compare2Images(color1: UIColor, color2: UIColor) -> Bool {
-//        let totalColor1 = color1.redValue + color1.greenValue + color1.blueValue
-//        let totalColor2 = color2.redValue + color2.greenValue + color2.blueValue
-//        let compr = fabs(totalColor1 - totalColor2)
-//        if  compr < 0.005 {
-//            return true
-//        }
-//        return false
-//    }
     func captured(image: UIImage) {
         if isInitialized {
             count += 1
             if count >= threshold {
-//                let currentColor = image.averageColor!
-//                let lastColor = lastImage.averageColor!
                 lastImage = image
-//                if !compare2Images(color1: currentColor, color2: lastColor) {
-                    if  let color = image.mostDominantColor(inNumberOfCluster: 13) {
-                        bottomView.color = color
-//                    }
+                if  let color = image.mostDominantColor(inNumberOfCluster: 13) {
+                    topView.color = color
+                    //                    }
                     count = 0
                 }
             }
@@ -141,34 +140,10 @@ class ViewController: UIViewController, FrameExtractorDelegate {
             let color_ = image.mostDominantColor(inNumberOfCluster: 5)
             lastImage = image
             isInitialized = true
-            bottomView.color = color_!
+            topView.color = color_!
         }
     }
     
-    //    override func viewDidLayoutSubviews() {
-    //        self.camera.videoPreviewLayer?.frame =  self.CameraView.bounds
-    ////        self.camera.videoPreviewLayer?.frame =  self.view.bounds
-    //
-    //    }
-//    @objc func deviceDidRotate() {
-//        self.angle = 0.0
-//        switch UIDevice.current.orientation {
-//        case .landscapeLeft:
-//            angle = .pi/2;
-//            break;
-//        case .landscapeRight:
-//            angle = -.pi/2;
-//            break;
-//        default:
-//            break;
-//        }
-//        UIView.animate(withDuration: 0.3, animations: {
-//            //            self.ColorNameView.transform = CGAffineTransform(rotationAngle: CGFloat(self.angle))
-//            //            self.ColorView.transform = CGAffineTransform(rotationAngle: CGFloat(self.angle))
-//            //            self.LocalizationView.transform = CGAffineTransform(rotationAngle: CGFloat(self.angle))
-//            //            self.LocalizationView.frame.size = CGSize(width: self.LocalizationView.bounds.height, height: self.LocalizationView.bounds.width)
-//        })
-//    }
     
     
     
@@ -178,36 +153,8 @@ class ViewController: UIViewController, FrameExtractorDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    
-//    @objc func ZoomInOut(sender: UIPinchGestureRecognizer) {
-//        guard sender.view != nil else { return }
-//        if sender.state == .began || sender.state == .changed {
-//            sender.view?.transform = (sender.view?.transform.scaledBy(x: sender.scale, y: sender.scale))!
-//            sender.scale = 1.0
-//        }
-//    }
-    // handling event when changing center point location
-//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        if let touch = touches.first {
-//            let loc = touch.location(in: self.view)
-//            if loc.x <= cameraViewFrame.width && loc.y <= self.cameraViewFrame.height {
-//                self.camera.center = loc
-//                self.camera.centerPointRec.removeFromSuperlayer()
-//                self.camera.centerPointRec.removeAllAnimations()
-//                self.camera.centerPointRec = self.camera.recCenter(radius: CGFloat(self.sizeOfCenterPoint), lineWidth: CGFloat(self.lineWidth))
-//                self.camera.videoPreviewLayer?.addSublayer(self.camera.centerPointRec)
-//                count = threshold + 1
-//
-//            }
-//            else {
-//                print("Error")
-//            }
-//        }
-//    }
-    
-     @objc func handleLongPress(recognizer: UIGestureRecognizer) {
+    @objc func handleLongPress(recognizer: UIGestureRecognizer) {
         if recognizer.state == .began {
-//            print("Duck! (location: \(recognizer.location(in: nil))")
             let loc = recognizer.location(in: nil)
             if loc.x <= cameraViewFrame.width && loc.y <= self.cameraViewFrame.height {
                 self.camera.center = loc
