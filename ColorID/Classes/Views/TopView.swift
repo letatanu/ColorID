@@ -55,8 +55,14 @@ final class TopView: UIView {
     
     var color: UIColor {
         didSet {
-            colorName.text = color.name()
-            colorFamily.text = color.family()
+            let colorNameText = NSMutableAttributedString(string: "Tên " + color.name(), attributes: [NSAttributedString.Key.font:UIFont(name: "Georgia", size: 18)!])
+            colorNameText.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.blue, range: NSRange(location:0,length:3))
+
+            colorName.attributedText = colorNameText
+            let colorFamilyText = NSMutableAttributedString(string: "Nhóm " + color.family(), attributes: [NSAttributedString.Key.font:UIFont(name: "Georgia", size: 35)!])
+            colorFamilyText.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.blue, range: NSRange(location:0,length:4))
+            colorFamily.attributedText = colorFamilyText
+            
             colorDisplay.backgroundColor = color
         }
     }

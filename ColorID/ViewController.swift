@@ -7,7 +7,21 @@
 //
 
 import UIKit
-class ViewController: UIViewController, FrameExtractorDelegate {
+final class ViewController: UIViewController, FrameExtractorDelegate, UIImagePickerControllerDelegate {
+//    This is for image picker
+    fileprivate let imagePickerView: UIImageView = {
+        let tmp = UIImageView()
+        return tmp
+    }()
+    
+    fileprivate var imagePicker : UIImagePickerController = {
+        let tmp = UIImagePickerController()
+        return tmp
+    }()
+////////////////
+
+    
+    // It is used for adjusting the size of the color detection circle
     var sliderSize: UISlider {
         let slider = UISlider()
         slider.transform  = CGAffineTransform(rotationAngle: -CGFloat.pi/2)
@@ -46,12 +60,13 @@ class ViewController: UIViewController, FrameExtractorDelegate {
     //        button.layer.shadowOffset = .zero
     //        return button
     //    }()
-    //
+    // Displaying the colorCode
     @IBOutlet weak var colorCode: UILabel! {
         didSet {
             colorCode.adjustsFontSizeToFitWidth = true
         }
     }
+    
     fileprivate var bottomView: BottomView!
     fileprivate var topView : TopView!
     //    @IBOutlet weak var ColorView: UIView!
@@ -75,7 +90,8 @@ class ViewController: UIViewController, FrameExtractorDelegate {
     //        //        roundCorners(corners: [.topLeft, .topRight], radius:0.05*self.bounds.width)
     //        topView.colorDisplay.layer.cornerRadius = topView.colorDisplay.bounds.height*0.5
     //    }
-    //
+    
+    // setting the layout of subviews
     fileprivate func layout() {
         topView.translatesAutoresizingMaskIntoConstraints = false
         //        button.translatesAutoresizingMaskIntoConstraints = false
@@ -95,7 +111,6 @@ class ViewController: UIViewController, FrameExtractorDelegate {
             ]
         NSLayoutConstraint.activate(constraints)
         topView.layer.cornerRadius = 0.05*topView.bounds.width
-        
         
     }
     override func viewDidLoad() {
@@ -143,8 +158,6 @@ class ViewController: UIViewController, FrameExtractorDelegate {
             topView.color = color_!
         }
     }
-    
-    
     
     
     @IBOutlet weak var selectedLanguage: UIPickerView!
