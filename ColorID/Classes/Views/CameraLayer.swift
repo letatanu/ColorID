@@ -17,12 +17,15 @@ protocol FrameExtractorDelegate: class {
 }
 
 
-final class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
+final class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapturePhotoCaptureDelegate {
     var videoPreviewLayer: AVCaptureVideoPreviewLayer? //render the camera view finder
     public var center: CGPoint?
+    
+    
     weak var delegate: FrameExtractorDelegate?
+    var capturedImage = UIImage()
     private let sessionQueue = DispatchQueue(label: "session queue")
-    //    private var videoPreviewFrame = CGRect()
+    private var stillImageOutput = AVCapturePhotoOutput()
     private let position = AVCaptureDevice.Position.back
     private let quality = AVCaptureSession.Preset.high
     public var centerPointRec = CAShapeLayer()
@@ -165,7 +168,21 @@ final class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
         return finalImg
     }
     
-
+    // taking photo
+    func capturingPhoto() {
+        let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
+        captureSession.addOutput(stillImageOutput)
+        stillImageOutput.capturePhoto(with: settings, delegate: self)
+    }
+    
+    // getting the captured image
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        guard let imageData = photo.fileDataRepresentation()
+            else {return}
+        capturedImage = UIImage(data: imageData)!
+    }
+    
+    // extracting the image in every scheduled time.
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let uiImage = imageFromSampleBuffer(sampleBuffer: sampleBuffer) else { return }
         DispatchQueue.main.async { [unowned self] in

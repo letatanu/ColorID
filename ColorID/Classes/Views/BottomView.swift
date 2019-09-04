@@ -8,31 +8,34 @@
 
 import Foundation
 import UIKit
-
+import AVFoundation
 final class BottomView: UIView {
     fileprivate var captureButton: UIButton = {
         let tmp = UIButton()
-        tmp.setImage(UIImage(named: "capture"), for: .normal)
+//        tmp.setImage(UIImage(named: "capture"), for: .normal)
+        tmp.setTitle("Capture", for: .normal)
         return tmp
     }()
     
     fileprivate var libraryButton: UIButton = {
         let tmp = UIButton()
-        tmp.backgroundColor = .white
+//        tmp.backgroundColor = .white
+        tmp.setTitle("library", for: .normal)
 
         return tmp
     }()
     
     fileprivate var settingButton: UIButton = {
         let tmp = UIButton()
-        tmp.setImage(UIImage(named: "capture"), for: .normal)
-
+//        tmp.setImage(UIImage(named: "capture"), for: .normal)
+        tmp.setTitle("setting", for: .normal)
         return tmp
     }()
     
     fileprivate var sizeCenterWheelButton : UIButton = {
         let tmp = UIButton()
-        tmp.backgroundColor = .black
+//        tmp.backgroundColor = .black
+        tmp.setTitle("size", for: .normal)
         return tmp
     }()
     
@@ -73,7 +76,7 @@ final class BottomView: UIView {
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .init(hue: 335, saturation: 100, brightness: 12, alpha: 1)
+        backgroundColor = .init(white: 0, alpha: 1)
         addSubview(captureButton)
         addSubview(libraryButton)
         addSubview(settingButton)

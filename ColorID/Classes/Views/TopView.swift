@@ -55,12 +55,12 @@ final class TopView: UIView {
     
     var color: UIColor {
         didSet {
-            let colorNameText = NSMutableAttributedString(string: "Tên " + color.name(), attributes: [NSAttributedString.Key.font:UIFont(name: "Georgia", size: 18)!])
-            colorNameText.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.blue, range: NSRange(location:0,length:3))
+            let colorNameText = NSMutableAttributedString(string: "Nhóm " + color.family(), attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .light)])
+            colorNameText.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.brown, range: NSRange(location:0,length:4))
 
             colorName.attributedText = colorNameText
-            let colorFamilyText = NSMutableAttributedString(string: "Nhóm " + color.family(), attributes: [NSAttributedString.Key.font:UIFont(name: "Georgia", size: 35)!])
-            colorFamilyText.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.blue, range: NSRange(location:0,length:4))
+            let colorFamilyText = NSMutableAttributedString(string:color.name(), attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 35, weight: .light)])
+//            colorFamilyText.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.blue, range: NSRange(location:0,length:4))
             colorFamily.attributedText = colorFamilyText
             
             colorDisplay.backgroundColor = color
@@ -115,16 +115,17 @@ final class TopView: UIView {
     override init(frame: CGRect) {
         color = UIColor()
         super.init(frame: frame)
-        backgroundColor = .init(white: 0, alpha: 0.5)
+        backgroundColor = .init(white: 0, alpha: 1)
         addSubview(colorName)
         addSubview(colorFamily)
         addSubview(colorDisplay)
         addSubview(seperateBar)
         addSubview(palleteView)
-        self.layer.shadowRadius = 1
-        self.layer.shadowOffset = .zero
-        self.layer.shadowColor = UIColor.white.cgColor
-        self.layer.shadowOpacity = 1
+        // adding shadow for the view
+//        self.layer.shadowRadius = 1
+//        self.layer.shadowOffset = .zero
+//        self.layer.shadowColor = UIColor.white.cgColor
+//        self.layer.shadowOpacity = 1
     
         layout()
     }

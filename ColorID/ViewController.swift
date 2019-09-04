@@ -7,7 +7,7 @@
 //
 
 import UIKit
-final class ViewController: UIViewController, FrameExtractorDelegate, UIImagePickerControllerDelegate {
+class ViewController: UIViewController, FrameExtractorDelegate, UIImagePickerControllerDelegate {
 //    This is for image picker
     fileprivate let imagePickerView: UIImageView = {
         let tmp = UIImageView()
@@ -16,6 +16,8 @@ final class ViewController: UIViewController, FrameExtractorDelegate, UIImagePic
     
     fileprivate var imagePicker : UIImagePickerController = {
         let tmp = UIImagePickerController()
+//        tmp.delegate = self as UIImagePickerControllerDelegate
+        tmp.sourceType = .camera
         return tmp
     }()
 ////////////////
@@ -110,7 +112,7 @@ final class ViewController: UIViewController, FrameExtractorDelegate, UIImagePic
             
             ]
         NSLayoutConstraint.activate(constraints)
-        topView.layer.cornerRadius = 0.05*topView.bounds.width
+        topView.layer.cornerRadius = 0.01*topView.bounds.width
         
     }
     override func viewDidLoad() {
@@ -159,6 +161,11 @@ final class ViewController: UIViewController, FrameExtractorDelegate, UIImagePic
         }
     }
     
+    // camera function
+    fileprivate func cameraPicker() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+        }
+    }
     
     @IBOutlet weak var selectedLanguage: UIPickerView!
     override func didReceiveMemoryWarning() {
