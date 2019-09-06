@@ -16,7 +16,8 @@ final class BottomView: UIView {
         tmp.setTitle("Capture", for: .normal)
         return tmp
     }()
-    
+    var imagePickerPassedFromSuperView: ImagePicker!
+
     fileprivate var libraryButton: UIButton = {
         let tmp = UIButton()
 //        tmp.backgroundColor = .white
@@ -81,9 +82,13 @@ final class BottomView: UIView {
         addSubview(libraryButton)
         addSubview(settingButton)
         addSubview(sizeCenterWheelButton)
+        self.libraryButton.addTarget(self, action: #selector(libraryButtonPressed), for: .touchUpInside)
         layout()    
     }
-    
+    // library selected
+    @objc fileprivate func libraryButtonPressed() {
+        imagePickerPassedFromSuperView.present(from: self.superview!)
+    }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

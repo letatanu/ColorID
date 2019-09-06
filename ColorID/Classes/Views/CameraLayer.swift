@@ -21,7 +21,6 @@ final class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AVCa
     var videoPreviewLayer: AVCaptureVideoPreviewLayer? //render the camera view finder
     public var center: CGPoint?
     
-    
     weak var delegate: FrameExtractorDelegate?
     var capturedImage = UIImage()
     private let sessionQueue = DispatchQueue(label: "session queue")
@@ -30,7 +29,7 @@ final class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AVCa
     private let quality = AVCaptureSession.Preset.high
     public var centerPointRec = CAShapeLayer()
     private var permissionGranted = false
-    private let captureSession = AVCaptureSession()
+    let captureSession = AVCaptureSession()
     private let context = CIContext()
     private var sizeOfCenterPoint = CGFloat(0)
     private var oldCapturedPhoto: UIImage? = nil

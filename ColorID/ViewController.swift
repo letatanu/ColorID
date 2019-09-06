@@ -7,22 +7,15 @@
 //
 
 import UIKit
-class ViewController: UIViewController, FrameExtractorDelegate, UIImagePickerControllerDelegate {
+class ViewController: UIViewController, FrameExtractorDelegate{
 //    This is for image picker
     fileprivate let imagePickerView: UIImageView = {
         let tmp = UIImageView()
         return tmp
     }()
     
-    fileprivate var imagePicker : UIImagePickerController = {
-        let tmp = UIImagePickerController()
-//        tmp.delegate = self as UIImagePickerControllerDelegate
-        tmp.sourceType = .camera
-        return tmp
-    }()
-////////////////
-
-    
+    fileprivate var imagePicker : ImagePicker!
+    fileprivate var pickedImage: UIImage!
     // It is used for adjusting the size of the color detection circle
     var sliderSize: UISlider {
         let slider = UISlider()
@@ -68,6 +61,9 @@ class ViewController: UIViewController, FrameExtractorDelegate, UIImagePickerCon
             colorCode.adjustsFontSizeToFitWidth = true
         }
     }
+    
+    
+    
     
     fileprivate var bottomView: BottomView!
     fileprivate var topView : TopView!
@@ -117,7 +113,7 @@ class ViewController: UIViewController, FrameExtractorDelegate, UIImagePickerCon
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         camera = Camera(frame: cameraViewFrame, sizeOfCenterPoint: Int(self.sizeOfCenterPoint))
         camera.delegate = self
         
@@ -131,6 +127,7 @@ class ViewController: UIViewController, FrameExtractorDelegate, UIImagePickerCon
         self.view.addSubview(topView)
         
         bottomView = BottomView(frame: CGRect(origin: .zero, size: CGSize(width: self.view.bounds.width - 20, height: self.view.bounds.height/7)))
+        bottomView.imagePickerPassedFromSuperView = imagePicker
         self.view.addSubview(bottomView)
         layout()
         camera.videoPreviewLayer?.frame = cameraViewFrame
@@ -161,12 +158,6 @@ class ViewController: UIViewController, FrameExtractorDelegate, UIImagePickerCon
         }
     }
     
-    // camera function
-    fileprivate func cameraPicker() {
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-        }
-    }
-    
     @IBOutlet weak var selectedLanguage: UIPickerView!
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -190,7 +181,18 @@ class ViewController: UIViewController, FrameExtractorDelegate, UIImagePickerCon
             }
         }
     }
-    
-    
 }
 
+extension ViewController: ImagePickerDelegate {
+    func didSelect(image: UIImage?) {
+        self.pickedImage = image
+        if let imageFrame = camera.videoPreviewLayer?.frame {
+            let pickedImageView = UIImageView(frame: imageFrame)
+            pickedImageView.image = self.pickedImage
+            self.view.addSubview(pickedImageView)
+            camera.captureSession.stopRunning()
+            camera.videoPreviewLayer?.removeFromSuperlayer()
+        }
+    }
+    
+}

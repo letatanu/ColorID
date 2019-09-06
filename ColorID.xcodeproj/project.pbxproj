@@ -29,6 +29,7 @@
 		5BE62C2A21D31FC8000743AE /* Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE62C2921D31FC8000743AE /* Classifier.swift */; };
 		8C084C8722ED170700F4D345 /* NumericalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C084C8622ED170700F4D345 /* NumericalData.swift */; };
 		8C1236EB22C4976200618E08 /* ColorViewPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1236EA22C4976200618E08 /* ColorViewPopup.swift */; };
+		8C1F381F2320D9C800214EF0 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1F381E2320D9C800214EF0 /* ImagePicker.swift */; };
 		8C30C45D229C931700EBD139 /* Extension_UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C30C45C229C931700EBD139 /* Extension_UIButton.swift */; };
 		8C30C45F229C97E600EBD139 /* Extension_ViewController+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C30C45E229C97E600EBD139 /* Extension_ViewController+Events.swift */; };
 		8C5997F022CB25AE008DC702 /* PaletteImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5997EF22CB25AE008DC702 /* PaletteImageViewCell.swift */; };
@@ -86,6 +87,7 @@
 		8C084C8622ED170700F4D345 /* NumericalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericalData.swift; sourceTree = "<group>"; };
 		8C1236EA22C4976200618E08 /* ColorViewPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorViewPopup.swift; sourceTree = "<group>"; };
 		8C1236EC22C498EA00618E08 /* libPopupWindow.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libPopupWindow.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C1F381E2320D9C800214EF0 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		8C30C45C229C931700EBD139 /* Extension_UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_UIButton.swift; sourceTree = "<group>"; };
 		8C30C45E229C97E600EBD139 /* Extension_ViewController+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension_ViewController+Events.swift"; sourceTree = "<group>"; };
 		8C5997EF22CB25AE008DC702 /* PaletteImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteImageViewCell.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			children = (
 				8CF3493822E60BEA00E0B8D0 /* Views */,
 				8CF3493A22E60C3600E0B8D0 /* FunctionalClasses */,
+				8C1F381E2320D9C800214EF0 /* ImagePicker.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				5B806A192254F6F50030D1F7 /* ViewController+UIPicker.swift in Sources */,
 				8C5997F022CB25AE008DC702 /* PaletteImageViewCell.swift in Sources */,
 				5B6CF1E820E322D90016D8C3 /* CameraLayer.swift in Sources */,
+				8C1F381F2320D9C800214EF0 /* ImagePicker.swift in Sources */,
 				8C61569D22C2D59C00045BBC /* Extension_UIView.swift in Sources */,
 				5B806A1B2254F7BA0030D1F7 /* Extension_Array.swift in Sources */,
 				8C1236EB22C4976200618E08 /* ColorViewPopup.swift in Sources */,
