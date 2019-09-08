@@ -27,7 +27,7 @@ final class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AVCa
     private var stillImageOutput = AVCapturePhotoOutput()
     private let position = AVCaptureDevice.Position.back
     private let quality = AVCaptureSession.Preset.high
-    public var centerPointRec = CAShapeLayer()
+//    public var centerPointRec = CAShapeLayer()
     private var permissionGranted = false
     let captureSession = AVCaptureSession()
     private let context = CIContext()
@@ -87,7 +87,7 @@ final class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AVCa
         videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "sample buffer"))
         guard captureSession.canAddOutput(videoOutput) else { return }
         captureSession.addOutput(videoOutput)
-        self.captureSession.startRunning()
+//        self.captureSession.startRunning()
         guard let connection = videoOutput.connection(with: AVFoundation.AVMediaType.video) else { return }
         guard connection.isVideoOrientationSupported else { return }
         guard connection.isVideoMirroringSupported else { return }
@@ -105,8 +105,8 @@ final class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AVCa
         self.videoPreviewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession)
         self.videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         self.videoPreviewLayer?.frame = frame
-        self.centerPointRec = self.recCenter(radius: CGFloat(sizeOfCenterPoint), lineWidth: CGFloat(4))
-        self.videoPreviewLayer?.addSublayer(self.centerPointRec)
+//        self.centerPointRec = self.recCenter(radius: CGFloat(sizeOfCenterPoint), lineWidth: CGFloat(4))
+//        self.videoPreviewLayer?.addSublayer(self.centerPointRec)
         
         //Initialise the video preview layer and add it as a sublayer to the viewPreview view's layer
         sessionQueue.async { [unowned self] in
@@ -116,34 +116,34 @@ final class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AVCa
         
         
     }
-    func recCenter(radius: CGFloat, lineWidth: CGFloat) -> CAShapeLayer {
-        if let centerPoint = center {
-            let rec = CAShapeLayer()
-            rec.path = UIBezierPath(
-                arcCenter: centerPoint,
-                radius: radius - lineWidth*0.5 ,
-                startAngle: CGFloat(0),
-                endAngle: CGFloat(Double.pi * 2),
-                clockwise: true).cgPath
-            rec.fillColor = UIColor.clear.cgColor
-            rec.strokeColor = UIColor.white.cgColor
-            rec.lineWidth = lineWidth
-            rec.opacity = 1
-            return rec
-        }
-        let rec = CAShapeLayer()
-        rec.path = UIBezierPath(
-            arcCenter: CGPoint(x: self.videoPreviewLayer!.bounds.width*0.5, y: self.videoPreviewLayer!.bounds.height*0.5),
-            radius: radius - lineWidth*0.5 ,
-            startAngle: CGFloat(0),
-            endAngle: CGFloat(Double.pi * 2),
-            clockwise: true).cgPath
-        rec.fillColor = UIColor.clear.cgColor
-        rec.strokeColor = UIColor.white.cgColor
-        rec.lineWidth = lineWidth
-        rec.opacity = 1
-        return rec
-    }
+//    func recCenter(radius: CGFloat, lineWidth: CGFloat) -> CAShapeLayer {
+//        if let centerPoint = center {
+//            let rec = CAShapeLayer()
+//            rec.path = UIBezierPath(
+//                arcCenter: centerPoint,
+//                radius: radius - lineWidth*0.5 ,
+//                startAngle: CGFloat(0),
+//                endAngle: CGFloat(Double.pi * 2),
+//                clockwise: true).cgPath
+//            rec.fillColor = UIColor.clear.cgColor
+//            rec.strokeColor = UIColor.white.cgColor
+//            rec.lineWidth = lineWidth
+//            rec.opacity = 1
+//            return rec
+//        }
+//        let rec = CAShapeLayer()
+//        rec.path = UIBezierPath(
+//            arcCenter: CGPoint(x: self.videoPreviewLayer!.bounds.width*0.5, y: self.videoPreviewLayer!.bounds.height*0.5),
+//            radius: radius - lineWidth*0.5 ,
+//            startAngle: CGFloat(0),
+//            endAngle: CGFloat(Double.pi * 2),
+//            clockwise: true).cgPath
+//        rec.fillColor = UIColor.clear.cgColor
+//        rec.strokeColor = UIColor.white.cgColor
+//        rec.lineWidth = lineWidth
+//        rec.opacity = 1
+//        return rec
+//    }
     
     func updatePreviewLayer(size: CGSize) {
         self.videoPreviewLayer?.frame.size = size
@@ -158,7 +158,8 @@ final class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AVCa
         let img = UIImage(cgImage: cgImage)
         let croppedImg = img.crop(to: (self.videoPreviewLayer?.frame.size)!)
         let radius = self.sizeOfCenterPoint
-        let lineWidth = self.centerPointRec.lineWidth
+//        let lineWidth = self.centerPointRec.lineWidth
+        let lineWidth = CGFloat(10)
         if let centerPoint = self.center {
             let finalImg = croppedImg.imageByApplyingClippingCenterCircleBezierPath(radius: radius, lineWidth: lineWidth, center: centerPoint)
             return finalImg

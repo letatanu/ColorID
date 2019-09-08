@@ -14,12 +14,9 @@ final class NumericalData {
     // Screen width.
     private var largeFontSize: CGFloat = 0.0
     private var smallFontSize: CGFloat = 0.0
-    public var screenWidth: CGFloat {
-        return UIScreen.main.bounds.width
-    }
-
-    private static var instance: NumericalData? = nil
     
+    public let screenWidth: CGFloat = UIScreen.main.bounds.width
+    private static var instance: NumericalData? = nil
     public static func getInstance() -> NumericalData {
         if (instance == nil) {
             instance = NumericalData()
@@ -28,10 +25,8 @@ final class NumericalData {
     }
     
     // Screen height.
-    public var screenHeight: CGFloat {
-        return UIScreen.main.bounds.height
-    }
-    
+    public let screenHeight: CGFloat = UIScreen.main.bounds.height
+    public let centerPoint = CGPoint(x: NumericalData.getInstance().screenWidth*0.5, y: NumericalData.getInstance().screenHeight*0.5)
     init() {
         largeFontSize = 31*screenWidth/750
         smallFontSize = 13*screenWidth/750

@@ -11,27 +11,29 @@ class ViewController: UIViewController, FrameExtractorDelegate{
 //    This is for image picker
     fileprivate let imagePickerView: UIImageView = {
         let tmp = UIImageView()
+        tmp.contentMode = .scaleAspectFit
         return tmp
     }()
-    
+    // Center circle
+    fileprivate var centerCircle : CirclePoint!
     fileprivate var imagePicker : ImagePicker!
     fileprivate var pickedImage: UIImage!
     // It is used for adjusting the size of the color detection circle
-    var sliderSize: UISlider {
-        let slider = UISlider()
-        slider.transform  = CGAffineTransform(rotationAngle: -CGFloat.pi/2)
-        slider.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 25, height: NumericalData.getInstance().screenHeight/3) )
-        
-        slider.minimumTrackTintColor = .green
-        slider.maximumTrackTintColor = .red
-        slider.thumbTintColor = .black
-        
-        slider.maximumValue = 100
-        slider.minimumValue = 0
-        slider.setValue(Float(100-200*self.sizeOfCenterPoint/Double(self.cameraViewFrame.size.width)), animated: false)
-        slider.addTarget(self, action: #selector(changeValue(_:)), for: .valueChanged)
-        return slider
-    }
+//    var sliderSize: UISlider {
+//        let slider = UISlider()
+//        slider.transform  = CGAffineTransform(rotationAngle: -CGFloat.pi/2)
+//        slider.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 25, height: NumericalData.getInstance().screenHeight/3) )
+//        
+//        slider.minimumTrackTintColor = .green
+//        slider.maximumTrackTintColor = .red
+//        slider.thumbTintColor = .black
+//        
+//        slider.maximumValue = 100
+//        slider.minimumValue = 0
+//        slider.setValue(Float(100-200*self.sizeOfCenterPoint/Double(self.cameraViewFrame.size.width)), animated: false)
+//        slider.addTarget(self, action: #selector(changeValue(_:)), for: .valueChanged)
+//        return slider
+//    }
     
     //    var button: UIButton = {
     //        let button = UIButton(type: .custom)
@@ -125,12 +127,18 @@ class ViewController: UIViewController, FrameExtractorDelegate{
         //        self.view.addSubview(button)
         topView = TopView(frame: CGRect(origin: .zero, size: CGSize(width: self.view.bounds.width - 20, height: self.view.bounds.height/7)))
         self.view.addSubview(topView)
-        
+        //
         bottomView = BottomView(frame: CGRect(origin: .zero, size: CGSize(width: self.view.bounds.width - 20, height: self.view.bounds.height/7)))
         bottomView.imagePickerPassedFromSuperView = imagePicker
         self.view.addSubview(bottomView)
         layout()
+        //
         camera.videoPreviewLayer?.frame = cameraViewFrame
+        //
+        if let camera_ = camera {
+            self.centerCircle = CirclePoint(presentationLayer: (camera_.videoPreviewLayer)!, centerLocation: CGPoint(x: (camera_.videoPreviewLayer?.bounds.width)!*0.5, y: (camera_.videoPreviewLayer?.bounds.height)!*0.5), radius: CGFloat(10))
+        }
+
     }
     
     fileprivate var count: Int = 0
@@ -158,6 +166,7 @@ class ViewController: UIViewController, FrameExtractorDelegate{
         }
     }
     
+
     @IBOutlet weak var selectedLanguage: UIPickerView!
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -168,13 +177,7 @@ class ViewController: UIViewController, FrameExtractorDelegate{
         if recognizer.state == .began {
             let loc = recognizer.location(in: nil)
             if loc.x <= cameraViewFrame.width && loc.y <= self.cameraViewFrame.height {
-                self.camera.center = loc
-                self.camera.centerPointRec.removeFromSuperlayer()
-                self.camera.centerPointRec.removeAllAnimations()
-                self.camera.centerPointRec = self.camera.recCenter(radius: CGFloat(self.sizeOfCenterPoint), lineWidth: CGFloat(self.lineWidth))
-                self.camera.videoPreviewLayer?.addSublayer(self.camera.centerPointRec)
-                count = threshold + 1
-                
+                self.centerCircle.changeStatus(newLocation: loc, newLineWidth: nil)
             }
             else {
                 print("Error")
@@ -187,11 +190,22 @@ extension ViewController: ImagePickerDelegate {
     func didSelect(image: UIImage?) {
         self.pickedImage = image
         if let imageFrame = camera.videoPreviewLayer?.frame {
-            let pickedImageView = UIImageView(frame: imageFrame)
-            pickedImageView.image = self.pickedImage
-            self.view.addSubview(pickedImageView)
-            camera.captureSession.stopRunning()
-            camera.videoPreviewLayer?.removeFromSuperlayer()
+            self.imagePickerView.frame = imageFrame
+            self.imagePickerView.image = self.pickedImage
+            self.view.addSubview(self.imagePickerView)
+            if camera.captureSession.isRunning {
+                self.centerCircle.removeAll()
+                self.centerCircle = CirclePoint(presentationLayer: self.imagePickerView.layer, centerLocation: NumericalData.getInstance().centerPoint, radius: 1)
+                
+                camera.captureSession.stopRunning()
+                camera.videoPreviewLayer?.removeFromSuperlayer()
+            }
+            else {
+                self.centerCircle.removeAll()
+                self.centerCircle = CirclePoint(presentationLayer: self.imagePickerView.layer, centerLocation: NumericalData.getInstance().centerPoint, radius: 1)
+                
+            }
+            
         }
     }
     
