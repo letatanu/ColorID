@@ -178,6 +178,7 @@ class ViewController: UIViewController, FrameExtractorDelegate{
             let loc = recognizer.location(in: nil)
             if loc.x <= cameraViewFrame.width && loc.y <= self.cameraViewFrame.height {
                 self.centerCircle.changeStatus(newLocation: loc, newLineWidth: nil)
+                camera.circleLocation = loc
             }
             else {
                 print("Error")
@@ -195,14 +196,14 @@ extension ViewController: ImagePickerDelegate {
             self.view.addSubview(self.imagePickerView)
             if camera.captureSession.isRunning {
                 self.centerCircle.removeAll()
-                self.centerCircle = CirclePoint(presentationLayer: self.imagePickerView.layer, centerLocation: NumericalData.getInstance().centerPoint, radius: 1)
+                self.centerCircle = CirclePoint(presentationLayer: self.imagePickerView.layer, centerLocation: NumericalData.shared().centerPoint, radius: 1)
                 
                 camera.captureSession.stopRunning()
                 camera.videoPreviewLayer?.removeFromSuperlayer()
             }
             else {
                 self.centerCircle.removeAll()
-                self.centerCircle = CirclePoint(presentationLayer: self.imagePickerView.layer, centerLocation: NumericalData.getInstance().centerPoint, radius: 1)
+                self.centerCircle = CirclePoint(presentationLayer: self.imagePickerView.layer, centerLocation: NumericalData.shared().centerPoint, radius: 1)
                 
             }
             

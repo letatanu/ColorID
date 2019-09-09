@@ -1,7 +1,7 @@
 //
 //  NumericalData.swift
 //  ColorID
-//
+// This is a singletone that returns specific numerical values
 //  Created by Nhut Le on 7/27/19.
 //  Copyright © 2019 Le Nhut. All rights reserved.
 //
@@ -11,24 +11,25 @@ import UIKit
 
 
 final class NumericalData {
-    // Screen width.
-    private var largeFontSize: CGFloat = 0.0
-    private var smallFontSize: CGFloat = 0.0
-    
-    public let screenWidth: CGFloat = UIScreen.main.bounds.width
-    private static var instance: NumericalData? = nil
-    public static func getInstance() -> NumericalData {
-        if (instance == nil) {
-            instance = NumericalData()
-        }
-        return instance!
+    let largeFontSize: CGFloat
+    let smallFontSize: CGFloat
+    let centerPoint: CGPoint
+    let lineWidth: CGFloat
+    let defaultSizeOfCircle: CGFloat
+    private static var sharedNumericalData: NumericalData = {
+        let tmp = NumericalData()
+        return tmp
+    }()
+    class func shared() -> NumericalData {
+        return sharedNumericalData
     }
     
-    // Screen height.
-    public let screenHeight: CGFloat = UIScreen.main.bounds.height
-    public let centerPoint = CGPoint(x: NumericalData.getInstance().screenWidth*0.5, y: NumericalData.getInstance().screenHeight*0.5)
     init() {
-        largeFontSize = 31*screenWidth/750
-        smallFontSize = 13*screenWidth/750
+
+        self.centerPoint = CGPoint(x: UIScreen.main.bounds.width*0.5, y: UIScreen.main.bounds.height*0.5)
+        lineWidth = 1
+        defaultSizeOfCircle = 1
+        largeFontSize = 31*UIScreen.main.bounds.width/750
+        smallFontSize = 13*UIScreen.main.bounds.width/750
     }
 }
