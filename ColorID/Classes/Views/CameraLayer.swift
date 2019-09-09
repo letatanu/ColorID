@@ -156,7 +156,6 @@ final class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AVCa
         guard let cgImage = context.createCGImage(ciImage, from: cutRegion) else { return nil }
         let img = UIImage(cgImage: cgImage)
         let croppedImg = img.crop(to: (self.videoPreviewLayer?.frame.size)!)
-        
         let radius = self.sizeOfCenterPoint
         let finalImg = croppedImg.imageByApplyingClippingCenterCircleBezierPath(radius: radius, lineWidth: NumericalData.shared().lineWidth, center: self.circleLocation)
         return finalImg

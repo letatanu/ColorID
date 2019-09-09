@@ -28,7 +28,7 @@ final class NumericalData {
 
         self.centerPoint = CGPoint(x: UIScreen.main.bounds.width*0.5, y: UIScreen.main.bounds.height*0.5)
         lineWidth = 1
-        defaultSizeOfCircle = 1
+        defaultSizeOfCircle = 10
         largeFontSize = 31*UIScreen.main.bounds.width/750
         smallFontSize = 13*UIScreen.main.bounds.width/750
     }

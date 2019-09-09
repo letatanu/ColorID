@@ -11,11 +11,12 @@ import UIKit
 
 final class CirclePoint: NSObject {
     fileprivate var location: CGPoint?
-    fileprivate var radius: CGFloat = 1
-    fileprivate var lineWidth: CGFloat = 0.5
+    fileprivate var radius: CGFloat
+    fileprivate var lineWidth: CGFloat
     fileprivate var presentationLayer: CALayer?
     fileprivate var currentRecCenter = CAShapeLayer()
-    init(presentationLayer: CALayer, centerLocation: CGPoint?, radius: CGFloat, lineWidth: CGFloat = CGFloat(1)) {
+    init(presentationLayer: CALayer, centerLocation: CGPoint?, radius: CGFloat, lineWidth: CGFloat = NumericalData.shared().lineWidth) {
+        
         self.location = centerLocation
         self.radius = radius
         self.lineWidth = lineWidth
@@ -61,7 +62,7 @@ final class CirclePoint: NSObject {
             startAngle: CGFloat(0),
             endAngle: CGFloat(Double.pi * 2),
             clockwise: true)
-        let smallCircle = UIBezierPath(arcCenter: centerPoint, radius: self.radius/2*3, startAngle: 0, endAngle: CGFloat(Double.pi*2), clockwise: true)
+        let smallCircle = UIBezierPath(arcCenter: centerPoint, radius: self.radius/3*2, startAngle: 0, endAngle: CGFloat(Double.pi*2), clockwise: true)
         
         let shapeLayerPath = UIBezierPath()
         shapeLayerPath.append(bigCircle)

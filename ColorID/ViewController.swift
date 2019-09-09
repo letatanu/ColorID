@@ -73,8 +73,7 @@ class ViewController: UIViewController, FrameExtractorDelegate{
     //    @IBOutlet weak var ColorNameView: ColorInfoDisplay!
     var camera: Camera!
     fileprivate var angle: Double!
-    var sizeOfCenterPoint = 10.0
-    var lineWidth = 4
+
     override var shouldAutorotate: Bool {
         return false
     }
@@ -113,6 +112,8 @@ class ViewController: UIViewController, FrameExtractorDelegate{
         topView.layer.cornerRadius = 0.01*topView.bounds.width
         
     }
+    
+    fileprivate var sizeOfCenterPoint: CGFloat = NumericalData.shared().defaultSizeOfCircle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
@@ -196,14 +197,13 @@ extension ViewController: ImagePickerDelegate {
             self.view.addSubview(self.imagePickerView)
             if camera.captureSession.isRunning {
                 self.centerCircle.removeAll()
-                self.centerCircle = CirclePoint(presentationLayer: self.imagePickerView.layer, centerLocation: NumericalData.shared().centerPoint, radius: 1)
-                
+                self.centerCircle = CirclePoint(presentationLayer: self.imagePickerView.layer, centerLocation: NumericalData.shared().centerPoint, radius: NumericalData.shared().defaultSizeOfCircle)
                 camera.captureSession.stopRunning()
                 camera.videoPreviewLayer?.removeFromSuperlayer()
             }
             else {
                 self.centerCircle.removeAll()
-                self.centerCircle = CirclePoint(presentationLayer: self.imagePickerView.layer, centerLocation: NumericalData.shared().centerPoint, radius: 1)
+                self.centerCircle = CirclePoint(presentationLayer: self.imagePickerView.layer, centerLocation: NumericalData.shared().centerPoint, radius: NumericalData.shared().defaultSizeOfCircle)
                 
             }
             
