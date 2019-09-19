@@ -8,10 +8,10 @@
 
 import UIKit
 class ViewController: UIViewController, FrameExtractorDelegate{
-//    This is for image picker
+    //    This is for image picker
     fileprivate let imagePickerView: UIImageView = {
         let tmp = UIImageView()
-        tmp.contentMode = .scaleAspectFit
+        tmp.contentMode = UIView.ContentMode.center
         return tmp
     }()
     // Center circle
@@ -19,21 +19,21 @@ class ViewController: UIViewController, FrameExtractorDelegate{
     fileprivate var imagePicker : ImagePicker!
     fileprivate var pickedImage: UIImage!
     // It is used for adjusting the size of the color detection circle
-//    var sliderSize: UISlider {
-//        let slider = UISlider()
-//        slider.transform  = CGAffineTransform(rotationAngle: -CGFloat.pi/2)
-//        slider.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 25, height: NumericalData.getInstance().screenHeight/3) )
-//        
-//        slider.minimumTrackTintColor = .green
-//        slider.maximumTrackTintColor = .red
-//        slider.thumbTintColor = .black
-//        
-//        slider.maximumValue = 100
-//        slider.minimumValue = 0
-//        slider.setValue(Float(100-200*self.sizeOfCenterPoint/Double(self.cameraViewFrame.size.width)), animated: false)
-//        slider.addTarget(self, action: #selector(changeValue(_:)), for: .valueChanged)
-//        return slider
-//    }
+    //    var sliderSize: UISlider {
+    //        let slider = UISlider()
+    //        slider.transform  = CGAffineTransform(rotationAngle: -CGFloat.pi/2)
+    //        slider.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 25, height: NumericalData.getInstance().screenHeight/3) )
+    //
+    //        slider.minimumTrackTintColor = .green
+    //        slider.maximumTrackTintColor = .red
+    //        slider.thumbTintColor = .black
+    //
+    //        slider.maximumValue = 100
+    //        slider.minimumValue = 0
+    //        slider.setValue(Float(100-200*self.sizeOfCenterPoint/Double(self.cameraViewFrame.size.width)), animated: false)
+    //        slider.addTarget(self, action: #selector(changeValue(_:)), for: .valueChanged)
+    //        return slider
+    //    }
     
     //    var button: UIButton = {
     //        let button = UIButton(type: .custom)
@@ -73,7 +73,7 @@ class ViewController: UIViewController, FrameExtractorDelegate{
     //    @IBOutlet weak var ColorNameView: ColorInfoDisplay!
     var camera: Camera!
     fileprivate var angle: Double!
-
+    
     override var shouldAutorotate: Bool {
         return false
     }
@@ -139,7 +139,7 @@ class ViewController: UIViewController, FrameExtractorDelegate{
         if let camera_ = camera {
             self.centerCircle = CirclePoint(presentationLayer: (camera_.videoPreviewLayer)!, centerLocation: CGPoint(x: (camera_.videoPreviewLayer?.bounds.width)!*0.5, y: (camera_.videoPreviewLayer?.bounds.height)!*0.5), radius: CGFloat(10))
         }
-
+        
     }
     
     fileprivate var count: Int = 0
@@ -148,6 +148,8 @@ class ViewController: UIViewController, FrameExtractorDelegate{
     fileprivate var lastImage = UIImage()
     
     func captured(image: UIImage) {
+        
+        guard self.camera.captureSession.isRunning else {return}
         if isInitialized {
             count += 1
             if count >= threshold {
@@ -167,19 +169,32 @@ class ViewController: UIViewController, FrameExtractorDelegate{
         }
     }
     
-
+    
     @IBOutlet weak var selectedLanguage: UIPickerView!
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    fileprivate let testImgView: UIImageView = {
+        let tmp = UIImageView(frame: CGRect(origin: CGPoint(x: 0,y: 0), size: CGSize(width: 50, height: 50)))
+        return tmp
+    }()
     @objc func handleLongPress(recognizer: UIGestureRecognizer) {
         if recognizer.state == .began {
             let loc = recognizer.location(in: nil)
             if loc.x <= cameraViewFrame.width && loc.y <= self.cameraViewFrame.height {
                 self.centerCircle.changeStatus(newLocation: loc, newLineWidth: nil)
                 camera.circleLocation = loc
+                if !camera.captureSession.isRunning {
+                    guard let newRectImg = self.imagePickerView.calculateClientRectOfImageInUIImageView() else {return}
+                    //                    let newLoc = CGPoint(x: loc.x + newRectImg.origin.x, y: loc.y + newRectImg.origin.y)
+                    //                    self.centerCircle.changeStatus(newLocation: newLoc, newLineWidth: nil)
+                    guard let im = self.centerCircle.imageInCircle(orginalImage: self.imagePickerView.image!, circlePoint: self.centerCircle, actualLocation: nil) else {return}
+                    self.testImgView.image = im
+                    if let dColor = im.mostDominantColor(inNumberOfCluster: 15) {
+                        topView.color = dColor
+                    }
+                }
             }
             else {
                 print("Error")
@@ -190,24 +205,33 @@ class ViewController: UIViewController, FrameExtractorDelegate{
 
 extension ViewController: ImagePickerDelegate {
     func didSelect(image: UIImage?) {
-        self.pickedImage = image
-        if let imageFrame = camera.videoPreviewLayer?.frame {
-            self.imagePickerView.frame = imageFrame
-            self.imagePickerView.image = self.pickedImage
-            self.view.addSubview(self.imagePickerView)
-            if camera.captureSession.isRunning {
-                self.centerCircle.removeAll()
-                self.centerCircle = CirclePoint(presentationLayer: self.imagePickerView.layer, centerLocation: NumericalData.shared().centerPoint, radius: NumericalData.shared().defaultSizeOfCircle)
-                camera.captureSession.stopRunning()
-                camera.videoPreviewLayer?.removeFromSuperlayer()
-            }
-            else {
-                self.centerCircle.removeAll()
-                self.centerCircle = CirclePoint(presentationLayer: self.imagePickerView.layer, centerLocation: NumericalData.shared().centerPoint, radius: NumericalData.shared().defaultSizeOfCircle)
-                
-            }
-            
+        guard let pickedImage_ = image else {return}
+        self.pickedImage = pickedImage_
+        if (pickedImage_.size.width > self.imagePickerView.bounds.width || pickedImage_.size.height > self.imagePickerView.bounds.height) {
+            self.imagePickerView.contentMode = .scaleAspectFit
         }
+        let imageFrame = self.view.frame
+        self.imagePickerView.frame = imageFrame
+        self.imagePickerView.image = self.pickedImage
+        self.view.addSubview(self.imagePickerView)
+        self.view.bringSubviewToFront(self.topView)
+        self.view.bringSubviewToFront(self.bottomView)
+        self.centerCircle.removeAll()
+        self.centerCircle = CirclePoint(presentationLayer: self.imagePickerView.layer, centerLocation: NumericalData.shared().centerPoint, radius: NumericalData.shared().defaultSizeOfCircle)
+        
+        
+        // testing imageview
+        self.view.addSubview(testImgView)
+        
+        if camera.captureSession.isRunning {
+            camera.captureSession.stopRunning()
+            camera.videoPreviewLayer?.removeFromSuperlayer()
+        }
+        
+        guard let im = self.centerCircle.imageInCircle(orginalImage: pickedImage_, circlePoint: self.centerCircle, actualLocation: nil) else {return}
+        let dColor = im.mostDominantColor(inNumberOfCluster: 15)
+        topView.color = dColor!
+        
     }
     
 }

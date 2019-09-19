@@ -75,7 +75,18 @@ final class CirclePoint: NSObject {
         rec.opacity = 1
         return rec
     }
+}
+extension CirclePoint {
+    func imageInCircle(orginalImage: UIImage, circlePoint: CirclePoint, actualLocation: CGPoint?) -> UIImage? {
+        guard var loc: CGPoint = circlePoint.location else { return UIImage()}
+        print(loc)
+        if let actLocation = actualLocation {
+            loc.x -= actLocation.x
+            loc.y -= actLocation.y
+        }
+        print(actualLocation)
+        guard let finalImg = orginalImage.imageByApplyingClippingCenterCircleBezierPath(radius: circlePoint.radius, lineWidth: NumericalData.shared().lineWidth, center: loc) else { return nil }
+        return finalImg
+    }
     
-    
-
 }

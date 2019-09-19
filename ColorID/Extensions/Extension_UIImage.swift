@@ -160,7 +160,7 @@ extension UIImage {
         return true
     }
     
-    func imageByApplyingClippingCenterCircleBezierPath(radius: CGFloat, lineWidth: CGFloat, center: CGPoint) -> UIImage {
+    func imageByApplyingClippingCenterCircleBezierPath(radius: CGFloat, lineWidth: CGFloat, center: CGPoint) -> UIImage? {
         // Mask image using path
         let path = UIBezierPath(
             arcCenter: center,
@@ -169,14 +169,14 @@ extension UIImage {
             endAngle:CGFloat(Double.pi * 2),
             clockwise: true)
         path.lineWidth = lineWidth
-        let maskedImage = imageByApplyingMaskingCenterCircleBezierPath(path)
+        guard let maskedImage = imageByApplyingMaskingCenterCircleBezierPath(path) else {return nil}
         
         // Crop image to frame of path
         let croppedImage = UIImage(cgImage: maskedImage.cgImage!.cropping(to: path.bounds)!)
         return croppedImage
     }
     
-    private func imageByApplyingMaskingCenterCircleBezierPath(_ path: UIBezierPath) -> UIImage {
+    private func imageByApplyingMaskingCenterCircleBezierPath(_ path: UIBezierPath) -> UIImage? {
         // Define graphic context (canvas) to paint on
         UIGraphicsBeginImageContext(self.size)
         let context = UIGraphicsGetCurrentContext()!
@@ -185,7 +185,7 @@ extension UIImage {
         context.clip()
         draw(in: CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height))
         
-        let maskedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        guard let maskedImage = UIGraphicsGetImageFromCurrentImageContext() else {return nil}
         
         UIGraphicsEndImageContext()
         
@@ -240,7 +240,6 @@ extension UIImage {
         cropped.draw(in: CGRect(x: 0, y: 0, width: to.width, height: to.height))
         let resized = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        
         return resized!
     }
 }

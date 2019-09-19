@@ -109,7 +109,7 @@ final class TopView: UIView {
         NSLayoutConstraint.activate(constraints)
         colorDisplay.clipsToBounds = true
         colorDisplay.layer.cornerRadius = self.bounds.height/6*2
-        
+        self.superview?.bringSubviewToFront(self)
     }
     
     override init(frame: CGRect) {

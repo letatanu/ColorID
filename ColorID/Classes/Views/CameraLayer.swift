@@ -17,9 +17,10 @@ protocol FrameExtractorDelegate: class {
 }
 
 
-final class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapturePhotoCaptureDelegate {
+final class Camera: NSObject {
     var videoPreviewLayer: AVCaptureVideoPreviewLayer? //render the camera view finder
     
+    var circleLocation : CGPoint = NumericalData.shared().centerPoint
     weak var delegate: FrameExtractorDelegate?
     var capturedImage = UIImage()
     private let sessionQueue = DispatchQueue(label: "session queue")
@@ -146,8 +147,10 @@ final class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AVCa
     func updatePreviewLayer(size: CGSize) {
         self.videoPreviewLayer?.frame.size = size
     }
-    // circle involving calculation
-    var circleLocation : CGPoint = NumericalData.shared().centerPoint
+    
+}
+
+extension Camera: AVCaptureVideoDataOutputSampleBufferDelegate, AVCapturePhotoCaptureDelegate {
     // MARK: Sample buffer to UIImage conversion
     func imageFromSampleBuffer(sampleBuffer: CMSampleBuffer) -> UIImage? {
         guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return nil }
@@ -161,7 +164,6 @@ final class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AVCa
         return finalImg
         
     }
-    
     // taking photo
     func capturingPhoto() {
         let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])

@@ -74,6 +74,7 @@ final class BottomView: UIView {
             
         ]
         NSLayoutConstraint.activate(constraints)
+        self.superview?.bringSubviewToFront(self)
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
