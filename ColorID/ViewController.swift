@@ -175,10 +175,7 @@ class ViewController: UIViewController, FrameExtractorDelegate{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    fileprivate let testImgView: UIImageView = {
-        let tmp = UIImageView(frame: CGRect(origin: CGPoint(x: 0,y: 0), size: CGSize(width: 50, height: 50)))
-        return tmp
-    }()
+
     @objc func handleLongPress(recognizer: UIGestureRecognizer) {
         if recognizer.state == .began {
             let loc = recognizer.location(in: nil)
@@ -186,11 +183,15 @@ class ViewController: UIViewController, FrameExtractorDelegate{
                 self.centerCircle.changeStatus(newLocation: loc, newLineWidth: nil)
                 camera.circleLocation = loc
                 if !camera.captureSession.isRunning {
-                    guard let newRectImg = self.imagePickerView.calculateClientRectOfImageInUIImageView() else {return}
-                    //                    let newLoc = CGPoint(x: loc.x + newRectImg.origin.x, y: loc.y + newRectImg.origin.y)
-                    //                    self.centerCircle.changeStatus(newLocation: newLoc, newLineWidth: nil)
-                    guard let im = self.centerCircle.imageInCircle(orginalImage: self.imagePickerView.image!, circlePoint: self.centerCircle, actualLocation: nil) else {return}
-                    self.testImgView.image = im
+                    
+                    // rendering the image picker view to take the true location of the center cirle
+                    let renderer = UIGraphicsImageRenderer(size: self.imagePickerView.bounds.size)
+                    let image = renderer.image { ctx in
+                        self.imagePickerView.drawHierarchy(in: self.imagePickerView.bounds, afterScreenUpdates: false)
+                    }
+                    
+                    guard let im = self.centerCircle.imageInCircle(orginalImage: image, circlePoint: self.centerCircle, actualLocation: nil) else {return}
+                    
                     if let dColor = im.mostDominantColor(inNumberOfCluster: 15) {
                         topView.color = dColor
                     }
@@ -221,7 +222,7 @@ extension ViewController: ImagePickerDelegate {
         
         
         // testing imageview
-        self.view.addSubview(testImgView)
+//        self.view.addSubview(testImgView)
         
         if camera.captureSession.isRunning {
             camera.captureSession.stopRunning()

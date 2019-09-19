@@ -122,11 +122,10 @@ final class TopView: UIView {
         addSubview(seperateBar)
         addSubview(palleteView)
         // adding shadow for the view
-//        self.layer.shadowRadius = 1
-//        self.layer.shadowOffset = .zero
-//        self.layer.shadowColor = UIColor.white.cgColor
-//        self.layer.shadowOpacity = 1
-    
+        self.layer.shadowRadius = 1
+        self.layer.shadowOffset = .zero
+        self.layer.shadowColor = UIColor.white.cgColor
+        self.layer.shadowOpacity = 1
         layout()
     }
     
