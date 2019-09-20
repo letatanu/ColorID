@@ -7,7 +7,7 @@
 //
 
 import UIKit
-class ViewController: UIViewController, FrameExtractorDelegate{
+class ViewController: UIViewController{
     //    This is for image picker
     fileprivate let imagePickerView: UIImageView = {
         let tmp = UIImageView()
@@ -66,6 +66,10 @@ class ViewController: UIViewController, FrameExtractorDelegate{
     
     
     
+    fileprivate var count: Int = 0
+    fileprivate final let threshold = 15
+    fileprivate var isInitialized: Bool = false
+    fileprivate var lastImage = UIImage()
     
     fileprivate var bottomView: BottomView!
     fileprivate var topView : TopView!
@@ -130,7 +134,8 @@ class ViewController: UIViewController, FrameExtractorDelegate{
         self.view.addSubview(topView)
         //
         bottomView = BottomView(frame: CGRect(origin: .zero, size: CGSize(width: self.view.bounds.width - 20, height: self.view.bounds.height/7)))
-        bottomView.imagePickerPassedFromSuperView = imagePicker
+        bottomView.delegate = self
+        
         self.view.addSubview(bottomView)
         layout()
         //
@@ -142,32 +147,7 @@ class ViewController: UIViewController, FrameExtractorDelegate{
         
     }
     
-    fileprivate var count: Int = 0
-    fileprivate final let threshold = 15
-    fileprivate var isInitialized: Bool = false
-    fileprivate var lastImage = UIImage()
     
-    func captured(image: UIImage) {
-        
-        guard self.camera.captureSession.isRunning else {return}
-        if isInitialized {
-            count += 1
-            if count >= threshold {
-                lastImage = image
-                if  let color = image.mostDominantColor(inNumberOfCluster: 13) {
-                    topView.color = color
-                    //                    }
-                    count = 0
-                }
-            }
-        }
-        else {
-            let color_ = image.mostDominantColor(inNumberOfCluster: 5)
-            lastImage = image
-            isInitialized = true
-            topView.color = color_!
-        }
-    }
     
     
     @IBOutlet weak var selectedLanguage: UIPickerView!
@@ -203,7 +183,7 @@ class ViewController: UIViewController, FrameExtractorDelegate{
         }
     }
 }
-
+// Mark: Image Picker Delegate
 extension ViewController: ImagePickerDelegate {
     func didSelect(image: UIImage?) {
         guard let pickedImage_ = image else {return}
@@ -233,6 +213,43 @@ extension ViewController: ImagePickerDelegate {
         let dColor = im.mostDominantColor(inNumberOfCluster: 15)
         topView.color = dColor!
         
+    }
+    
+}
+// Mark: Bottom View Delegate
+extension ViewController: BottomViewDelegate {
+    func captureButtonPressed() {
+        print("Capture Button Pressed")
+        
+    }
+    
+    func imagePickerButtonPressed() {
+        self.imagePicker.present(from: self.view)
+    }
+    
+    
+}
+// Mark: Frame Extractor Delegate
+extension ViewController: FrameExtractorDelegate {
+    func captured(image: UIImage) {
+        guard self.camera.captureSession.isRunning else {return}
+        if isInitialized {
+            count += 1
+            if count >= threshold {
+                lastImage = image
+                if  let color = image.mostDominantColor(inNumberOfCluster: 13) {
+                    topView.color = color
+                    //                    }
+                    count = 0
+                }
+            }
+        }
+        else {
+            let color_ = image.mostDominantColor(inNumberOfCluster: 5)
+            lastImage = image
+            isInitialized = true
+            topView.color = color_!
+        }
     }
     
 }

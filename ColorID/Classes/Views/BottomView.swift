@@ -9,23 +9,37 @@
 import Foundation
 import UIKit
 import AVFoundation
+protocol BottomViewDelegate: class {
+    func captureButtonPressed()
+    func imagePickerButtonPressed()
+}
 final class BottomView: UIView {
     fileprivate var captureButton: UIButton = {
         let tmp = UIButton()
 //        tmp.setImage(UIImage(named: "capture"), for: .normal)
         tmp.setTitle("Capture", for: .normal)
+        tmp.addTarget(self, action: #selector(captureButtonPressed), for: .touchUpInside)
         return tmp
     }()
-    var imagePickerPassedFromSuperView: ImagePicker!
+    var delegate: BottomViewDelegate?
+    @objc fileprivate func captureButtonPressed() {
+        self.delegate?.captureButtonPressed()
+        self.superview?.bringSubviewToFront(self)
 
+    }
+    
     fileprivate var libraryButton: UIButton = {
         let tmp = UIButton()
 //        tmp.backgroundColor = .white
         tmp.setTitle("library", for: .normal)
-
+        tmp.addTarget(self, action: #selector(imagePickerButtonPressed), for: .touchUpInside)
         return tmp
     }()
     
+    @objc fileprivate func imagePickerButtonPressed() {
+        self.delegate?.imagePickerButtonPressed()
+        self.superview?.bringSubviewToFront(self)
+    }
     fileprivate var settingButton: UIButton = {
         let tmp = UIButton()
 //        tmp.setImage(UIImage(named: "capture"), for: .normal)
@@ -74,22 +88,22 @@ final class BottomView: UIView {
             
         ]
         NSLayoutConstraint.activate(constraints)
-        self.superview?.bringSubviewToFront(self)
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .init(white: 0, alpha: 1)
+//        self.delegate  lf as! BottomViewDelegate
         addSubview(captureButton)
         addSubview(libraryButton)
         addSubview(settingButton)
         addSubview(sizeCenterWheelButton)
-        self.libraryButton.addTarget(self, action: #selector(libraryButtonPressed), for: .touchUpInside)
+    
         layout()    
     }
     // library selected
-    @objc fileprivate func libraryButtonPressed() {
-        imagePickerPassedFromSuperView.present(from: self.superview!)
-    }
+//    @objc fileprivate func libraryButtonPressed() {
+//        imagePickerPassedFromSuperView.present(from: self.superview!)
+//    }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
