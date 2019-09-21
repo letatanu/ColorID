@@ -28,14 +28,17 @@ final class CirclePoint: NSObject {
         }
     }
     
-    func changeStatus(newLocation: CGPoint?, newLineWidth: CGFloat?) {
+    func changeStatus(newLocation: CGPoint?, newLineWidth: CGFloat?, newRadius: CGFloat?) {
         
-        guard (newLocation != nil || newLineWidth != nil) else {return}
+        guard (newLocation != nil || newLineWidth != nil || newRadius != nil) else {return}
         if let newPoint: CGPoint = newLocation {
             self.currentRecCenter.removeFromSuperlayer()
             self.location = newPoint
         }
-        
+        if let newRad: CGFloat = newRadius {
+            self.currentRecCenter.removeFromSuperlayer()
+            self.radius = newRad
+        }
         if let newWidth: CGFloat = newLineWidth {
             self.currentRecCenter.removeFromSuperlayer()
             self.lineWidth = newWidth
@@ -49,6 +52,7 @@ final class CirclePoint: NSObject {
     }
     
     func removeAll() {
+        guard (self.currentRecCenter.superlayer != nil) else {return}
         self.currentRecCenter.removeFromSuperlayer()
     }
     // rendering a circle with given parameters
@@ -56,13 +60,13 @@ final class CirclePoint: NSObject {
         guard let centerPoint = self.location else { return nil}
         let rec = CAShapeLayer()
        
-        let bigCircle = UIBezierPath(
+        let smallCircle = UIBezierPath(
             arcCenter: centerPoint,
             radius: self.radius - self.lineWidth*0.5,
             startAngle: CGFloat(0),
             endAngle: CGFloat(Double.pi * 2),
             clockwise: true)
-        let smallCircle = UIBezierPath(arcCenter: centerPoint, radius: self.radius/3*2, startAngle: 0, endAngle: CGFloat(Double.pi*2), clockwise: true)
+        let bigCircle = UIBezierPath(arcCenter: centerPoint, radius: self.radius+2, startAngle: 0, endAngle: CGFloat(Double.pi*2), clockwise: true)
         
         let shapeLayerPath = UIBezierPath()
         shapeLayerPath.append(bigCircle)

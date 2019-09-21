@@ -8,6 +8,20 @@
 
 import Foundation
 import UIKit
+extension ViewController {
+    func switchFrom(layer: CALayer?, toLayer: CALayer?) {
+        guard let layer_ = layer else {return}
+        guard let toLayer_ = toLayer else {return}
+        let frame = layer_.frame
+        toLayer_.frame = frame
+        layer_.removeFromSuperlayer()
+        self.view.layer.addSublayer(toLayer_)
+    }
+    
+    
+    
+    
+}
 //extension ViewController {
 //
 //    @objc func buttonPressed(sender: UIButton) {
