@@ -16,6 +16,7 @@ import AVFoundation
     func captureButtonPressed()
     func imagePickerButtonPressed()
     func circleSizeButtonPressed()
+    func settingButtonPressed()
 }
 
 
@@ -43,6 +44,7 @@ final class BottomView: UIView {
         let tmp = UIButton()
         //        tmp.setImage(UIImage(named: "capture"), for: .normal)
         tmp.setTitle("setting", for: .normal)
+        tmp.addTarget(self, action: #selector(settingButtonPressed), for: .touchUpInside)
         return tmp
     }()
     
@@ -144,6 +146,10 @@ extension BottomView {
     @objc fileprivate func imagePickerButtonPressed() {
         self.delegate?.imagePickerButtonPressed()
         self.superview?.bringSubviewToFront(self)
+    }
+    
+    @objc fileprivate func settingButtonPressed(){
+        self.delegate?.settingButtonPressed()
     }
 }
 

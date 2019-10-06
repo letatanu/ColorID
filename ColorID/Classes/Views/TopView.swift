@@ -16,8 +16,6 @@ final class TopView: UIView {
         return tmp
     }()
     
-
-    
     //Test if the view is expanded
     fileprivate let isExpanded = false
     

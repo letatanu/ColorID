@@ -27,7 +27,7 @@ final class SliderContainer: UIView {
         
         slider.maximumValue = 100
         slider.minimumValue = 0
-    slider.setValue(Float(100-200*NumericalData.shared().defaultSizeOfCircle/UIScreen.main.bounds.width), animated: false)
+        slider.setValue(Float(100-200*NumericalData.shared().defaultSizeOfCircle/UIScreen.main.bounds.width), animated: false)
         slider.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
         return slider
     }()
@@ -44,8 +44,9 @@ final class SliderContainer: UIView {
         NSLayoutConstraint.activate(constraints)
     }
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, initialValue: Float) {
         super.init(frame: frame)
+        slider.value = initialValue
         backgroundColor = .init(white: 1, alpha: 0.7)
         layer.cornerRadius = bounds.width*0.1
         self.addSubview(slider)
@@ -62,5 +63,6 @@ final class SliderContainer: UIView {
 extension SliderContainer {
     @objc func sliderValueChanged() {
         self.delegate?.sliderValueChanged(value: self.slider.value)
+        
     }
 }

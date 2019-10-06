@@ -18,24 +18,14 @@ class ViewController: UIViewController{
     fileprivate var centerCircle : CirclePoint!
     fileprivate var imagePicker : ImagePicker!
     fileprivate var pickedImage: UIImage!
-    // It is used for adjusting the size of the color detection circle
-    
-    // Displaying the colorCode
-    @IBOutlet weak var colorCode: UILabel! {
-        didSet {
-            colorCode.adjustsFontSizeToFitWidth = true
-        } 
-    }
-    fileprivate var sliderContainer: SliderContainer = {
-        let tmp = SliderContainer(frame: CGRect(x: 0, y: 0, width: 25, height: UIScreen.main.bounds.height/4))
-        tmp.backgroundColor = .white
-        return tmp
-    }()
+    ////////
     
     fileprivate var count: Int = 0
     fileprivate final let threshold = 10
     fileprivate var isInitialized: Bool = false
     fileprivate var lastImage = UIImage()
+    fileprivate var currentColor = UIColor()
+    ////////
     
     fileprivate var bottomView: BottomView!
     fileprivate var topView : TopView!
@@ -67,13 +57,13 @@ class ViewController: UIViewController{
         let constraints = [
             
             topView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            topView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            topView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            topView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10),
+            topView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10),
             topView.heightAnchor.constraint(equalToConstant: self.view.bounds.height/7),
             
-            bottomView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
-            bottomView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
-            bottomView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
+            bottomView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0),
+            bottomView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0),
+            bottomView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0),
             bottomView.heightAnchor.constraint(equalToConstant: self.view.bounds.height/7),
             
         ]
@@ -81,11 +71,19 @@ class ViewController: UIViewController{
         topView.layer.cornerRadius = 0.01*topView.bounds.width
         
     }
-    
-    
+        
     fileprivate var sizeOfCenterPoint: CGFloat = NumericalData.shared().defaultSizeOfCircle
+    
+    fileprivate var sliderContainer: SliderContainer = {
+        let initValue = Float(NumericalData.shared().defaultSizeOfCircle/min(UIScreen.main.bounds.height, UIScreen.main.bounds.width)*100)
+        let tmp = SliderContainer(frame: CGRect(x: 0, y: 0, width: 25, height: UIScreen.main.bounds.height/4), initialValue: initValue)
+        tmp.backgroundColor = .white
+        return tmp
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
         
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         self.camera = Camera(frame: cameraViewFrame, sizeOfCenterPoint: Int(self.sizeOfCenterPoint))
@@ -107,40 +105,42 @@ class ViewController: UIViewController{
         
     }
     
-    
-    
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    @objc func handleLongPress(recognizer: UIGestureRecognizer) {
-        if recognizer.state == .began {
-            let loc = recognizer.location(in: nil)
-            if loc.x <= cameraViewFrame.width && loc.y <= self.cameraViewFrame.height {
-                self.centerCircle.changeStatus(newLocation: loc, newLineWidth: nil, newRadius: nil)
-                camera.circleLocation = loc
-                if !camera.captureSession.isRunning {
-                    // rendering the image picker view to take the true location of the center cirle
-                    let renderer = UIGraphicsImageRenderer(size: self.imagePickerView.bounds.size)
-                    let image = renderer.image { ctx in
-                        self.imagePickerView.drawHierarchy(in: self.imagePickerView.bounds, afterScreenUpdates: false)
-                    }
-                    
-                    guard let im = self.centerCircle.imageInCircle(orginalImage: image, circlePoint: self.centerCircle, actualLocation: nil) else {return}
-                    
-                    if let dColor = im.mostDominantColor(inNumberOfCluster: 15) {
-                        topView.color = dColor
-                    }
-                }
-            }
-            else {
-                print("Error")
-            }
+    //    @objc func handleLongPress(recognizer: UIGestureRecognizer) {
+    //        if recognizer.state == .began {
+    //            let loc = recognizer.location(in: nil)
+    //            if loc.x <= cameraViewFrame.width && loc.y <= self.cameraViewFrame.height {
+    //                self.centerCircle.changeStatus(newLocation: loc, newLineWidth: nil, newRadius: nil)
+    //                camera.circleLocation = loc
+    //                if !camera.captureSession.isRunning {
+    //                    // rendering the image picker view to take the true location of the center cirle
+    //                    let renderer = UIGraphicsImageRenderer(size: self.imagePickerView.bounds.size)
+    //                    let image = renderer.image { ctx in
+    //                        self.imagePickerView.drawHierarchy(in: self.imagePickerView.bounds, afterScreenUpdates: false)
+    //                    }
+    //
+    //                    guard let im = self.centerCircle.imageInCircle(orginalImage: image, circlePoint: self.centerCircle, actualLocation: nil) else {return}
+    //
+    //                    if let dColor = im.mostDominantColor(inNumberOfCluster: 15) {
+    //                        topView.color = dColor
+    //                    }
+    //                }
+    //            }
+    //            else {
+    //                print("Error")
+    //            }
+    //        }
+    //    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+        if self.captureButtonSelected {
+            self.camera.captureSession.startRunning()
         }
     }
-    
     fileprivate var captureButtonSelected: Bool = true
     fileprivate var cameraInitialized: Bool = false
 }
@@ -148,9 +148,34 @@ class ViewController: UIViewController{
 extension ViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
-        guard let location = touch?.location(in: self.sliderContainer) else { return }
+        guard let location = touch?.location(in: self.view) else { return }
         if !self.sliderContainer.frame.contains(location) {
-            self.sliderContainer.removeFromSuperview()
+            if self.sliderContainer.superview != nil {
+                self.sliderContainer.removeFromSuperview()
+                return
+            }
+        }
+        
+        let loc = location
+        if loc.x <= cameraViewFrame.width && loc.y <= self.cameraViewFrame.height {
+            self.centerCircle.changeStatus(newLocation: loc, newLineWidth: nil, newRadius: nil)
+            camera.circleLocation = loc
+            if !camera.captureSession.isRunning {
+                // rendering the image picker view to take the true location of the center cirle
+                let renderer = UIGraphicsImageRenderer(size: self.imagePickerView.bounds.size)
+                let image = renderer.image { ctx in
+                    self.imagePickerView.drawHierarchy(in: self.imagePickerView.bounds, afterScreenUpdates: false)
+                }
+                
+                guard let im = self.centerCircle.imageInCircle(orginalImage: image, circlePoint: self.centerCircle, actualLocation: nil) else {return}
+                
+                if let dColor = im.mostDominantColor(inNumberOfCluster: 15) {
+                    topView.color = dColor
+                }
+            }
+        }
+        else {
+            print("Error")
         }
     }
     fileprivate func addingCameraLayer () {
@@ -162,10 +187,10 @@ extension ViewController {
         self.camera.videoPreviewLayer?.frame = self.view.frame
         self.camera.captureSession.startRunning()
         self.view.layer.addSublayer(self.camera.videoPreviewLayer!)
-
+        
         if let cameraLayer = self.camera.videoPreviewLayer {
-            let longTapRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
-            self.view.addGestureRecognizer(longTapRecognizer)
+            //            let longTapRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+            //            self.view.addGestureRecognizer(longTapRecognizer)
             self.view.layer.addSublayer(cameraLayer)
         }
         if let camera_ = self.camera {
@@ -217,6 +242,17 @@ extension ViewController: ImagePickerDelegate {
 }
 // Mark: Bottom View Delegate
 extension ViewController: BottomViewDelegate {
+    func settingButtonPressed() {
+        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
+            viewController.color = self.currentColor
+            if let navigator = self.navigationController {
+                self.camera.captureSession.stopRunning()
+                navigator.pushViewController(viewController, animated: true)
+            }
+            
+        }
+    }
+    
     
     func circleSizeButtonPressed() {
         if self.sliderContainer.superview != nil {
@@ -224,23 +260,19 @@ extension ViewController: BottomViewDelegate {
         } else {
             self.sliderContainer.delegate = self
             self.view.addSubview(sliderContainer)
-            
             sliderContainer.translatesAutoresizingMaskIntoConstraints = false
-            
             let constraints = [
                 sliderContainer.centerXAnchor.constraint(equalTo: self.bottomView.sizeCenterWheelButton.centerXAnchor),
                 sliderContainer.bottomAnchor.constraint(equalTo: self.bottomView.topAnchor, constant: 10),
                 sliderContainer.widthAnchor.constraint(equalToConstant: 25),
                 sliderContainer.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height/4)
             ]
-            
             NSLayoutConstraint.activate(constraints)
+            self.count = 0
         }
     }
     
-    
     func captureButtonPressed() {
-        print("Capture Button Pressed")
         self.addingCameraLayer()
         captureButtonSelected = true
         if self.sliderContainer.superview != nil {
@@ -266,6 +298,7 @@ extension ViewController: FrameExtractorDelegate {
             if count >= threshold {
                 lastImage = image
                 if  let color = image.mostDominantColor(inNumberOfCluster: 13) {
+                    self.currentColor = color
                     topView.color = color
                     //                    }
                     count = 0
@@ -273,10 +306,12 @@ extension ViewController: FrameExtractorDelegate {
             }
         }
         else {
-            let color_ = image.mostDominantColor(inNumberOfCluster: 5)
-            lastImage = image
-            isInitialized = true
-            topView.color = color_!
+            if let color = image.mostDominantColor(inNumberOfCluster: 13) {
+                lastImage = image
+                isInitialized = true
+                topView.color = color
+                self.currentColor = color
+            }
         }
     }
     
@@ -284,7 +319,7 @@ extension ViewController: FrameExtractorDelegate {
 
 extension ViewController: SliderContainerDelegate {
     func sliderValueChanged(value: Float) {
-        self.sizeOfCenterPoint = CGFloat(value/100)*min(self.view.bounds.height,self.view.bounds.width)
+        self.sizeOfCenterPoint = CGFloat(value/100)*min(self.view.bounds.height/2,self.view.bounds.width/2)
         self.centerCircle.changeStatus(newLocation: nil, newLineWidth: nil, newRadius: self.sizeOfCenterPoint)
         
     }

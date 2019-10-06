@@ -34,6 +34,8 @@
 		8C30C45D229C931700EBD139 /* Extension_UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C30C45C229C931700EBD139 /* Extension_UIButton.swift */; };
 		8C30C45F229C97E600EBD139 /* Extension_ViewController+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C30C45E229C97E600EBD139 /* Extension_ViewController+Events.swift */; };
 		8C32CF9C23360FE90089DEC4 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C32CF9B23360FE90089DEC4 /* Slider.swift */; };
+		8C32CFA123362E1B0089DEC4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C32CFA023362E1B0089DEC4 /* DetailViewController.swift */; };
+		8C32CFA3233635850089DEC4 /* DetailColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C32CFA2233635850089DEC4 /* DetailColorCell.swift */; };
 		8C48032D232750C4000DF0FD /* Extension_CameraLayer+Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C48032C232750C4000DF0FD /* Extension_CameraLayer+Functions.swift */; };
 		8C5997F022CB25AE008DC702 /* PaletteImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5997EF22CB25AE008DC702 /* PaletteImageViewCell.swift */; };
 		8C61569D22C2D59C00045BBC /* Extension_UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C61569C22C2D59C00045BBC /* Extension_UIView.swift */; };
@@ -96,6 +98,8 @@
 		8C30C45C229C931700EBD139 /* Extension_UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_UIButton.swift; sourceTree = "<group>"; };
 		8C30C45E229C97E600EBD139 /* Extension_ViewController+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension_ViewController+Events.swift"; sourceTree = "<group>"; };
 		8C32CF9B23360FE90089DEC4 /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
+		8C32CFA023362E1B0089DEC4 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		8C32CFA2233635850089DEC4 /* DetailColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailColorCell.swift; sourceTree = "<group>"; };
 		8C48032C232750C4000DF0FD /* Extension_CameraLayer+Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension_CameraLayer+Functions.swift"; sourceTree = "<group>"; };
 		8C5997EF22CB25AE008DC702 /* PaletteImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteImageViewCell.swift; sourceTree = "<group>"; };
 		8C5CBF992291411000451299 /* libFloaty.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libFloaty.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,8 +210,9 @@
 		5BB4223A20DC876300CB09D3 /* ColorID */ = {
 			isa = PBXGroup;
 			children = (
-				5BB4223B20DC876300CB09D3 /* AppDelegate.swift */,
 				5BB4223D20DC876300CB09D3 /* ViewController.swift */,
+				8C32CF9D23362DA10089DEC4 /* DetailViewController */,
+				5BB4223B20DC876300CB09D3 /* AppDelegate.swift */,
 				5B806A212254F8E70030D1F7 /* Data */,
 				5B806A202254F8D60030D1F7 /* Classes */,
 				5B806A1F2254F8B50030D1F7 /* Delegates */,
@@ -251,6 +256,15 @@
 				C706C5C84EBF3DB0919C4CAA /* libPods-ColorID.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8C32CF9D23362DA10089DEC4 /* DetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8C32CFA023362E1B0089DEC4 /* DetailViewController.swift */,
+				8C32CFA2233635850089DEC4 /* DetailColorCell.swift */,
+			);
+			path = DetailViewController;
 			sourceTree = "<group>";
 		};
 		8CF3493822E60BEA00E0B8D0 /* Views */ = {
@@ -459,9 +473,11 @@
 				5B806A232255122A0030D1F7 /* CameraView.swift in Sources */,
 				5B806A192254F6F50030D1F7 /* ViewController+UIPicker.swift in Sources */,
 				8C5997F022CB25AE008DC702 /* PaletteImageViewCell.swift in Sources */,
+				8C32CFA3233635850089DEC4 /* DetailColorCell.swift in Sources */,
 				8C48032D232750C4000DF0FD /* Extension_CameraLayer+Functions.swift in Sources */,
 				5B6CF1E820E322D90016D8C3 /* CameraLayer.swift in Sources */,
 				8CA43A302324AA9800122387 /* CircleCenter.swift in Sources */,
+				8C32CFA123362E1B0089DEC4 /* DetailViewController.swift in Sources */,
 				8C112CD82331CE8A005C5440 /* Extension_UIImageView.swift in Sources */,
 				8C1F381F2320D9C800214EF0 /* ImagePicker.swift in Sources */,
 				8C61569D22C2D59C00045BBC /* Extension_UIView.swift in Sources */,
