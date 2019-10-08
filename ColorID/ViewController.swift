@@ -49,7 +49,7 @@ class ViewController: UIViewController{
     //        //        roundCorners(corners: [.topLeft, .topRight], radius:0.05*self.bounds.width)
     //        topView.colorDisplay.layer.cornerRadius = topView.colorDisplay.bounds.height*0.5
     //    }
-    
+     
     // setting the layout of subviews
     fileprivate func layout() {
         topView.translatesAutoresizingMaskIntoConstraints = false
