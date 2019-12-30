@@ -9,8 +9,14 @@
 import Foundation
 import UIKit
 
+@objc protocol TopViewDelegate: class {
+    func topViewPressed()
+}
+
 final class TopView: UIView {
   
+    var delegate: TopViewDelegate?
+    
     fileprivate let palleteView : PaletteImageView = {
         let tmp = PaletteImageView(frame: CGRect.init(x: 0, y: 0, width: 100, height: 100), collectionViewLayout: UICollectionViewLayout.init())
         return tmp
@@ -131,4 +137,13 @@ final class TopView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+}
+
+
+extension TopView {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first
+        guard let location = touch?.location(in: self) else { return }
+        self.delegate?.topViewPressed()
+    }
 }

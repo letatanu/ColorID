@@ -19,7 +19,7 @@ class DetailColorCell: UITableViewCell {
         backgroundColor = .clear
         addSubview(title)
         addSubview(code)
-        
+        self.layout()
     }
     
     fileprivate func layout() {
@@ -28,7 +28,10 @@ class DetailColorCell: UITableViewCell {
         
         let constraints = [
             title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            code.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
+            title.centerYAnchor.constraint(equalTo: centerYAnchor),
+            
+            code.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            code.centerYAnchor.constraint(equalTo: centerYAnchor)
         ]
         
         NSLayoutConstraint.activate(constraints)

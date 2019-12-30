@@ -92,6 +92,7 @@ class ViewController: UIViewController{
         
         //        self.view.addSubview(button)
         topView = TopView(frame: CGRect(origin: .zero, size: CGSize(width: self.view.bounds.width - 20, height: self.view.bounds.height/7)))
+        topView.delegate = self
         self.view.addSubview(topView)
         //
         bottomView = BottomView(frame: CGRect(origin: .zero, size: CGSize(width: self.view.bounds.width - 20, height: self.view.bounds.height/7)))
@@ -240,11 +241,23 @@ extension ViewController: ImagePickerDelegate {
     }
     
 }
+//Mark: Top View delegate
+extension ViewController: TopViewDelegate {
+    func topViewPressed() {
+        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
+            viewController.color = self.currentColor
+            if let navigator = self.navigationController {
+                self.camera.captureSession.stopRunning()
+                navigator.pushViewController(viewController, animated: true)
+            }
+            
+        }    }
+}
 // Mark: Bottom View Delegate
 extension ViewController: BottomViewDelegate {
     func settingButtonPressed() {
-        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
-            viewController.color = self.currentColor
+        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SettingViewController") as? SettingViewController {
+//            viewController.color = self.currentColor
             if let navigator = self.navigationController {
                 self.camera.captureSession.stopRunning()
                 navigator.pushViewController(viewController, animated: true)
