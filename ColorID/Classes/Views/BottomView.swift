@@ -39,7 +39,6 @@ final class BottomView: UIView {
         return tmp
     }()
     
-    
     fileprivate var settingButton: UIButton = {
         let tmp = UIButton()
         //        tmp.setImage(UIImage(named: "capture"), for: .normal)
@@ -108,13 +107,11 @@ final class BottomView: UIView {
             settingButton.widthAnchor.constraint(equalToConstant: min(self.frame.width * 0.15,  self.frame.height * 0.7)),
             settingButton.heightAnchor.constraint(equalToConstant: min(self.frame.width * 0.15,  self.frame.height * 0.7)),
             settingButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-            
-            
-            
-            
         ]
+        
         NSLayoutConstraint.activate(constraints)
     }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .init(white: 0, alpha: 1)

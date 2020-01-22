@@ -43,6 +43,7 @@ final class colorDict {
             }
         }
     }
+    
     class func shared() -> colorDict {
         return ColorDictionary
     }

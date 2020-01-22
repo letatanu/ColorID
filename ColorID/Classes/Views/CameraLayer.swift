@@ -12,7 +12,7 @@ import UIKit
 import AVFoundation
 
 protocol FrameExtractorDelegate: class {
-    func captured(image: UIImage)
+    func returnedImage(image: UIImage)
     //    func dominantColor(color: UIColor)
 }
 
@@ -20,20 +20,27 @@ protocol FrameExtractorDelegate: class {
 final class Camera: NSObject {
     var videoPreviewLayer: AVCaptureVideoPreviewLayer? //render the camera view finder
     
-    var circleLocation : CGPoint = NumericalData.shared().centerPoint
+    
+    var photoCaptureCompletionBlock: ((UIImage?, Error?) -> Void)?
+    
+    // MARK: Delegate variable
     weak var delegate: FrameExtractorDelegate?
-    var capturedImage = UIImage()
     private let sessionQueue = DispatchQueue(label: "session queue")
     private var stillImageOutput = AVCapturePhotoOutput()
+    
+    // MARK: Config Camera
     private let position = AVCaptureDevice.Position.back
     private let quality = AVCaptureSession.Preset.high
-    private var permissionGranted = false
     let captureSession = AVCaptureSession()
     private let context = CIContext()
-    private var sizeOfCenterPoint = NumericalData.shared().defaultSizeOfCircle
+    
+    // MARK: Storing captured image
+    var capturedImage = UIImage()
     private var oldCapturedPhoto: UIImage? = nil
     private var currentCapturedPhoto: UIImage? = nil
-    // MARK: AVSession configuration
+    
+    // MARK: Permission Config
+    private var permissionGranted = false
     private func checkPermission() {
         switch AVCaptureDevice.authorizationStatus(for: AVMediaType.video) {
         case .authorized:
@@ -44,6 +51,8 @@ final class Camera: NSObject {
             permissionGranted = false
         }
     }
+    
+    // MARK: select rear/front camera
     private func selectCaptureDevice(positionCamera: String) -> AVCaptureDevice? {
         if positionCamera == "front" {
             guard let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: .front) else { return nil}
@@ -53,6 +62,7 @@ final class Camera: NSObject {
         return device
     }
     
+    // MARK: Request permission to access camera device
     private func requestPermission() {
         sessionQueue.suspend()
         AVCaptureDevice.requestAccess(for: AVMediaType.video) { [unowned self] granted in
@@ -61,33 +71,50 @@ final class Camera: NSObject {
         }
     }
     
+    // MARK: Configure Camera Session
     private func configureSession(frame: CGRect) {
+        // asking for permission
         guard permissionGranted else { return }
         
-        //adding input device
-        captureSession.sessionPreset = quality
-        videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        // MARK: config video preview layer
+        self.videoPreviewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession)
+        self.videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        self.videoPreviewLayer?.frame = frame
+        
+        // config capture session
+        captureSession.sessionPreset = self.quality
+        
+        //MARK: config input device
         guard let captureDevice = selectCaptureDevice(positionCamera: "back") else { return }
         do {
             try captureDevice.lockForConfiguration()
         } catch _ {
             print("failed locking device")
         }
+        
         captureDevice.activeVideoMaxFrameDuration = CMTimeMake(value: 1, timescale: 30)
-        captureDevice.activeVideoMinFrameDuration = CMTimeMake(value: 1, timescale: 30)
         captureDevice.unlockForConfiguration()
         
         guard let captureDeviceInput = try? AVCaptureDeviceInput(device: captureDevice) else { return }
+        
+        // MARK: adding input
         guard captureSession.canAddInput(captureDeviceInput) else { return }
         captureSession.addInput(captureDeviceInput)
         
-        //adding output device
+        //MARK: config output device
         let videoOutput = AVCaptureVideoDataOutput()
         videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "sample buffer"))
+        videoOutput.alwaysDiscardsLateVideoFrames = true
+        
+        // MARK: adding output
+        guard captureSession.canAddOutput(stillImageOutput) else { return }
         guard captureSession.canAddOutput(videoOutput) else { return }
+        captureSession.addOutput(stillImageOutput)
         captureSession.addOutput(videoOutput)
-        //        self.captureSession.startRunning()
+        
+        // MARK: Config camera orientation
         guard let connection = videoOutput.connection(with: AVFoundation.AVMediaType.video) else { return }
+        
         guard connection.isVideoOrientationSupported else { return }
         guard connection.isVideoMirroringSupported else { return }
         connection.videoOrientation = .portrait
@@ -95,63 +122,25 @@ final class Camera: NSObject {
         
     }
     
-    init(frame: CGRect, sizeOfCenterPoint: Int = 20) {
+    init(frame: CGRect) {
         super.init()
-        self.sizeOfCenterPoint = CGFloat(sizeOfCenterPoint)
         checkPermission()
         
-        //adding preview frame
-        self.videoPreviewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession)
-        self.videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        self.videoPreviewLayer?.frame = frame
-        //        self.centerPointRec = self.recCenter(radius: CGFloat(sizeOfCenterPoint), lineWidth: CGFloat(4))
-        //        self.videoPreviewLayer?.addSublayer(self.centerPointRec)
-        
-        //Initialise the video preview layer and add it as a sublayer to the viewPreview view's layer
-        sessionQueue.async { [unowned self] in
-            self.configureSession(frame: frame)
+        self.configureSession(frame: frame)
+        if !self.captureSession.isRunning {
             self.captureSession.startRunning()
         }
-        
-        
     }
-    //    func recCenter(radius: CGFloat, lineWidth: CGFloat) -> CAShapeLayer {
-    //        if let centerPoint = center {
-    //            let rec = CAShapeLayer()
-    //            rec.path = UIBezierPath(
-    //                arcCenter: centerPoint,
-    //                radius: radius - lineWidth*0.5 ,
-    //                startAngle: CGFloat(0),
-    //                endAngle: CGFloat(Double.pi * 2),
-    //                clockwise: true).cgPath
-    //            rec.fillColor = UIColor.clear.cgColor
-    //            rec.strokeColor = UIColor.white.cgColor
-    //            rec.lineWidth = lineWidth
-    //            rec.opacity = 1
-    //            return rec
-    //        }
-    //        let rec = CAShapeLayer()
-    //        rec.path = UIBezierPath(
-    //            arcCenter: CGPoint(x: self.videoPreviewLayer!.bounds.width*0.5, y: self.videoPreviewLayer!.bounds.height*0.5),
-    //            radius: radius - lineWidth*0.5 ,
-    //            startAngle: CGFloat(0),
-    //            endAngle: CGFloat(Double.pi * 2),
-    //            clockwise: true).cgPath
-    //        rec.fillColor = UIColor.clear.cgColor
-    //        rec.strokeColor = UIColor.white.cgColor
-    //        rec.lineWidth = lineWidth
-    //        rec.opacity = 1
-    //        return rec
-    //    }
     
     func updatePreviewLayer(size: CGSize) {
         self.videoPreviewLayer?.frame.size = size
     }
     
 }
-
-extension Camera: AVCaptureVideoDataOutputSampleBufferDelegate, AVCapturePhotoCaptureDelegate {
-    // MARK: Sample buffer to UIImage conversion
+// MARK: Camera delegate
+extension Camera: AVCapturePhotoCaptureDelegate, AVCaptureVideoDataOutputSampleBufferDelegate {
+    
+    // MARK: Sample buffer to UIImage
     func imageFromSampleBuffer(sampleBuffer: CMSampleBuffer) -> UIImage? {
         guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return nil }
         let ciImage = CIImage(cvPixelBuffer: imageBuffer)
@@ -159,30 +148,34 @@ extension Camera: AVCaptureVideoDataOutputSampleBufferDelegate, AVCapturePhotoCa
         guard let cgImage = context.createCGImage(ciImage, from: cutRegion) else { return nil }
         let img = UIImage(cgImage: cgImage)
         let croppedImg = img.crop(to: (self.videoPreviewLayer?.frame.size)!)
-        let radius = self.sizeOfCenterPoint
-        let finalImg = croppedImg.imageByApplyingClippingCenterCircleBezierPath(radius: radius, lineWidth: NumericalData.shared().lineWidth, center: self.circleLocation)
-        return finalImg
+        return croppedImg
         
     }
     // taking photo
-    func capturingPhoto() {
+    func capturingPhoto(completion: @escaping (UIImage?, Error?) -> Void) {
         let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
-        captureSession.addOutput(stillImageOutput)
-        stillImageOutput.capturePhoto(with: settings, delegate: self)
+        stillImageOutput.capturePhoto(with: settings, delegate: self as AVCapturePhotoCaptureDelegate)
+        self.photoCaptureCompletionBlock = completion
+        
     }
+    
+    // capture image function
     
     // getting the captured image
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-        guard let imageData = photo.fileDataRepresentation()
-            else {return}
-        capturedImage = UIImage(data: imageData)!
+        if let x = error {
+            self.photoCaptureCompletionBlock?(nil, x)
+        }
+        else if let data = photo.fileDataRepresentation(), let image = UIImage(data: data) {
+            self.photoCaptureCompletionBlock?(image, nil)
+        }
     }
     
     // extracting the image in every scheduled time.
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let uiImage = imageFromSampleBuffer(sampleBuffer: sampleBuffer) else { return }
         DispatchQueue.main.async { [unowned self] in
-            self.delegate?.captured(image: uiImage)
+            self.delegate?.returnedImage(image: uiImage)
         }
         
     }

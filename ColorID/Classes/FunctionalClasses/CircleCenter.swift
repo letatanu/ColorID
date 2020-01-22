@@ -14,7 +14,7 @@ final class CirclePoint: NSObject {
     fileprivate var radius: CGFloat
     fileprivate var lineWidth: CGFloat
     fileprivate var presentationLayer: CALayer?
-    fileprivate var currentRecCenter = CAShapeLayer()
+    var currentRecCenter = CAShapeLayer()
     init(presentationLayer: CALayer, centerLocation: CGPoint?, radius: CGFloat, lineWidth: CGFloat = NumericalData.shared().lineWidth) {
         
         self.location = centerLocation
@@ -26,6 +26,11 @@ final class CirclePoint: NSObject {
             self.currentRecCenter = recC
             self.presentationLayer?.addSublayer(self.currentRecCenter)
         }
+//       r initGestureRecognizers()
+
+    }
+    func getRadius() -> CGFloat {
+        return self.radius
     }
     
     func changeStatus(newLocation: CGPoint?, newLineWidth: CGFloat?, newRadius: CGFloat?) {
@@ -38,6 +43,7 @@ final class CirclePoint: NSObject {
         if let newRad: CGFloat = newRadius {
             self.currentRecCenter.removeFromSuperlayer()
             self.radius = newRad
+                
         }
         if let newWidth: CGFloat = newLineWidth {
             self.currentRecCenter.removeFromSuperlayer()
@@ -81,13 +87,15 @@ final class CirclePoint: NSObject {
     }
 }
 extension CirclePoint {
-    func imageInCircle(orginalImage: UIImage, circlePoint: CirclePoint, actualLocation: CGPoint?) -> UIImage? {
-        guard var loc: CGPoint = circlePoint.location else { return UIImage()}
+    func imageInCircle(orginalImage: UIImage, actualLocation: CGPoint?) -> UIImage? {
+        guard var loc: CGPoint = self.location else { return UIImage()}
         if let actLocation = actualLocation {
             loc.x -= actLocation.x
             loc.y -= actLocation.y
         }
-        guard let finalImg = orginalImage.imageByApplyingClippingCenterCircleBezierPath(radius: circlePoint.radius, lineWidth: NumericalData.shared().lineWidth, center: loc) else { return nil }
+        let path =  UIBezierPath(cgPath: self.currentRecCenter.path!)
+        guard let finalImg = orginalImage.imageByApplyingClippingCenterCircleBezierPath(path: path) else { return nil }
+        
         return finalImg
     }
 }

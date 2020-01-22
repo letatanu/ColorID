@@ -15,7 +15,6 @@
 		5B806A192254F6F50030D1F7 /* ViewController+UIPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B806A182254F6F50030D1F7 /* ViewController+UIPicker.swift */; };
 		5B806A1B2254F7BA0030D1F7 /* Extension_Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B806A1A2254F7BA0030D1F7 /* Extension_Array.swift */; };
 		5B806A1D2254F8000030D1F7 /* Extension_UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B806A1C2254F8000030D1F7 /* Extension_UIImage.swift */; };
-		5B806A232255122A0030D1F7 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B806A222255122A0030D1F7 /* CameraView.swift */; };
 		5B880BE32112ACDB004B135B /* Extension_UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B880BE22112ACDB004B135B /* Extension_UIColor.swift */; };
 		5BB403BC21F96CB70038D9FE /* ColorDict_viet.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5BB403BB21F96CB70038D9FE /* ColorDict_viet.txt */; };
 		5BB4223C20DC876300CB09D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB4223B20DC876300CB09D3 /* AppDelegate.swift */; };
@@ -72,7 +71,6 @@
 		5B806A182254F6F50030D1F7 /* ViewController+UIPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+UIPicker.swift"; sourceTree = "<group>"; };
 		5B806A1A2254F7BA0030D1F7 /* Extension_Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_Array.swift; sourceTree = "<group>"; };
 		5B806A1C2254F8000030D1F7 /* Extension_UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_UIImage.swift; sourceTree = "<group>"; };
-		5B806A222255122A0030D1F7 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		5B880BE22112ACDB004B135B /* Extension_UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_UIColor.swift; sourceTree = "<group>"; };
 		5BB403BB21F96CB70038D9FE /* ColorDict_viet.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ColorDict_viet.txt; sourceTree = "<group>"; };
 		5BB4223820DC876300CB09D3 /* ColorID.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorID.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -290,7 +288,6 @@
 			isa = PBXGroup;
 			children = (
 				8C1F381E2320D9C800214EF0 /* ImagePicker.swift */,
-				5B806A222255122A0030D1F7 /* CameraView.swift */,
 				8CF6778622A35330004D65E2 /* TopView.swift */,
 				8CF3493622E60BD300E0B8D0 /* BottomView.swift */,
 				8C1236EA22C4976200618E08 /* ColorViewPopup.swift */,
@@ -490,7 +487,6 @@
 				5BE62C2A21D31FC8000743AE /* Classifier.swift in Sources */,
 				5B4B0E8321EE7C7E0038E15E /* StreamerFile.swift in Sources */,
 				8CF6778722A35330004D65E2 /* TopView.swift in Sources */,
-				5B806A232255122A0030D1F7 /* CameraView.swift in Sources */,
 				5B806A192254F6F50030D1F7 /* ViewController+UIPicker.swift in Sources */,
 				8C5997F022CB25AE008DC702 /* PaletteImageViewCell.swift in Sources */,
 				8C32CFA3233635850089DEC4 /* DetailColorCell.swift in Sources */,

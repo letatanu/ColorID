@@ -25,7 +25,6 @@ final class NumericalData {
     }
     
     init() {
-
         self.centerPoint = CGPoint(x: UIScreen.main.bounds.width*0.5, y: UIScreen.main.bounds.height*0.5)
         lineWidth = 1
         defaultSizeOfCircle = 10

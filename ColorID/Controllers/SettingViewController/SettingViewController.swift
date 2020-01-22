@@ -53,8 +53,33 @@ extension SettingViewController {
         if cell == nil {
             cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellIdentifier")
         }
-        cell?.textLabel?.text = "Hello"
+        switch indexPath.section {
+        case 0:
+            switch indexPath.row {
+            case 0:
+                cell?.textLabel?.text = "Feedback"
+            default:
+                cell?.textLabel?.text = "Rate App"
+
+            }
+        default:
+                    cell?.textLabel?.text = "Donate"
+        }
         
         return cell!
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            switch indexPath.row {
+            case 0:
+                print("Feedback selected")
+            default:
+                print("Rate app selected")
+            }
+        default:
+            print("Donate selected")
+        }
     }
 }

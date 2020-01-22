@@ -12,13 +12,9 @@ import AVFoundation
 import Darwin
 
 extension UIColor {
-    fileprivate static var _hexValue = String ()
     var hexValue : String {
         get {
-            return UIColor._hexValue
-        }
-        set(newValue){
-            UIColor._hexValue = newValue
+            return String(format:"0x%02X", Int(self.redValue*255)) + String(format:"%02X", Int(self.greenValue*255)) + String(format:"%02X", Int(self.blueValue*255))
         }
     }
     convenience init(hexString:String) {
@@ -36,11 +32,10 @@ extension UIColor {
         let green = CGFloat(g) / 255.0
         let blue  = CGFloat(b) / 255.0
         self.init(red:red, green:green, blue:blue, alpha:1)
-        self.hexValue = hexString
     }
+    
+    
     // converting to color system
-    
-    
     var hsl: (hue: CGFloat, sarturation: CGFloat, lightness: CGFloat) {
         let minV:CGFloat = CGFloat(min(self.redValue, self.greenValue, self.blueValue))
         let maxV:CGFloat = CGFloat(max(self.redValue, self.greenValue, self.blueValue))

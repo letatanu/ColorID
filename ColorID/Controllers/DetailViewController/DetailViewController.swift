@@ -41,19 +41,21 @@ extension DetailViewController {
         switch indexPath.row {
         case 0:
             title = "RGB"
-            code = "0xxx"
+            let r = NSAttributedString(string: "\(Int(self.color.redValue))", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+            code = "\(Int(self.color.redValue*255))" + " \(Int(self.color.greenValue*255))" + " \(Int(self.color.blueValue*255))"
         case 1:
             title = "CMYK"
-            code = "0xsdsfds"
+            code = "\(round(self.color.cmyk.cyan*1000)/1000)" + " \(round(self.color.cmyk.magneta*1000)/1000)" + " \(round(self.color.cmyk.yellow*1000)/1000)" + " \(round(self.color.cmyk.key*1000)/1000)"
         case 2:
-            title = "HSB"
-            code = "0xsdsfds"
+            title = "HSL"
+            code =  "\(round(self.color.hsl.hue*1000)/1000)" + " \(round(self.color.hsl.sarturation*1000)/1000)" + " \(round(self.color.hsl.lightness*1000)/1000)"
+
         case 3:
             title = "HSV"
-            code = "0xsdsfds"
+            code = "\(round(self.color.hsv.hue*1000)/1000)" + " \(round(self.color.hsv.sarturation*1000)/1000)" + " \(round(self.color.hsv.value*1000)/1000)"
         default:
             title = "HEX"
-            code = "0xsdsfds"
+            code = self.color.hexValue
             
         }
         cell.title.text = title

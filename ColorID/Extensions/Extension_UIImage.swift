@@ -160,15 +160,15 @@ extension UIImage {
         return true
     }
     
-    func imageByApplyingClippingCenterCircleBezierPath(radius: CGFloat, lineWidth: CGFloat, center: CGPoint) -> UIImage? {
+    func imageByApplyingClippingCenterCircleBezierPath(path: UIBezierPath) -> UIImage? {
         // Mask image using path
-        let path = UIBezierPath(
-            arcCenter: center,
-            radius: CGFloat(radius - lineWidth),
-            startAngle: CGFloat(0),
-            endAngle:CGFloat(Double.pi * 2),
-            clockwise: true)
-        path.lineWidth = lineWidth
+//        let path = UIBezierPath(
+//            arcCenter: center,
+//            radius: CGFloat(radius - lineWidth),
+//            startAngle: CGFloat(0),
+//            endAngle:CGFloat(Double.pi * 2),
+//            clockwise: true)
+//        path.lineWidth = lineWidth
         guard let maskedImage = imageByApplyingMaskingCenterCircleBezierPath(path) else {return nil}
         
         // Crop image to frame of path
@@ -242,4 +242,21 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return resized!
     }
+}
+
+
+extension UIImage {
+    func resized(withPercentage percentage: CGFloat) -> UIImage? {
+           let canvas = CGSize(width: size.width * percentage, height: size.height * percentage)
+           return UIGraphicsImageRenderer(size: canvas, format: imageRendererFormat).image {
+               _ in draw(in: CGRect(origin: .zero, size: canvas))
+           }
+       }
+    
+       func resized(toWidth width: CGFloat) -> UIImage? {
+           let canvas = CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))
+           return UIGraphicsImageRenderer(size: canvas, format: imageRendererFormat).image {
+               _ in draw(in: CGRect(origin: .zero, size: canvas))
+           }
+       }
 }
